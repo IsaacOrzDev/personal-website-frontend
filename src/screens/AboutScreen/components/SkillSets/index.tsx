@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import styles from './style.module.scss';
-import { animated, useTransition } from 'react-spring';
 import Skill from './components/Skill';
 import { ThemeProps } from 'types/Props';
-import useInterval from 'hooks/useInterval';
 
 interface Props extends ThemeProps {
   visible?: boolean;
@@ -13,47 +11,7 @@ interface Props extends ThemeProps {
 }
 
 const SkillSets: React.FC<Props> = (props) => {
-  const [index, setIndex] = useState(-1);
-
-  const items = (index === -1 ? [] : props.groups[index]).map((x, i) => ({
-    item: x,
-    index: i,
-  }));
-
-  const transitions = useTransition(items, {
-    from: { transform: 'scale(0) rotate(90deg)', display: 'none' },
-    enter: {
-      transform: 'scale(1), rotate(0deg)',
-      display: 'flex',
-    },
-    leave: { transform: 'scale(0) rotate(90deg)', display: 'none' },
-  });
-
-  const _runAnimation = useCallback(async () => {
-    setIndex((_index) => {
-      if (_index >= props.groups.length - 1) {
-        return 0;
-      } else {
-        return _index + 1;
-      }
-    });
-  }, [props.groups.length]);
-
-  useInterval(
-    () => {
-      _runAnimation();
-    },
-    props.visible && props.isLooping ? 6000 : null
-  );
-
-  useEffect(() => {
-    if (props.visible) {
-      _runAnimation();
-    } else {
-      setIndex(-1);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.visible]);
+  const items = props.groups[0] ?? [];
 
   let containerClassName = `${styles.container}`;
 
@@ -63,14 +21,15 @@ const SkillSets: React.FC<Props> = (props) => {
 
   return (
     <div className={containerClassName}>
-      {transitions(({ transform, display }, item) => (
-        <animated.div className={styles.item} style={{ transform, display }}>
+      {items.map((item, i) => (
+        <div className={styles.item}>
           <Skill
+            key={i}
             theme={props.theme}
-            type={item.item}
+            type={item}
             isResponsive={props.isResponsive}
           />
-        </animated.div>
+        </div>
       ))}
     </div>
   );
