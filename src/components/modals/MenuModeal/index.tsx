@@ -11,10 +11,10 @@ interface Props extends ThemeProps {
   items: Array<{ title: string; onClick?: () => void }>;
 }
 
-const MenuModal: React.FC<Props> = props => {
+const MenuModal: React.FC<Props> = (props) => {
   const [textVisible, setTextVisible] = useState(false);
 
-  const transitions = useTransition(props.visible, null, {
+  const transitions = useTransition(props.visible, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
@@ -30,13 +30,12 @@ const MenuModal: React.FC<Props> = props => {
 
   return (
     <div>
-      {transitions.map(
-        t =>
-          t.item && (
+      {transitions(
+        ({ opacity }, item) =>
+          item && (
             <animated.div
-              key={t.key}
               className={`${styles.container} ${styles[props.theme]}`}
-              style={t.props}
+              style={{ opacity }}
             >
               <div className={styles.list}>
                 <div className={styles.content}>

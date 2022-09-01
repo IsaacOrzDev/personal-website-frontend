@@ -12,7 +12,7 @@ interface Props extends ThemeProps {
   groups: Array<Array<string>>;
 }
 
-const SkillSets: React.FC<Props> = props => {
+const SkillSets: React.FC<Props> = (props) => {
   const [index, setIndex] = useState(-1);
 
   const items = (index === -1 ? [] : props.groups[index]).map((x, i) => ({
@@ -20,21 +20,17 @@ const SkillSets: React.FC<Props> = props => {
     index: i,
   }));
 
-  const transitions = useTransition(
-    items,
-    item => `${item.item}-${item.index}`,
-    {
-      from: { transform: 'scale(0) rotate(90deg)', display: 'none' },
-      enter: {
-        transform: 'scale(1), rotate(0deg)',
-        display: 'flex',
-      },
-      leave: { transform: 'scale(0) rotate(90deg)', display: 'none' },
-    }
-  );
+  const transitions = useTransition(items, {
+    from: { transform: 'scale(0) rotate(90deg)', display: 'none' },
+    enter: {
+      transform: 'scale(1), rotate(0deg)',
+      display: 'flex',
+    },
+    leave: { transform: 'scale(0) rotate(90deg)', display: 'none' },
+  });
 
   const _runAnimation = useCallback(async () => {
-    setIndex(_index => {
+    setIndex((_index) => {
       if (_index >= props.groups.length - 1) {
         return 0;
       } else {
@@ -67,11 +63,11 @@ const SkillSets: React.FC<Props> = props => {
 
   return (
     <div className={containerClassName}>
-      {transitions.map(t => (
-        <animated.div key={t.key} className={styles.item} style={t.props}>
+      {transitions(({ transform, display }, item) => (
+        <animated.div className={styles.item} style={{ transform, display }}>
           <Skill
             theme={props.theme}
-            type={t.item.item}
+            type={item.item}
             isResponsive={props.isResponsive}
           />
         </animated.div>
