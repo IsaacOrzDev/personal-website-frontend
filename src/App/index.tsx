@@ -19,7 +19,6 @@ import GaService from 'services/gaService';
 import GridBackground from 'components/layout/GridBackground';
 import dataService from 'services/dataService';
 
-// const LoadingScreen = React.lazy(() => import('screens/LoadingScreen'));
 const Home = React.lazy(() => import('./routing/Home'));
 const Works = React.lazy(() => import('./routing/Works'));
 

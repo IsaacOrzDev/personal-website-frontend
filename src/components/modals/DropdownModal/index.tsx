@@ -9,7 +9,7 @@ interface Props extends ThemeProps {
   onExit?: () => void;
 }
 
-const DropdownModal: React.FC<Props> = props => {
+const DropdownModal: React.FC<Props> = (props) => {
   const [attached, setAttached] = useState(false);
 
   const [visible, setVisible] = useState(false);
@@ -20,7 +20,7 @@ const DropdownModal: React.FC<Props> = props => {
   //   visible: props.visible ? 1 : 0,
   // });
 
-  const transitions = useTransition(props.visible, null, {
+  const transitions = useTransition(props.visible, {
     from: { opacity: 0, maxHeight: 0 },
     enter: { opacity: 1, maxHeight: 420 },
     leave: { opacity: 0, maxHeight: 0 },
@@ -56,15 +56,17 @@ const DropdownModal: React.FC<Props> = props => {
       }}
       ref={divRef}
     >
-      {transitions.map(
-        t =>
-          t.item && (
+      {transitions(
+        ({ opacity, maxHeight }, item) =>
+          item && (
             <animated.div
-              key={t.key}
               className={
                 visible ? `${styles.content} ${styles.visible}` : styles.content
               }
-              style={t.props}
+              style={{
+                opacity,
+                maxHeight,
+              }}
             >
               {props.children}
             </animated.div>

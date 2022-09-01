@@ -17,22 +17,19 @@ interface Props {
   opacity?: number;
 }
 
-const ImageViewer: React.FC<Props> = props => {
+const ImageViewer: React.FC<Props> = (props) => {
   const [index, setIndex] = useState(0);
 
   const src = props.src.length > 0 ? props.src[index] : '';
 
-  const transitions = useTransition(props.src[index], item => item, {
+  const transitions = useTransition(props.src[index], {
     from: {
-      // width: '0%',
       opacity: props.opacity!,
     },
     enter: {
-      // width: '100%',
       opacity: props.opacity!,
     },
     leave: {
-      // width: '0%',
       opacity: 0,
     },
     config: config.molasses,
@@ -40,7 +37,7 @@ const ImageViewer: React.FC<Props> = props => {
 
   useInterval(
     () => {
-      setIndex(i => {
+      setIndex((i) => {
         return (i + 1) % props.src.length;
       });
     },
@@ -58,11 +55,11 @@ const ImageViewer: React.FC<Props> = props => {
   if (props.src.length > 1) {
     return (
       <div className={styles.container}>
-        {transitions.map(t => (
-          <animated.div className={styles.content} key={t.key} style={t.props}>
+        {transitions(({ opacity }, item) => (
+          <animated.div className={styles.content} style={{ opacity }}>
             {props.isDiv && (
               <ImageDiv
-                src={t.item}
+                src={item}
                 visible={props.visible}
                 isCircle={props.isCircle}
               />
@@ -70,7 +67,7 @@ const ImageViewer: React.FC<Props> = props => {
             {!props.isDiv && (
               <ImageItem
                 resizeMode={props.resizeMode}
-                src={t.item}
+                src={item}
                 visible={props.visible}
                 isCircle={props.isCircle}
               />

@@ -30,7 +30,7 @@ const data: Data = {
       'The website uses cookies and collects your IP address to improve and deliver content with a personalized experience.',
   },
   about: {
-    skillSets: [[]],
+    skillSets: [[skills.csharp, skills.csharp, skills.csharp]],
     descriptionList: [
       {
         title: 'Bruce Wayne',
