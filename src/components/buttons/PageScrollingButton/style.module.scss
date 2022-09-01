@@ -1,0 +1,21 @@
+.down {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  z-index: 4;
+}
+
+.up {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  box-sizing: border-box;
+  z-index: 4;
+}
+
+.responsive {
+  bottom: 120px;
+}

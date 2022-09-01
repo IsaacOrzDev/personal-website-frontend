@@ -1,0 +1,72 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 25%;
+  min-width: 300px;
+  max-width: 360px;
+  min-height: 200px;
+  border-width: 1;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  @include transition(border-color, background-color);
+
+  &.dark {
+    border-color: $color-dark-line;
+    background-color: $color-dark-background;
+  }
+
+  &.light {
+    border-color: $color-light-line;
+    background-color: $color-light-background;
+  }
+
+  &.responsive {
+    right: 8px;
+    bottom: 8px;
+  }
+}
+
+.header {
+  width: 100%;
+  height: 40px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  border-bottom-width: 1;
+  border-bottom-style: solid;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  @include transition(border-color);
+
+  &.dark {
+    border-color: $color-dark-line;
+  }
+
+  &.light {
+    border-color: $color-light-line;
+  }
+}
+
+.content {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  position: relative;
+
+  // transform: translateY(-50%);
+  box-sizing: border-box;
+}
+
+.close {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+}

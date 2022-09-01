@@ -1,0 +1,13 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  // @include transition(transform);
+  width: 100%;
+  min-height: 100vh;
+  transition-property: transform;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
+}

@@ -1,0 +1,14 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.link {
+  font-size: 12px;
+
+  &.dark {
+    color: rgba($color-dark-text, 0.6);
+  }
+
+  &.light {
+    color: rgba($color-light-text, 0.6);
+  }
+}

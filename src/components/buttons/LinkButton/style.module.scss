@@ -1,0 +1,87 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.button {
+  width: 228px;
+  height: 64px;
+  border-width: 1px;
+  border-style: solid;
+  outline: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include transition(background-color, border-color);
+
+  &.dark {
+    border-color: $color-dark-line;
+    background-color: $color-dark-background;
+  }
+
+  &.light {
+    border-color: $color-light-line;
+    background-color: $color-light-background;
+  }
+}
+
+.button:hover:not(:disabled) {
+  &.dark {
+    background-color: $color-dark-line;
+  }
+
+  &.light {
+    background-color: $color-light-line;
+  }
+}
+
+button:disabled {
+  &.dark {
+    background-color: darken($color: $color-dark-line, $amount: 50%);
+  }
+
+  &.light {
+    background-color: lighten($color: $color-light-line, $amount: 50%);
+  }
+}
+
+.text {
+  // font-size: 24px;
+  margin: 0;
+  @include transition(color);
+
+  &.dark {
+    color: $color-dark-text;
+  }
+
+  &.light {
+    color: $color-light-text;
+  }
+}
+
+.button:hover:not(:disabled) .text {
+  &.dark {
+    color: $color-dark-background;
+  }
+
+  &.light {
+    color: $color-light-background;
+  }
+}
+
+.button:disabled .text {
+  &.dark {
+    color: $color-dark-background;
+  }
+
+  &.light {
+    color: $color-light-background;
+  }
+}
+
+.ios {
+  margin-left: 8px;
+  margin-top: -4px;
+}
+
+.android {
+  margin-left: 8px;
+}

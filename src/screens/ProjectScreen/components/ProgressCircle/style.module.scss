@@ -1,0 +1,32 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  transform: rotate(-90deg);
+}
+
+.empty {
+  @include transition(stroke);
+
+  &.dark {
+    stroke: lighten($color: $color-dark-background, $amount: 30%);
+    // stroke: $color-dark-line;
+  }
+
+  &.light {
+    stroke: darken($color: $color-light-background, $amount: 30%);
+    // stroke: $color-light-line;
+  }
+}
+
+.bar {
+  @include transition(stroke);
+
+  &.dark {
+    stroke: $color-dark-tint;
+  }
+
+  &.light {
+    stroke: $color-light-tint;
+  }
+}

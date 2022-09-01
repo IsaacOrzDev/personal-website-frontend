@@ -1,0 +1,84 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  .btn {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    padding: 0;
+  }
+
+  &.dark {
+    .dot {
+      background-color: $color-dark-line;
+    }
+
+    .dot.big {
+      background-color: $color-dark-tint;
+    }
+  }
+
+  &.light {
+    .dot {
+      background-color: $color-light-line;
+    }
+
+    .dot.big {
+      background-color: $color-light-tint;
+    }
+  }
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-20px, -50%);
+  overflow-x: hidden;
+}
+
+.wrapper {
+  overflow-x: hidden;
+  // border-radius: 40%;
+}
+
+.placeholder {
+  width: 42px;
+  height: 12px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 20%;
+  margin-right: 8px;
+  z-index: 10;
+  opacity: 1;
+  border-radius: 50%;
+  @include transition(width, height, background-color, opacity, border-radius);
+}
+
+.dot.hidden {
+  opacity: 0;
+}
+
+.dot.big {
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+}

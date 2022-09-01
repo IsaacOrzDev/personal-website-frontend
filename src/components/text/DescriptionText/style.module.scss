@@ -1,0 +1,49 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  margin: 0;
+  position: relative;
+}
+
+.text {
+  margin: 0;
+  position: absolute;
+  line-height: 1.4;
+  letter-spacing: 1.2;
+  @include transition(color);
+
+  &.dark {
+    &.normal {
+      color: $color-dark-text;
+    }
+
+    &.invert {
+      color: $color-dark-background;
+    }
+
+    &.tint {
+      color: $color-dark-tint;
+    }
+  }
+
+  &.light {
+    &.normal {
+      color: $color-light-text;
+    }
+    &.invert {
+      color: $color-light-background;
+    }
+
+    &.tint {
+      color: $color-light-tint;
+    }
+  }
+}
+
+.placeholder {
+  margin: 0;
+  opacity: 0;
+  line-height: 1.4;
+  letter-spacing: 1.2;
+}

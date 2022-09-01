@@ -1,0 +1,33 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.button {
+  outline: 0;
+  background-color: transparent;
+  border: 0;
+  border-radius: 50%;
+  @include transition(background-color);
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+    // padding-bottom: 16px;
+    box-sizing: border-box;
+  }
+
+  &.up {
+    .text {
+      margin-top: 4px;
+    }
+  }
+
+  &.down {
+    .text {
+      margin-bottom: 4px;
+    }
+  }
+}

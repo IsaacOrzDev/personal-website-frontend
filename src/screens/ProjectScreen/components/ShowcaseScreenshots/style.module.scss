@@ -1,0 +1,65 @@
+.mobile_both {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .iphone {
+    margin-right: 48px;
+    margin-top: -10%;
+  }
+
+  .android {
+    margin-top: 20%;
+  }
+
+  &.responsive {
+    margin: 0 24px;
+
+    .iphone {
+      margin-right: 24px;
+      margin-top: 0;
+    }
+
+    .android {
+      margin-top: 0;
+    }
+  }
+}
+
+.ipad {
+  padding-top: 50%;
+  transform: translateY(-25%);
+
+  &.responsive {
+    padding-top: 0;
+    transform: translateY(0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.website_container {
+  margin-top: 10%;
+  position: relative;
+
+  .responsive {
+    position: absolute;
+    bottom: -5%;
+    right: -6%;
+  }
+
+  &.responsive {
+    margin-top: 0;
+    margin-bottom: 20%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .responsive {
+      top: 20%;
+      right: 5%;
+    }
+  }
+}

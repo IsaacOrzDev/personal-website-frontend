@@ -1,0 +1,119 @@
+@import 'styles/_utils.scss';
+
+.responsive {
+  display: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.index_horizontal {
+  width: 100%;
+  display: none;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  @include content;
+  justify-content: center;
+  position: relative;
+  // margin-top: 100px;
+  height: 70%;
+
+  .index {
+    height: 100%;
+    align-self: center;
+    position: absolute;
+    top: 0;
+    left: 24px;
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+  }
+
+  .left_inner {
+    position: relative;
+    // margin-left: 80px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .frame_container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .navigation {
+    height: 100%;
+    align-self: center;
+    position: absolute;
+    top: 0;
+    right: 24px;
+  }
+
+  .text_area {
+    max-width: 600px;
+    flex: 1;
+    margin-left: 80px;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    margin-top: 80px;
+    position: relative;
+
+    .info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+
+  .description {
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+.container.lg,
+.container.md {
+  .content {
+    margin-top: 40px;
+  }
+
+  .text_area {
+    margin-top: 40px;
+    margin-left: 24px;
+  }
+
+  .index {
+    display: none;
+  }
+
+  .index_horizontal {
+    display: block;
+    z-index: 5;
+  }
+
+  .left {
+    margin-left: 0px;
+  }
+}
+
+.scrolling_list {
+  margin-top: 60px;
+}

@@ -1,0 +1,55 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+/*
+1900
+880
+*/
+
+.container {
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 2px;
+  overflow: hidden;
+  @include transition(border-color, background-color);
+
+  .bar {
+    width: 100%;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    display: flex;
+    align-items: center;
+    @include transition(border-bottom-color);
+  }
+
+  .point {
+    border-radius: 50%;
+    @include transition(background-color);
+  }
+
+  &.dark {
+    border-color: $color-dark-line;
+    background-color: $color-dark-background;
+
+    .bar {
+      border-bottom-color: $color-dark-line;
+    }
+
+    .point {
+      background-color: $color-dark-line;
+    }
+  }
+
+  &.light {
+    border-color: $color-light-line;
+    background-color: $color-light-background;
+
+    .bar {
+      border-bottom-color: $color-light-line;
+    }
+
+    .point {
+      background-color: $color-light-line;
+    }
+  }
+}

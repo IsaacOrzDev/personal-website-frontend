@@ -1,0 +1,12 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  &.dark {
+    background-color: $color-dark-background;
+  }
+
+  &.light {
+    background-color: $color-light-background;
+  }
+}

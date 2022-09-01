@@ -1,0 +1,104 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+$width: 240px;
+
+.container {
+  // width: $width;
+  // height: calc(#{$width} * 2.165);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  @include transition(border-color, background-color);
+
+  .content {
+    width: '100%';
+  }
+
+  .placeholder {
+    width: 100%;
+    // height: 40px;
+  }
+
+  .bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-width: 1px;
+    border-top-style: solid;
+    @include transition(border-color, background-color);
+  }
+
+  .back {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 16px 8px 0;
+    margin-right: 48px;
+    @include transition(border-color);
+  }
+
+  .home {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-right: 48px;
+    @include transition(background-color);
+  }
+
+  .menu {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    @include transition(background-color);
+  }
+
+  &.dark {
+    border-color: $color-dark-line;
+    background-color: $color-dark-background;
+
+    .bar {
+      border-top-color: $color-dark-line;
+    }
+
+    .back {
+      border-color: transparent $color-dark-line transparent transparent;
+    }
+
+    .home {
+      background-color: $color-dark-line;
+    }
+
+    .menu {
+      background-color: $color-dark-line;
+    }
+  }
+
+  &.light {
+    border-color: $color-light-line;
+    background-color: $color-light-background;
+
+    .bar {
+      border-top-color: $color-light-line;
+    }
+
+    .back {
+      border-color: transparent $color-light-line transparent transparent;
+    }
+
+    .home {
+      background-color: $color-light-line;
+    }
+
+    .menu {
+      background-color: $color-light-line;
+    }
+  }
+}

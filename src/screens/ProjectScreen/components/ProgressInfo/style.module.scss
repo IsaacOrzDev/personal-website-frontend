@@ -1,0 +1,46 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+
+  &.dark {
+    .current .down {
+      border-color: $color-dark-line transparent transparent transparent;
+    }
+  }
+
+  &.light {
+    .current .down {
+      border-color: $color-light-line transparent transparent transparent;
+    }
+  }
+}
+
+.current {
+  margin-right: 8px;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  display: flex;
+  align-items: center;
+  padding: 0;
+
+  .text {
+    width: 32px;
+  }
+
+  .down {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 6px 0 6px;
+    margin-left: 4px;
+    @include transition(border-color);
+  }
+}
+
+.total {
+  margin-left: 16px;
+}

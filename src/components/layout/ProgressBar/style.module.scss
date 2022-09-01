@@ -1,0 +1,31 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  position: relative;
+  @include transition(background-color);
+
+  .bar {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include transition(background-color);
+  }
+
+  &.dark {
+    background-color: $color-dark-line;
+
+    .bar {
+      background-color: $color-dark-tint;
+    }
+  }
+
+  &.light {
+    background-color: $color-light-line;
+
+    .bar {
+      background-color: $color-light-tint;
+    }
+  }
+}

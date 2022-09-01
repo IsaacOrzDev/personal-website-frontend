@@ -1,0 +1,46 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.item {
+  margin-bottom: 64px;
+  position: relative;
+  padding: 0;
+
+  height: 80px;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+
+  .text {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+  }
+
+  .point {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+  }
+
+  &.dark .point {
+    background-color: $color-dark-tint;
+  }
+
+  &.light .point {
+    background-color: $color-light-tint;
+  }
+}
+
+.item.horizontal {
+  margin-bottom: 0;
+  margin-right: 64px;
+  width: 80px;
+  flex-direction: column;
+
+  .text {
+    writing-mode: horizontal-tb;
+    transform: rotate(0deg);
+  }
+}

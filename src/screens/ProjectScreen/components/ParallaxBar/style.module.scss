@@ -1,0 +1,32 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100vh;
+  transform-origin: 50% 0;
+  z-index: 6;
+
+  .progress {
+    width: 4px;
+  }
+
+  &.dark {
+    // background-color: $color-dark-line;
+
+    .progress {
+      background-color: $color-dark-tint;
+    }
+  }
+
+  &.light {
+    // background-color: $color-light-line;
+
+    .progress {
+      background-color: $color-light-tint;
+    }
+  }
+}

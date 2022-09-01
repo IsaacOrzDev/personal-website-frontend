@@ -1,0 +1,10 @@
+.container {
+  border-radius: 50%;
+  background-color: transparent;
+  border: 3px solid #00f8db;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999;
+}

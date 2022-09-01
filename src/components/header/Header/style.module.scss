@@ -1,0 +1,53 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  @include transition(background-color);
+
+  &.responsive {
+    padding-top: 16px;
+  }
+
+  &.floating.dark {
+    background-color: $color-dark-grid-line;
+  }
+
+  &.floating.light {
+    background-color: #f2f2f2;
+  }
+
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    @include content;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme_btn {
+    margin-right: 16px;
+  }
+
+  .absolute {
+    position: absolute;
+    top: 0px;
+    left: 24px;
+  }
+}

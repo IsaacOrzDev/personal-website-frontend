@@ -1,0 +1,86 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+$width: 240px;
+$barWidth: $width - 116px;
+
+.container {
+  // width: $width;
+  // height: calc(#{$width} * 2.165);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+  @include transition(border-color, background-color, width, height);
+
+  .m_bar {
+    // width: $barWidth;
+    height: 24px;
+    border-width: 1px;
+    border-style: solid;
+    border-top: 0;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    @include transition(border-color, background-color, width);
+  }
+
+  .microphone {
+    width: 40px;
+    height: 4px;
+    border-radius: 16px;
+    margin-right: 8px;
+    @include transition(background-color);
+  }
+
+  .camera {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    @include transition(background-color);
+  }
+
+  &.dark {
+    border-color: $color-dark-line;
+    background-color: $color-dark-background;
+
+    .m_bar {
+      border-color: $color-dark-line;
+      background-color: $color-dark-background;
+    }
+
+    .microphone {
+      background-color: $color-dark-line;
+    }
+
+    .camera {
+      background-color: $color-dark-line;
+    }
+  }
+
+  &.light {
+    border-color: $color-light-line;
+    background-color: $color-light-background;
+
+    .m_bar {
+      border-color: $color-light-line;
+      background-color: $color-light-background;
+    }
+
+    .microphone {
+      background-color: $color-light-line;
+    }
+
+    .camera {
+      background-color: $color-light-line;
+    }
+  }
+}

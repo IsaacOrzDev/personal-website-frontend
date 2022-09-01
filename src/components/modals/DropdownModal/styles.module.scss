@@ -1,0 +1,32 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  position: absolute;
+  outline: 0;
+  z-index: 4;
+  width: 100%;
+  // height: 100%;
+
+  .content {
+    border-width: 1px;
+    border-style: solid;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+
+    &.visible {
+      overflow-y: auto;
+    }
+  }
+
+  &.dark .content {
+    background-color: $color-dark-background;
+    border-color: $color-dark-line;
+  }
+
+  &.light .content {
+    background-color: $color-light-background;
+    border-color: $color-light-line;
+  }
+}

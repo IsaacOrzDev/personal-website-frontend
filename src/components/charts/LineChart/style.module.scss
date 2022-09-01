@@ -1,0 +1,21 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.chart {
+  width: 500px;
+  height: 160px;
+  padding: 20px 20px 20px 0;
+}
+
+.line {
+  stroke: $color-dark-tint;
+  // stroke-dasharray: 1000;
+  // stroke-dashoffset: 1000;
+  // animation: dash 3s linear forwards;
+}

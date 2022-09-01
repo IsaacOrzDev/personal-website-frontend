@@ -1,0 +1,49 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  width: 32px;
+  height: 32px;
+}
+
+.body {
+  @include transition(fill);
+  &.dark {
+    fill: $color-dark-line;
+  }
+
+  &.light {
+    fill: $color-light-line;
+  }
+}
+
+.container.invert .body {
+  &.dark {
+    fill: $color-dark-background;
+  }
+
+  &.light {
+    fill: $color-light-background;
+  }
+}
+
+.eye {
+  @include transition(fill);
+  &.dark {
+    fill: $color-dark-background;
+  }
+
+  &.light {
+    fill: $color-light-background;
+  }
+}
+
+.container.invert .eye {
+  &.dark {
+    fill: $color-dark-line;
+  }
+
+  &.light {
+    fill: $color-light-line;
+  }
+}

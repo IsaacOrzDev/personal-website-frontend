@@ -1,0 +1,53 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  width: 48px;
+  height: 48px;
+
+  .body {
+    @include transition(fill);
+  }
+
+  .mask {
+    @include transition(fill);
+  }
+
+  .lint {
+    @include transition(fill);
+  }
+
+  &.dark {
+    .body {
+      fill: $color-dark-line;
+    }
+
+    .mask {
+      fill: $color-dark-line;
+    }
+
+    .tint {
+      fill: $color-dark-background;
+    }
+  }
+
+  &.light {
+    .body {
+      fill: $color-light-line;
+    }
+
+    .mask {
+      fill: $color-light-background;
+    }
+
+    .tint {
+      fill: $color-light-background;
+    }
+  }
+
+  &.colorful {
+    .body {
+      fill: #ff4785 !important;
+    }
+  }
+}

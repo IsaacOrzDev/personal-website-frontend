@@ -1,0 +1,72 @@
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  // scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body {
+  margin: 0;
+  // font-family: 'Roboto', sans-serif;
+  font-family: ibm-plex-mono, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  overflow-y: hidden;
+  // cursor: none;
+
+  a,
+  button {
+    cursor: pointer;
+    // font-family: 'Roboto', sans-serif;
+    font-family: ibm-plex-mono, sans-serif;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+// ::-webkit-scrollbar {
+//   display: none;
+// }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Opera and Firefox */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: ibm-plex-mono, sans-serif;
+}
+
+.skill_icon {
+  width: 64px;
+  height: 64px;
+
+  &.small {
+    width: 32px;
+    height: 32px;
+  }
+}

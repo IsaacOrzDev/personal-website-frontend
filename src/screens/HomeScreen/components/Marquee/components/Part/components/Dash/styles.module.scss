@@ -1,0 +1,29 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  position: relative;
+}
+
+.dash {
+  // width: 100px;
+  height: 6px;
+  position: absolute;
+  left: 32px;
+  // padding-top:;
+  @include transition(background-color);
+
+  &.dark {
+    background-color: $color-dark-line;
+  }
+
+  &.light {
+    background-color: $color-light-line;
+  }
+}
+
+.placeholder {
+  width: 100px;
+  margin: 0 32px;
+  height: 6px;
+}

@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  display: flex;
+
+  .item {
+    margin-right: 16px;
+  }
+
+  &.responsive {
+    flex-direction: column;
+
+    .item {
+      margin-right: 0;
+      margin-bottom: 16px;
+    }
+  }
+
+  &.center {
+    align-items: center;
+  }
+}

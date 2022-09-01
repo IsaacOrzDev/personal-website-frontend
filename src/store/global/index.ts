@@ -1,0 +1,76 @@
+import { createSlice, PayloadAction, ThunkAction } from '@reduxjs/toolkit';
+import { initialGlobalState } from './state';
+import { Theme } from 'types/Types';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import reducerNames from 'config/reducerNames';
+import TimeService from 'services/timeService';
+
+const slice = createSlice({
+  name: reducerNames.global,
+  initialState: initialGlobalState,
+  reducers: {
+    setTheme: (state, action: PayloadAction<Theme>) => {
+      state.theme = action.payload;
+    },
+    setPage: (state, action: PayloadAction<string>) => {
+      state.page = action.payload;
+    },
+    setHomeImages: (state, action: PayloadAction<string[]>) => {
+      state.homeImages = action.payload;
+    },
+    setName: (state, action: PayloadAction<string>) => {
+      state.name = action.payload;
+    },
+    setTitle: (state, action: PayloadAction<string>) => {
+      state.title = action.payload;
+    },
+    setCookieMsgContent: (state, action: PayloadAction<string>) => {
+      state.cookieMsgContent = action.payload;
+    },
+    setHasCookie: (state, action: PayloadAction<boolean>) => {
+      state.hasCookie = action.payload;
+    },
+    setDataLoaded: (state, action: PayloadAction<boolean>) => {
+      state.dataLoaded = action.payload;
+    },
+    setShouldShowContent: (state, action: PayloadAction<boolean>) => {
+      state.shouldShowContent = action.payload;
+    },
+    toggleShouldShowMenu: state => {
+      state.shouldShowMenu = !state.shouldShowMenu;
+    },
+    setShouldShowMenu: (state, action: PayloadAction<boolean>) => {
+      state.shouldShowMenu = action.payload;
+    },
+    setShouldShowCookieModal: (state, action: PayloadAction<boolean>) => {
+      state.shouldShowCookieModal = action.payload;
+    },
+    setShouldListenScrollingEvent: (state, action: PayloadAction<boolean>) => {
+      state.shouldListenScrollingEvent = action.payload;
+    },
+  },
+});
+
+const { reducer, actions } = slice;
+
+function stopScrollingDuringAnimation(): ThunkAction<void, any, any, any> {
+  return async dispatch => {
+    dispatch(actions.setShouldListenScrollingEvent(false));
+    await TimeService.timeout(1600);
+    dispatch(actions.setShouldListenScrollingEvent(true));
+  };
+}
+
+const persistConfig = {
+  key: reducerNames.global,
+  storage,
+  // storage: new CookieStorage(Cookies),
+  whitelist: ['theme', 'hasCookie'],
+};
+
+const globalReducer = persistReducer(persistConfig, reducer);
+
+const globalActions = { ...actions, stopScrollingDuringAnimation };
+
+export { globalReducer, globalActions };

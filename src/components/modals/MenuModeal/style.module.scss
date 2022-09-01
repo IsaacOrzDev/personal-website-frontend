@@ -1,0 +1,42 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  @include transition(background-color);
+
+  &.dark {
+    background-color: $color-dark-background;
+  }
+
+  &.light {
+    background-color: $color-light-background;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  margin-bottom: 24px;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+}

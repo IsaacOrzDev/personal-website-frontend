@@ -1,0 +1,28 @@
+@import 'styles/_utils.scss';
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  position: absolute;
+  z-index: 2;
+
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    @include content;
+  }
+}
+
+.marquee {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
