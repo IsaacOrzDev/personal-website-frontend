@@ -177,7 +177,6 @@ const ProjectScreen: React.FC<Props> = (props) => {
                 text={item.title}
                 mode="words"
                 visible={visibles[2] && contentVisible && !props.isResponsive}
-                // style={{ backgroundImage: selectedProject?.palette.gradient }}
               />
             </TitleText>
             <div className={styles.description}>
