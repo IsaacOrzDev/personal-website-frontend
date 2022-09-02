@@ -1,11 +1,6 @@
 import React, { useEffect, useCallback, Suspense } from 'react';
 import withProviders from './withProviders';
-import {
-  HashRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import routes from 'config/routes';
 import { useSelector, useDispatch } from 'react-redux';
 import globalSelectors from 'store/global/selectors';
@@ -72,11 +67,10 @@ const App: React.FC = () => {
       <Router>
         <HeaderContainer />
         <Suspense fallback={null}>
-          <Switch>
-            <Route path={routes.home} exact component={Home} />
-            <Route path={routes.works} exact component={Works} />
-            <Redirect to={routes.home} />
-          </Switch>
+          <Routes>
+            <Route path={routes.home} element={<Home />} />
+            <Route path={routes.works} element={<Works />} />
+          </Routes>
         </Suspense>
         <MessageModalContainer />
         <MenuModalContainer />
