@@ -7,30 +7,29 @@
 
   &.dark {
     &.text {
-      color: $color-dark-text;
+      background-color: $color-dark-text;
     }
 
     &.tint {
-      color: $color-dark-tint;
+      background-color: $color-dark-tint;
     }
   }
 
   &.light {
     &.text {
-      color: $color-light-text;
+      background-color: $color-light-text;
     }
 
     &.tint {
-      color: $color-light-tint;
+      background-color: $color-light-tint;
     }
   }
-//  &, & > span {
-//   background-color: #f3ec78;
-//   background-image: linear-gradient(93.4deg, rgb(51, 195, 255) 0%, rgb(126, 58, 217) 102.23%);
-//   background-size: 100%;
-//   -webkit-background-clip: text;
-//   -moz-background-clip: text;
-//   -webkit-text-fill-color: transparent; 
-//   -moz-text-fill-color: transparent;
-//  }
+
+  &, & > span {
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+  }
 }

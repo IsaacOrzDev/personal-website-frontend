@@ -12,11 +12,12 @@ interface Props extends ThemeProps {
   items: Array<any>;
   index: number;
   disabled?: boolean;
+  activeColor?: string;
   onSelectPrev?: () => void;
   onSelectNext?: () => void;
 }
 
-const ProjectNavigation: React.FC<Props> = props => {
+const ProjectNavigation: React.FC<Props> = (props) => {
   const { paginationTranslateX, visible } = useSpring({
     paginationTranslateX:
       props.index === 0 ? 14 : props.index === 1 ? 0 : (props.index - 1) * -14,
@@ -34,7 +35,7 @@ const ProjectNavigation: React.FC<Props> = props => {
   return (
     <animated.div
       className={`${styles.container} ${styles[props.theme]}`}
-      style={{ transform: visible.interpolate(v => `scale(${v})`) }}
+      style={{ transform: visible.interpolate((v) => `scale(${v})`) }}
     >
       <button
         className={styles.btn}
@@ -49,12 +50,16 @@ const ProjectNavigation: React.FC<Props> = props => {
             className={styles.pagination}
             style={{
               transform: paginationTranslateX.interpolate(
-                v => `translateX(${v}px)`
+                (v) => `translateX(${v}px)`
               ),
             }}
           >
             {props.items.map((x, i) => (
-              <Dot key={i} active={i === props.index} />
+              <Dot
+                key={i}
+                active={i === props.index}
+                activeColor={props.activeColor}
+              />
             ))}
           </animated.div>
           <div className={styles.placeholder} />
@@ -71,7 +76,11 @@ const ProjectNavigation: React.FC<Props> = props => {
   );
 };
 
-const Dot: React.FC<{ active?: boolean; isHidden?: boolean }> = props => {
+const Dot: React.FC<{
+  active?: boolean;
+  isHidden?: boolean;
+  activeColor?: string;
+}> = (props) => {
   let className = `${styles.dot}`;
   if (props.active) {
     className += ` ${styles.big}`;
@@ -79,7 +88,16 @@ const Dot: React.FC<{ active?: boolean; isHidden?: boolean }> = props => {
   if (props.isHidden) {
     className += ` ${styles.hidden}`;
   }
-  return <div className={className} />;
+  return (
+    <div
+      className={className}
+      style={
+        props.active && !!props.activeColor
+          ? { background: props.activeColor }
+          : {}
+      }
+    />
+  );
 };
 
 export default ProjectNavigation;

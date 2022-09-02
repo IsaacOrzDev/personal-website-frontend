@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import styles from './style.module.scss';
 import ProgressCircle from './components/ProgressCircle';
 import { ThemeProps } from 'types/Props';
@@ -44,6 +44,11 @@ interface Props extends ThemeProps {
 
 const ProjectScreen: React.FC<Props> = (props) => {
   const visibles = useVisibles([800, 1400, 2200], props.visible);
+
+  const selectedProject = useMemo(
+    () => props.list.find((x, i) => i === props.index),
+    [props.index, props.list]
+  );
 
   const [contentVisible, setContentVisible] = useState(true);
   const [frameVisible, setFrameVisible] = useState(true);
@@ -120,6 +125,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
                 width={circleSize}
                 visible={visibles[0] && !props.isResponsive}
                 percentage={((props.index + 1) / props.list.length) * 100}
+                barColor={selectedProject?.palette[props.theme]}
               />
               <div className={styles.frame_container}>
                 <ShowcaseScreenShots
@@ -136,6 +142,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
           <div className={styles.text_area}>
             <div className={styles.info}>
               <ProgressInfo
+                color={selectedProject?.palette[props.theme]}
                 theme={props.theme}
                 visible={visibles[0] && !props.isResponsive}
                 textVisible={visibles[2] && !props.isResponsive}
@@ -149,6 +156,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
               />
               <ProjectNavigation
                 theme={props.theme}
+                activeColor={selectedProject?.palette[props.theme]}
                 visible={visibles[0] && !props.isResponsive}
                 prevVisible={props.index !== 0}
                 nextVisible={props.index !== props.list.length - 1}
@@ -159,7 +167,12 @@ const ProjectScreen: React.FC<Props> = (props) => {
                 onSelectNext={props.onSelectNext}
               />
             </div>
-            <TitleText theme={props.theme} fontSize={isLg ? 32 : 60}>
+            <TitleText
+              theme={props.theme}
+              color={selectedProject?.palette[props.theme] ?? 'tint'}
+              gradientColor={selectedProject?.palette.gradient}
+              fontSize={isLg ? 32 : 60}
+            >
               <Words
                 text={item.title}
                 mode="words"

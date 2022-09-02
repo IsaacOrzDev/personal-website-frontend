@@ -8,14 +8,16 @@ interface Props extends ThemeProps {
   strokeWidth?: number;
   width: number;
   visible?: boolean;
+  barColor?: string;
 }
 
-const ProgressCircle: React.FC<Props> = props => {
-  const { size, barWidth, visible } = useSpring({
+const ProgressCircle: React.FC<Props> = (props) => {
+  const { size, barWidth, visible, stroke } = useSpring({
     size: props.width,
     // barWidth: props.strokeWidth! * (props.percentage / 100),
     barWidth: props.strokeWidth!,
     visible: props.visible ? 1 : 0,
+    stroke: props.barColor ?? '',
   });
 
   const { percentage } = useSpring({
@@ -51,7 +53,7 @@ const ProgressCircle: React.FC<Props> = props => {
 
   return (
     <animated.div
-      style={{ transform: visible.interpolate(v => `scale(${v})`) }}
+      style={{ transform: visible.interpolate((v) => `scale(${v})`) }}
     >
       <div className={styles.container}>
         <animated.svg
@@ -82,6 +84,7 @@ const ProgressCircle: React.FC<Props> = props => {
             strokeDashoffset={offset}
             strokeWidth={barWidth}
             shapeRendering="auto"
+            style={stroke ? { stroke } : {}}
           />
         </animated.svg>
       </div>

@@ -8,25 +8,27 @@ interface Props extends ThemeProps {
   width?: number;
   height?: number;
   percentage: number;
+  barColor?: string;
 }
 
-const ProgressBar: React.FC<Props> = props => {
-  const { percentage, total } = useSpring({
+const ProgressBar: React.FC<Props> = (props) => {
+  const { percentage, total, backgroundColor } = useSpring({
     percentage: props.visible ? props.percentage : 0,
     total: props.visible ? props.width! : 0,
+    backgroundColor: props.barColor,
   });
 
   return (
     <animated.div
       className={`${styles.container} ${styles[props.theme]}`}
       style={{
-        width: total.interpolate(v => `${v}px`),
+        width: total.to((v) => `${v}px`),
         height: `${props.height}px`,
       }}
     >
       <animated.div
         className={styles.bar}
-        style={{ width: percentage.interpolate(v => `${v * 100}%`) }}
+        style={{ width: percentage.to((v) => `${v * 100}%`), backgroundColor }}
       />
     </animated.div>
   );

@@ -11,7 +11,7 @@ interface Props {
   quick?: boolean;
 }
 
-const Words: React.FC<Props> = props => {
+const Words: React.FC<Props> = (props) => {
   let items = props.text.split(' ');
   const speed = props.speed!;
   if (props.mode === 'words' && props.speed! > 1) {
@@ -34,6 +34,11 @@ const Words: React.FC<Props> = props => {
     }
   );
 
+  let className = `${styles.span}`;
+  if (props.visible) {
+    className += ` ${styles.gradient}`;
+  }
+
   if (props.mode === 'words') {
     return (
       <React.Fragment>
@@ -47,7 +52,7 @@ const Words: React.FC<Props> = props => {
                 return (
                   <animated.span
                     key={`${index}-${wordIndex}`}
-                    className={styles.span}
+                    className={className}
                     style={{ opacity: visible, transform }}
                   >
                     {`${word}`}
@@ -57,7 +62,7 @@ const Words: React.FC<Props> = props => {
               return (
                 <animated.span
                   key={`${index}-${wordIndex}`}
-                  className={styles.span}
+                  className={className}
                   style={{ opacity: visible, transform }}
                 >
                   {`${word}`}&nbsp;
@@ -75,7 +80,7 @@ const Words: React.FC<Props> = props => {
       {trail.map(({ visible, transform }, index) => (
         <animated.span
           key={index}
-          className={props.text[index] !== ' ' ? styles.span : ''}
+          className={props.text[index] !== ' ' ? className : ''}
           style={
             props.text[index] !== ' ' ? { opacity: visible, transform } : {}
           }

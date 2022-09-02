@@ -5,7 +5,8 @@ import { animated, useSpring } from 'react-spring';
 
 interface Props extends ThemeProps {
   tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  color?: 'text' | 'tint';
+  color?: 'text' | 'tint' | string;
+  gradientColor?: string;
   fontSize?: number;
   className?: string;
   children: React.ReactNode;
@@ -34,49 +35,74 @@ const TitleText: React.FC<Props> = (props) => {
     }
   }, [props.fontSize, props.tag]);
 
-  const { fontSize } = useSpring({
+  const { fontSize, backgroundColor, backgroundImage } = useSpring({
     fontSize: _getFontSize(),
+    backgroundColor:
+      ['text', 'tint'].indexOf(props.color ?? '') === -1 ? props.color : '',
+    backgroundImage: props.gradientColor ?? 'none',
   });
 
-  const className = `${styles.content} ${props.className} ${
+  let className = `${styles.content} ${props.className} ${
     styles[props.theme]
   } ${styles[props.color!]}`;
+
+  if (props.gradientColor) {
+    className += ` ${styles.gradient}`;
+  }
 
   switch (props.tag) {
     case 'h1':
     default:
       return (
-        <animated.h1 style={{ fontSize }} className={className}>
+        <animated.h1
+          style={{ fontSize, backgroundColor, backgroundImage }}
+          className={className}
+        >
           {props.children}
         </animated.h1>
       );
     case 'h2':
       return (
-        <animated.h2 style={{ fontSize }} className={className}>
+        <animated.h2
+          style={{ fontSize, backgroundColor, backgroundImage }}
+          className={className}
+        >
           {props.children}
         </animated.h2>
       );
     case 'h3':
       return (
-        <animated.h3 style={{ fontSize }} className={className}>
+        <animated.h3
+          style={{ fontSize, backgroundColor, backgroundImage }}
+          className={className}
+        >
           {props.children}
         </animated.h3>
       );
     case 'h4':
       return (
-        <animated.h4 style={{ fontSize }} className={className}>
+        <animated.h4
+          style={{ fontSize, backgroundColor, backgroundImage }}
+          className={className}
+        >
           {props.children}
         </animated.h4>
       );
     case 'h5':
       return (
-        <animated.h5 style={{ fontSize }} className={className}>
+        <animated.h5
+          style={{ fontSize, backgroundColor, backgroundImage }}
+          className={className}
+        >
           {props.children}
         </animated.h5>
       );
     case 'h6':
       return (
-        <animated.h6 style={{ fontSize }} className={className}>
+        <animated.h6
+          style={{ fontSize, backgroundColor, backgroundImage }}
+          className={className}
+        >
           {props.children}
         </animated.h6>
       );
