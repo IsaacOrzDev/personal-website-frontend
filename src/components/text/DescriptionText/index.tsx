@@ -6,9 +6,10 @@ import { animated, useSpring } from 'react-spring';
 interface Props extends ThemeProps {
   fontSize?: number;
   type?: 'normal' | 'invert' | 'tint';
+  children: React.ReactNode;
 }
 
-const DescriptionText: React.FC<Props> = props => {
+const DescriptionText: React.FC<Props> = (props) => {
   const { fontSize } = useSpring({
     fontSize: props.fontSize!,
   });
@@ -20,7 +21,7 @@ const DescriptionText: React.FC<Props> = props => {
           styles[props.type!]
         }`}
         style={{
-          fontSize: fontSize.interpolate(v => `${v}px`),
+          fontSize: fontSize.interpolate((v) => `${v}px`),
         }}
       >
         {props.children}

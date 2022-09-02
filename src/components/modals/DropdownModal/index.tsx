@@ -7,6 +7,7 @@ interface Props extends ThemeProps {
   position: { x: number; y: number };
   visible?: boolean;
   onExit?: () => void;
+  children: React.ReactNode;
 }
 
 const DropdownModal: React.FC<Props> = (props) => {

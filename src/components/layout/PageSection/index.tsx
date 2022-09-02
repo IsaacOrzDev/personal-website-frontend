@@ -5,9 +5,10 @@ interface Props {
   setRef?: React.RefObject<any>;
   isResponsive?: boolean;
   className?: string;
+  children?: React.ReactNode;
 }
 
-const PageSection: React.FC<Props> = props => {
+const PageSection: React.FC<Props> = (props) => {
   let className = `${styles.container}`;
   if (props.isResponsive) {
     className += ` ${styles.responsive}`;

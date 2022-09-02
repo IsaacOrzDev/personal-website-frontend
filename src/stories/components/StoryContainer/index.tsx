@@ -5,6 +5,7 @@ import GridBackground from 'components/layout/GridBackground';
 
 interface Props extends ThemeProps {
   visible?: boolean;
+  children: React.ReactNode;
 }
 
 const StoryContainer: React.FC<Props> = ({ theme, children }) => {
