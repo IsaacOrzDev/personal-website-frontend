@@ -37,7 +37,7 @@ const slice = createSlice({
     setShouldShowContent: (state, action: PayloadAction<boolean>) => {
       state.shouldShowContent = action.payload;
     },
-    toggleShouldShowMenu: state => {
+    toggleShouldShowMenu: (state) => {
       state.shouldShowMenu = !state.shouldShowMenu;
     },
     setShouldShowMenu: (state, action: PayloadAction<boolean>) => {
@@ -55,7 +55,7 @@ const slice = createSlice({
 const { reducer, actions } = slice;
 
 function stopScrollingDuringAnimation(): ThunkAction<void, any, any, any> {
-  return async dispatch => {
+  return async (dispatch) => {
     dispatch(actions.setShouldListenScrollingEvent(false));
     await TimeService.timeout(1600);
     dispatch(actions.setShouldListenScrollingEvent(true));
@@ -65,7 +65,6 @@ function stopScrollingDuringAnimation(): ThunkAction<void, any, any, any> {
 const persistConfig = {
   key: reducerNames.global,
   storage,
-  // storage: new CookieStorage(Cookies),
   whitelist: ['theme', 'hasCookie'],
 };
 
