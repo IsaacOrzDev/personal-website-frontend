@@ -18,6 +18,11 @@ export default interface ProjectModel {
   links: Array<{ url: string; type: ShowcaseTypeEnum; text?: string }>;
   type: ProjectTypeEnum;
   year: string;
+  palette: {
+    dark: string;
+    light: string;
+    gradient?: string;
+  };
   primaryColor?: string;
   titleColor?: string;
 }

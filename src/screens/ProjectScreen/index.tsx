@@ -125,7 +125,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
                 width={circleSize}
                 visible={visibles[0] && !props.isResponsive}
                 percentage={((props.index + 1) / props.list.length) * 100}
-                barColor={selectedProject?.primaryColor}
+                barColor={selectedProject?.palette[props.theme]}
               />
               <div className={styles.frame_container}>
                 <ShowcaseScreenShots
@@ -142,7 +142,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
           <div className={styles.text_area}>
             <div className={styles.info}>
               <ProgressInfo
-                barColor={selectedProject?.primaryColor ?? ''}
+                color={selectedProject?.palette[props.theme]}
                 theme={props.theme}
                 visible={visibles[0] && !props.isResponsive}
                 textVisible={visibles[2] && !props.isResponsive}
@@ -156,7 +156,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
               />
               <ProjectNavigation
                 theme={props.theme}
-                activeColor={selectedProject?.primaryColor}
+                activeColor={selectedProject?.palette[props.theme]}
                 visible={visibles[0] && !props.isResponsive}
                 prevVisible={props.index !== 0}
                 nextVisible={props.index !== props.list.length - 1}
@@ -169,13 +169,15 @@ const ProjectScreen: React.FC<Props> = (props) => {
             </div>
             <TitleText
               theme={props.theme}
-              color={selectedProject?.primaryColor ?? 'tint'}
+              color={selectedProject?.palette[props.theme] ?? 'tint'}
+              gradientColor={selectedProject?.palette.gradient}
               fontSize={isLg ? 32 : 60}
             >
               <Words
                 text={item.title}
                 mode="words"
                 visible={visibles[2] && contentVisible && !props.isResponsive}
+                // style={{ backgroundImage: selectedProject?.palette.gradient }}
               />
             </TitleText>
             <div className={styles.description}>

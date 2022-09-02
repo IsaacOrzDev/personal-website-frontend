@@ -25,6 +25,10 @@ const data: Data = {
   },
   projects: [
     {
+      palette: {
+        dark: '',
+        light: '',
+      },
       title: 'Early Life',
       description: [
         'As he grows up, Bruce engages in intense intellectual and physical training. After returning to Gotham, Bruce realizes that these skills alone would not be enough.',
@@ -48,6 +52,10 @@ const data: Data = {
       year: '1960',
     },
     {
+      palette: {
+        dark: '',
+        light: '',
+      },
       title: 'Golden Age',
       description: [
         "In the early strips, Batman's career as a vigilante initially earns him the ire of the police.",
@@ -74,6 +82,10 @@ const data: Data = {
       year: '1960',
     },
     {
+      palette: {
+        dark: '',
+        light: '',
+      },
       title: 'Silver & Bronze Ages',
       description: [
         "Batman meets and regularly works with other heroes during the Silver Age, most notably Superman, whom he began regularly working alongside in a series of team-ups in World's Finest Comics, starting in 1954 and continuing through the series' cancellation in 1986",

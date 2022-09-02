@@ -15,7 +15,7 @@ interface Props extends ThemeProps {
   index: number;
   total: number;
   percentage: number;
-  barColor: string;
+  color?: string;
   onClickIndex?: (position: { x: number; y: number }) => void;
 }
 
@@ -57,7 +57,7 @@ const ProgressInfo: React.FC<Props> = (props) => {
         />
       </div>
       <ProgressBar
-        barColor={props.barColor}
+        barColor={props.color}
         theme={props.theme}
         visible={props.visible}
         percentage={props.percentage}
