@@ -10,12 +10,10 @@
 
   &.dark {
     stroke: lighten($color: $color-dark-background, $amount: 30%);
-    // stroke: $color-dark-line;
   }
 
   &.light {
     stroke: darken($color: $color-light-background, $amount: 30%);
-    // stroke: $color-light-line;
   }
 }
 

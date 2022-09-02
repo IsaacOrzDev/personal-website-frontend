@@ -5,7 +5,7 @@ import { animated, useSpring } from 'react-spring';
 
 interface Props extends ThemeProps {
   tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  color?: 'text' | 'tint';
+  color?: 'text' | 'tint' | string;
   fontSize?: number;
   className?: string;
   children: React.ReactNode;
@@ -34,8 +34,10 @@ const TitleText: React.FC<Props> = (props) => {
     }
   }, [props.fontSize, props.tag]);
 
-  const { fontSize } = useSpring({
+  const { fontSize, color } = useSpring({
     fontSize: _getFontSize(),
+    color:
+      ['text', 'tint'].indexOf(props.color ?? '') === -1 ? props.color : '',
   });
 
   const className = `${styles.content} ${props.className} ${
@@ -46,31 +48,31 @@ const TitleText: React.FC<Props> = (props) => {
     case 'h1':
     default:
       return (
-        <animated.h1 style={{ fontSize }} className={className}>
+        <animated.h1 style={{ fontSize, color }} className={className}>
           {props.children}
         </animated.h1>
       );
     case 'h2':
       return (
-        <animated.h2 style={{ fontSize }} className={className}>
+        <animated.h2 style={{ fontSize, color }} className={className}>
           {props.children}
         </animated.h2>
       );
     case 'h3':
       return (
-        <animated.h3 style={{ fontSize }} className={className}>
+        <animated.h3 style={{ fontSize, color }} className={className}>
           {props.children}
         </animated.h3>
       );
     case 'h4':
       return (
-        <animated.h4 style={{ fontSize }} className={className}>
+        <animated.h4 style={{ fontSize, color }} className={className}>
           {props.children}
         </animated.h4>
       );
     case 'h5':
       return (
-        <animated.h5 style={{ fontSize }} className={className}>
+        <animated.h5 style={{ fontSize, color }} className={className}>
           {props.children}
         </animated.h5>
       );
