@@ -4,6 +4,7 @@ import './styles/index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import smoothscroll from 'smoothscroll-polyfill';
+import type {} from 'redux-thunk/extend-redux'
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
