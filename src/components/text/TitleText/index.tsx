@@ -8,9 +8,10 @@ interface Props extends ThemeProps {
   color?: 'text' | 'tint';
   fontSize?: number;
   className?: string;
+  children: React.ReactNode;
 }
 
-const TitleText: React.FC<Props> = props => {
+const TitleText: React.FC<Props> = (props) => {
   const _getFontSize = useCallback(() => {
     if (props.fontSize) {
       return props.fontSize;

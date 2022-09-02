@@ -7,6 +7,7 @@ interface Props extends ThemeProps {
   position: { x: number; y: number };
   visible?: boolean;
   onExit?: () => void;
+  children: React.ReactNode;
 }
 
 const DropdownModal: React.FC<Props> = (props) => {
@@ -16,10 +17,6 @@ const DropdownModal: React.FC<Props> = (props) => {
 
   const divRef = useRef<HTMLDivElement>(null);
 
-  // const { visible } = useSpring({
-  //   visible: props.visible ? 1 : 0,
-  // });
-
   const transitions = useTransition(props.visible, {
     from: { opacity: 0, maxHeight: 0 },
     enter: { opacity: 1, maxHeight: 420 },
@@ -28,9 +25,11 @@ const DropdownModal: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (props.visible && !attached) {
-      document.addEventListener('click', _listenOnClick);
-      setAttached(true);
-      setTimeout(() => setVisible(true), 400);
+      setTimeout(() => {
+        setVisible(true);
+        document.addEventListener('click', _listenOnClick);
+        setAttached(true);
+      }, 400);
     } else if (!props.visible && attached) {
       setAttached(false);
       document.removeEventListener('click', _listenOnClick);

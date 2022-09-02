@@ -42,7 +42,7 @@ interface Props extends ThemeProps {
   onGoBack: () => void;
 }
 
-const ProjectScreen: React.FC<Props> = props => {
+const ProjectScreen: React.FC<Props> = (props) => {
   const visibles = useVisibles([800, 1400, 2200], props.visible);
 
   const [contentVisible, setContentVisible] = useState(true);
@@ -64,10 +64,10 @@ const ProjectScreen: React.FC<Props> = props => {
     if (currentIndex !== props.index) {
       GaService.pageView(`${pages.projects}/${props.list[props.index].title}`);
       const currentImages = props.list[currentIndex].images
-        .map(x => x.type)
+        .map((x) => x.type)
         .join('');
       const nextImages = props.list[props.index].images
-        .map(x => x.type)
+        .map((x) => x.type)
         .join('');
       const isDifferentShowcase = currentImages !== nextImages;
       setContentVisible(false);

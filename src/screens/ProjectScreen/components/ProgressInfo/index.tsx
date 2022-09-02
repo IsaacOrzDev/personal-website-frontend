@@ -18,7 +18,7 @@ interface Props extends ThemeProps {
   onClickIndex?: (position: { x: number; y: number }) => void;
 }
 
-const ProgressInfo: React.FC<Props> = props => {
+const ProgressInfo: React.FC<Props> = (props) => {
   const [bind, bounds] = useMeasure();
   const { visible } = useSpring({
     visible: props.visible ? 1 : 0,
@@ -36,8 +36,12 @@ const ProgressInfo: React.FC<Props> = props => {
   }, [bounds, props]);
 
   return (
-    <div className={`${styles.container} ${styles[props.theme]}`}>
-      <button className={styles.current} {...bind} onClick={onClickIndex}>
+    <button
+      className={`${styles.container} ${styles[props.theme]}`}
+      onClick={onClickIndex}
+      {...bind}
+    >
+      <div className={styles.current}>
         <div className={styles.text}>
           <DescriptionText theme={props.theme} fontSize={24}>
             <Words
@@ -48,9 +52,9 @@ const ProgressInfo: React.FC<Props> = props => {
         </div>
         <animated.div
           className={styles.down}
-          style={{ transform: visible.interpolate(v => `scale(${v})`) }}
+          style={{ transform: visible.interpolate((v) => `scale(${v})`) }}
         />
-      </button>
+      </div>
       <ProgressBar
         theme={props.theme}
         visible={props.visible}
@@ -64,7 +68,7 @@ const ProgressInfo: React.FC<Props> = props => {
           />
         </DescriptionText>
       </div>
-    </div>
+    </button>
   );
 };
 
