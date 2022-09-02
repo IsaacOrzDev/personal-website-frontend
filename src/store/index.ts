@@ -4,13 +4,11 @@ import { persistStore } from 'redux-persist';
 import reducerNames from 'config/reducerNames';
 import { globalReducer } from './global';
 import { projectReducer } from './project';
-import { aboutReducer } from './about';
 import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
   [reducerNames.global]: globalReducer,
   [reducerNames.project]: projectReducer,
-  [reducerNames.about]: aboutReducer,
 });
 
 const store = configureStore({

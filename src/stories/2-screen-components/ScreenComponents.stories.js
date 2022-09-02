@@ -11,9 +11,7 @@ import {
 } from '@storybook/addon-knobs';
 import globalKnobs from 'stories/globalKnobs';
 import ImageBackground from 'screens/HomeScreen/components/ImageBackground';
-import SkillSets from 'screens/AboutScreen/components/SkillSets';
 import ProgressCircle from 'screens/ProjectScreen/components/ProgressCircle';
-import skills from 'config/skills';
 import ShowcaseScreenShots from 'screens/ProjectScreen/components/ShowcaseScreenshots';
 import { ShowcaseTypeEnum } from 'models/ProjectModel';
 import ProgressInfo from 'screens/ProjectScreen/components/ProgressInfo';
@@ -23,7 +21,7 @@ export default {
   title: `${storyHierarchy.header.screenComponents}`,
   decorators: [
     withKnobs,
-    storyFn => (
+    (storyFn) => (
       <StoryContainer theme={globalKnobs.theme()}>{storyFn()}</StoryContainer>
     ),
   ],
@@ -78,37 +76,6 @@ export const ImageBackgroundStory = () => {
 
 ImageBackgroundStory.story = {
   name: 'Image Background',
-};
-
-export const SkillSetsStory = () => {
-  const options = {
-    Nodejs: skills.nodejs,
-    Csharp: skills.csharp,
-    Python: skills.python,
-    Swift: skills.swift,
-    Kotlin: skills.kotlin,
-    Typescript: skills.typescript,
-    Javascript: skills.javascript,
-  };
-  const group1 = select('Group 1', options, skills.nodejs);
-  const group2 = select('Group 2', options, skills.csharp);
-  const group3 = select('Group 3', options, skills.python);
-
-  const groups = [
-    [group1, group1, group1],
-    [group2, group2, group2],
-    [group3, group3, group3],
-  ];
-
-  return (
-    <div style={{ width: '50%' }}>
-      <SkillSets visible={globalKnobs.visible()} groups={groups} />
-    </div>
-  );
-};
-
-SkillSetsStory.story = {
-  name: 'Skill Sets',
 };
 
 export const NavigationButtons = () => {
