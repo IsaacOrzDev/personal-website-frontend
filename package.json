@@ -34,15 +34,16 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && npm run build-storybook",
+    "build": "react-scripts build",
     "serve": "npm run build && npx serve -s build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public -o ./build/playground"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -57,16 +58,6 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.3.19",
-    "@storybook/addon-console": "^1.2.1",
-    "@storybook/addon-knobs": "^5.3.19",
-    "@storybook/addon-links": "^5.3.19",
-    "@storybook/addon-storysource": "^5.3.19",
-    "@storybook/addon-viewport": "^5.3.19",
-    "@storybook/addons": "^5.3.19",
-    "@storybook/preset-create-react-app": "^1.5.2",
-    "@storybook/react": "^5.3.19",
-    "@storybook/theming": "^5.3.19",
     "@types/classnames": "^2.2.10",
     "@types/lodash.throttle": "^4.1.6",
     "@types/react-lazyload": "^3.2.0",
