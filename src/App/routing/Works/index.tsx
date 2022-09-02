@@ -48,14 +48,14 @@ const Works: React.FC = () => {
 
   const [breakpoint, isResponsive] = useResize();
   const isHidden = useHidden();
-  const [, goToAboutSection] = useNavigation(isResponsive);
+  const { goToHomeSection } = useNavigation(isResponsive);
   const [windowOffset, currentWindowOffset] = useWindow();
   // #endregion
 
   // #region functions
 
   const _changeProjectSelectedYear = useCallback((year: string) => {
-    const newIndex = project.list.findIndex(x => x.year === year);
+    const newIndex = project.list.findIndex((x) => x.year === year);
     dispatch(projectActions.setSelectedIndex(newIndex));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -111,14 +111,14 @@ const Works: React.FC = () => {
   const _scrollUp = useCallback(() => {
     GaService.addWheelNavigationEvent('up');
     if (global.page === pages.projects && project.selectedIndex === 0) {
-      goToAboutSection();
+      goToHomeSection();
     } else if (global.page === pages.projects) {
       _minusProjectSelectedIndex();
     }
   }, [
     _minusProjectSelectedIndex,
     global.page,
-    goToAboutSection,
+    goToHomeSection,
     project.selectedIndex,
   ]);
 
@@ -178,7 +178,7 @@ const Works: React.FC = () => {
           onDismissDropdown={_dismissProjectDropdown}
           onSelectPrev={_clickPreviousProject}
           onSelectNext={_clickNextProject}
-          onGoBack={goToAboutSection}
+          onGoBack={goToHomeSection}
         />
       </Suspense>
       <Suspense fallback={null}>

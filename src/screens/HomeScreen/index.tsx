@@ -25,7 +25,7 @@ interface Props extends ThemeProps {
   onGoToNextSection?: () => void;
 }
 
-const HomeScreen: React.FC<Props> = props => {
+const HomeScreen: React.FC<Props> = (props) => {
   const visibles = useVisibles([800, 1200], props.visible);
 
   return (
@@ -60,11 +60,10 @@ const HomeScreen: React.FC<Props> = props => {
       </div>
       <PageScrollingButton
         theme={props.theme}
-        text={'LEARN MORE'}
-        visible={visibles[0] && props.shouldShowScrollBtn}
-        textVisible={visibles[0] && props.shouldShowScrollBtn}
+        text={'SEE MY WORKS'}
+        visible={visibles[0]}
+        textVisible={visibles[0]}
         onClick={props.onGoToNextSection}
-        isResponsive={props.isResponsive}
       />
     </PageSection>
   );

@@ -1,5 +1,3 @@
-import skills from 'config/skills';
-import AboutDescriptionModel from 'models/AboutDescriptionModel';
 import ProjectModel, {
   ProjectTypeEnum,
   ShowcaseTypeEnum,
@@ -11,10 +9,6 @@ type Data = {
     title: string;
     images: Array<string>;
     message: string;
-  };
-  about: {
-    descriptionList: Array<AboutDescriptionModel>;
-    skillSets: Array<Array<string>>;
   };
   projects: Array<ProjectModel>;
 };
@@ -28,19 +22,6 @@ const data: Data = {
     ],
     message:
       'The website uses cookies and collects your IP address to improve and deliver content with a personalized experience.',
-  },
-  about: {
-    skillSets: [[skills.csharp, skills.csharp, skills.csharp]],
-    descriptionList: [
-      {
-        title: 'Bruce Wayne',
-        description: [
-          'Criminals are a superstitious cowardly lot.',
-          'So my disguise must be able to strike terror into their hearts. I must be a creature of the night, black, terrible... a . a... a bat!',
-          "That's it! It's an omen. I shall become a bat!",
-        ],
-      },
-    ],
   },
   projects: [
     {

@@ -11,9 +11,7 @@ interface Props {}
 
 const MenuModalContainer: React.FC<Props> = () => {
   const [, isResponsive] = useResize();
-  const [goToHomeSection, goToAboutSection, goToProjectSection] = useNavigation(
-    isResponsive
-  );
+  const { goToHomeSection, goToProjectSection } = useNavigation(isResponsive);
 
   const _goToPlayground = useCallback(() => {
     GaService.pageView(pages.playground);
@@ -28,7 +26,6 @@ const MenuModalContainer: React.FC<Props> = () => {
 
   const menu = [
     { title: 'HOME', onClick: goToHomeSection },
-    { title: 'ABOUT ME', onClick: goToAboutSection },
     { title: 'WORKS', onClick: goToProjectSection },
     { title: 'PLAYGROUND', onClick: _goToPlayground },
   ];
