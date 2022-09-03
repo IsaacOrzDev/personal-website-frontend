@@ -1,19 +1,31 @@
 import React from 'react';
 import styles from './style.module.scss';
-import ScrollingButton, { ScrollingButtonProps } from '../ScrollingButton';
+import LinkButton from '../LinkButton';
+import { ThemeProps } from 'types/Props';
 
-interface Props extends ScrollingButtonProps {
+interface Props extends ThemeProps {
   isResponsive?: boolean;
+  visible?: boolean;
+  textVisible?: boolean;
+  text: string;
+  type?: 'down' | 'up';
+  onClick?: () => void;
 }
 
-const PageScrollingButton: React.FC<Props> = props => {
+const PageScrollingButton: React.FC<Props> = (props) => {
   let className = `${styles[props.type!]}`;
   if (props.isResponsive) {
     className += ` ${styles.responsive}`;
   }
   return (
     <div className={className}>
-      <ScrollingButton {...props} />
+      <LinkButton
+        theme={props.theme}
+        text={props.text}
+        visible={props.visible}
+        textVisible={props.textVisible}
+        onClick={props.onClick}
+      />
     </div>
   );
 };
