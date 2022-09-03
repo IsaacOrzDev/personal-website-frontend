@@ -3,6 +3,14 @@
 
 .container {
   display: flex;
+  align-items: stretch;
+  column-gap: 6px;
+  // margin-left: -6px;
+  margin-left: -56px;
+}
+
+.toggle {
+  display: flex;
   align-items: center;
   background-color: transparent;
   border: 0;
@@ -18,6 +26,27 @@
     .current .down {
       border-color: $color-light-line transparent transparent transparent;
     }
+  }
+}
+
+.btn {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  @include transition(color, opacity);
+
+
+  &.left {
+    transform: rotate(180deg);
+  }
+
+  &.hidden {
+    opacity: 0;
   }
 }
 

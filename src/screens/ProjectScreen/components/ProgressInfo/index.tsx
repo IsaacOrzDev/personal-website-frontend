@@ -8,6 +8,7 @@ import { ThemeProps } from 'types/Props';
 import ProgressBar from 'components/layout/ProgressBar';
 import useMeasure from 'hooks/useMeasure';
 import TextService from 'services/textService';
+import RightIcon from 'components/icons/RightIcon';
 
 interface Props extends ThemeProps {
   visible?: boolean;
@@ -17,7 +18,12 @@ interface Props extends ThemeProps {
   total: number;
   percentage: number;
   color?: string;
+  prevVisible?: boolean;
+  nextVisible?: boolean;
+  disabled?: boolean;
   onClickIndex?: (position: { x: number; y: number }) => void;
+  onSelectPrev?: () => void;
+  onSelectNext?: () => void;
 }
 
 const ProgressInfo: React.FC<Props> = (props) => {
@@ -40,50 +46,80 @@ const ProgressInfo: React.FC<Props> = (props) => {
       });
   }, [bounds, props]);
 
+  const _addIndex = () => {
+    props.onSelectNext && props.onSelectNext();
+  };
+
+  const _minusIndex = () => {
+    props.onSelectPrev && props.onSelectPrev();
+  };
+
   return (
-    <button
-      className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
-        styles.container
-      } ${styles[props.theme]}`}
-      onClick={onClickIndex}
-      {...bind}
-    >
-      <div className={styles.current}>
-        <div className={styles.text}>
-          <DescriptionText
-            theme={props.theme}
-            fontSize={32}
-            color={props.color}
-          >
+    <div className={styles.container}>
+      <button
+        className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
+          styles.btn
+        } ${styles.left} ${!props.prevVisible ? styles.hidden : ''}`}
+        onClick={_minusIndex}
+        disabled={!props.prevVisible || props.disabled}
+      >
+        <RightIcon theme={props.theme} />
+      </button>
+
+      <button
+        className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
+          styles.toggle
+        } ${styles[props.theme]}`}
+        onClick={onClickIndex}
+        {...bind}
+      >
+        <div className={styles.current}>
+          <div className={styles.text}>
+            <DescriptionText
+              theme={props.theme}
+              fontSize={32}
+              color={props.color}
+            >
+              <Words
+                text={TextService.getNumberText(current)}
+                visible={props.textVisible && props.currentVisible}
+              />
+            </DescriptionText>
+          </div>
+          <animated.div
+            className={styles.down}
+            style={{
+              transform: visible.to((v) => `scale(${v})`),
+              borderColor: color,
+            }}
+          />
+        </div>
+        <ProgressBar
+          barColor={props.color}
+          theme={props.theme}
+          visible={props.visible}
+          percentage={props.percentage}
+        />
+        <div className={styles.total}>
+          <DescriptionText theme={props.theme} fontSize={32}>
             <Words
-              text={TextService.getNumberText(current)}
-              visible={props.textVisible && props.currentVisible}
+              text={TextService.getNumberText(props.total)}
+              visible={props.textVisible}
             />
           </DescriptionText>
         </div>
-        <animated.div
-          className={styles.down}
-          style={{
-            transform: visible.to((v) => `scale(${v})`),
-            borderColor: color,
-          }}
-        />
-      </div>
-      <ProgressBar
-        barColor={props.color}
-        theme={props.theme}
-        visible={props.visible}
-        percentage={props.percentage}
-      />
-      <div className={styles.total}>
-        <DescriptionText theme={props.theme} fontSize={32}>
-          <Words
-            text={TextService.getNumberText(props.total)}
-            visible={props.textVisible}
-          />
-        </DescriptionText>
-      </div>
-    </button>
+      </button>
+
+      <button
+        className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
+          styles.btn
+        } ${!props.nextVisible ? styles.hidden : ''}`}
+        onClick={_addIndex}
+        disabled={!props.nextVisible || props.disabled}
+      >
+        <RightIcon theme={props.theme} />
+      </button>
+    </div>
   );
 };
 
