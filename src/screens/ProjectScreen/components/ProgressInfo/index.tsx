@@ -22,8 +22,11 @@ interface Props extends ThemeProps {
 
 const ProgressInfo: React.FC<Props> = (props) => {
   const [bind, bounds] = useMeasure();
-  const { visible } = useSpring({
+  const { visible, color } = useSpring({
     visible: props.visible ? 1 : 0,
+    color: !!props.color
+      ? `${props.color} transparent transparent transparent`
+      : '',
   });
 
   const current = props.index + 1;
@@ -47,7 +50,11 @@ const ProgressInfo: React.FC<Props> = (props) => {
     >
       <div className={styles.current}>
         <div className={styles.text}>
-          <DescriptionText theme={props.theme} fontSize={32}>
+          <DescriptionText
+            theme={props.theme}
+            fontSize={32}
+            color={props.color}
+          >
             <Words
               text={TextService.getNumberText(current)}
               visible={props.textVisible && props.currentVisible}
@@ -56,7 +63,10 @@ const ProgressInfo: React.FC<Props> = (props) => {
         </div>
         <animated.div
           className={styles.down}
-          style={{ transform: visible.interpolate((v) => `scale(${v})`) }}
+          style={{
+            transform: visible.to((v) => `scale(${v})`),
+            borderColor: color,
+          }}
         />
       </div>
       <ProgressBar
