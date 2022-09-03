@@ -91,7 +91,7 @@ const ImageViewer: React.FC<Props> = (props) => {
 };
 
 ImageViewer.defaultProps = {
-  duration: 6000,
+  duration: 15000,
   opacity: 1,
 };
 

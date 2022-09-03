@@ -63,7 +63,7 @@ const Header: React.FC<Props> = (props) => {
               <GithubIcon theme={props.theme} />
             </button>
           )}
-          {process.env.REACT_APP_ENABLE_LIGHT_MODE && (
+          {process.env.REACT_APP_ENABLE_LIGHT_MODE === 'true' && (
             <HeaderThemeButton
               theme={props.theme}
               visible={props.buttonVisible && !props.isResponsive}
@@ -89,7 +89,7 @@ const Header: React.FC<Props> = (props) => {
               <GithubIcon theme={props.theme} />
             </button>
           )}
-          {process.env.REACT_APP_ENABLE_LIGHT_MODE && (
+          {process.env.REACT_APP_ENABLE_LIGHT_MODE === 'true' && (
             <HeaderThemeButton
               theme={props.theme}
               visible={props.isMenuOpened && props.isResponsive}

@@ -18,9 +18,10 @@ interface Props extends ThemeProps {
   imgVisible?: boolean;
   breakpoint?: string;
   isLooping?: boolean;
+  duration?: number;
 }
 
-const BrowserFrame: React.FC<Props> = props => {
+const BrowserFrame: React.FC<Props> = (props) => {
   let containerClassName = `${styles.container} ${styles[props.theme]}`;
   if (props.responsive) {
     containerClassName += ` ${styles.responsive}`;
@@ -103,6 +104,7 @@ const BrowserFrame: React.FC<Props> = props => {
           src={props.src}
           visible={props.imgVisible}
           isLooping={props.isLooping}
+          duration={props.duration}
         />
       )}
     </div>

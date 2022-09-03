@@ -15,9 +15,10 @@ interface Props extends ThemeProps {
   breakpoint?: string;
   isLooping?: boolean;
   isFullScreen?: boolean;
+  duration?: number;
 }
 
-const AndroidFrame: React.FC<Props> = props => {
+const AndroidFrame: React.FC<Props> = (props) => {
   const isLg = BreakpointService.isLg(props.breakpoint!);
   const isMd = BreakpointService.isMd(props.breakpoint!);
 
@@ -57,6 +58,7 @@ const AndroidFrame: React.FC<Props> = props => {
             src={props.src}
             visible={props.imgVisible}
             isLooping={props.isLooping}
+            duration={props.duration}
           />
         )}
       </div>

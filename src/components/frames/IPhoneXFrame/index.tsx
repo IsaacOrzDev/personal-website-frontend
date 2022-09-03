@@ -9,13 +9,14 @@ interface Props extends ThemeProps {
   imgVisible?: boolean;
   breakpoint?: string;
   isLooping?: boolean;
+  duration?: number;
 }
 
 const maxWidth = 240;
 const maxBorderRadius = 32;
 const maxBarHeight = 16;
 
-const IPhoneXFrame: React.FC<Props> = props => {
+const IPhoneXFrame: React.FC<Props> = (props) => {
   const isLg = BreakpointService.isLg(props.breakpoint!);
   const isMd = BreakpointService.isMd(props.breakpoint!);
 
@@ -72,6 +73,7 @@ const IPhoneXFrame: React.FC<Props> = props => {
           src={props.src}
           visible={props.imgVisible}
           isLooping={props.isLooping}
+          duration={props.duration}
         />
       )}
     </div>

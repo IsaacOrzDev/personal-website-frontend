@@ -9,6 +9,7 @@ interface Props extends ThemeProps {
   imgVisible?: boolean;
   breakpoint?: string;
   isLooping?: boolean;
+  duration?: number;
 }
 
 const maxWidth = 600;
@@ -17,7 +18,7 @@ const maxBarHeight = 40;
 const maxBarWidth = 8;
 const maxHomeSize = 24;
 
-const IPadFrame: React.FC<Props> = props => {
+const IPadFrame: React.FC<Props> = (props) => {
   let width = maxWidth;
   let height = maxHeight;
   let barHeight = maxBarHeight;
@@ -89,6 +90,7 @@ const IPadFrame: React.FC<Props> = props => {
           src={props.src}
           visible={props.imgVisible}
           isLooping={props.isLooping}
+          duration={props.duration}
         />
       </div>
     </div>
