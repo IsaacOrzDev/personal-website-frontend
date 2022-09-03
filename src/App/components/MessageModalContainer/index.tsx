@@ -12,25 +12,26 @@ const MessageModalContainer: React.FC<Props> = () => {
 
   const global = {
     theme: useSelector(globalSelectors.theme),
-    cookieMsgContent: useSelector(globalSelectors.cookieMsgContent),
+    name: useSelector(globalSelectors.name),
+    messageContent: useSelector(globalSelectors.messageContent),
     shouldShowCookieModal: useSelector(globalSelectors.shouldShowCookieModal),
   };
 
   const [, isResponsive] = useResize();
 
-  const _closeCookieModal = useCallback(() => {
-    dispatch(globalActions.setShouldShowCookieModal(false));
-    dispatch(globalActions.setHasCookie(true));
+  const _closeMessageModal = useCallback(() => {
+    dispatch(globalActions.setShouldShowMessageModal(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <MessageModal
       theme={global.theme}
-      text={global.cookieMsgContent}
+      name={global.name}
+      text={global.messageContent}
       visible={global.shouldShowCookieModal}
       isResponsive={isResponsive}
-      onClose={_closeCookieModal}
+      onClose={_closeMessageModal}
     />
   );
 };

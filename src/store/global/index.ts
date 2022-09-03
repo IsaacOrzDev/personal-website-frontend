@@ -13,6 +13,9 @@ const slice = createSlice({
     setTheme: (state, action: PayloadAction<Theme>) => {
       state.theme = action.payload;
     },
+    setVisible: (state, action: PayloadAction<boolean>) => {
+      state.visible = action.payload;
+    },
     setPage: (state, action: PayloadAction<string>) => {
       state.page = action.payload;
     },
@@ -25,11 +28,8 @@ const slice = createSlice({
     setTitle: (state, action: PayloadAction<string>) => {
       state.title = action.payload;
     },
-    setCookieMsgContent: (state, action: PayloadAction<string>) => {
-      state.cookieMsgContent = action.payload;
-    },
-    setHasCookie: (state, action: PayloadAction<boolean>) => {
-      state.hasCookie = action.payload;
+    setMessageContent: (state, action: PayloadAction<string>) => {
+      state.messageContent = action.payload;
     },
     setDataLoaded: (state, action: PayloadAction<boolean>) => {
       state.dataLoaded = action.payload;
@@ -43,7 +43,7 @@ const slice = createSlice({
     setShouldShowMenu: (state, action: PayloadAction<boolean>) => {
       state.shouldShowMenu = action.payload;
     },
-    setShouldShowCookieModal: (state, action: PayloadAction<boolean>) => {
+    setShouldShowMessageModal: (state, action: PayloadAction<boolean>) => {
       state.shouldShowCookieModal = action.payload;
     },
     setShouldListenScrollingEvent: (state, action: PayloadAction<boolean>) => {
