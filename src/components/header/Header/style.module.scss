@@ -39,15 +39,20 @@
   .right {
     display: flex;
     align-items: center;
+    column-gap: 16px;
   }
 
-  .theme_btn {
-    margin-right: 16px;
+  .github_btn {
+    background-color: transparent;
   }
 
   .absolute {
     position: absolute;
     top: 0px;
     left: 24px;
+
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
   }
 }
