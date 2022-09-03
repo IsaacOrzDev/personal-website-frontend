@@ -54,12 +54,6 @@ const Works: React.FC = () => {
 
   // #region functions
 
-  const _changeProjectSelectedYear = useCallback((year: string) => {
-    const newIndex = project.list.findIndex((x) => x.year === year);
-    dispatch(projectActions.setSelectedIndex(newIndex));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const _changeProjectSelectedIndex = useCallback((index: number) => {
     dispatch(globalActions.stopScrollingDuringAnimation());
     GaService.addButtonNavigationEvent('select project index');
@@ -172,7 +166,6 @@ const Works: React.FC = () => {
           years={project.years}
           index={project.selectedIndex}
           selectedYear={project.selectedYear}
-          onSelectYear={_changeProjectSelectedYear}
           onSelectIndex={_changeProjectSelectedIndex}
           onShowDropdown={_showProjectDropdown}
           onDismissDropdown={_dismissProjectDropdown}

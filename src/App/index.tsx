@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, Suspense } from 'react';
+import React, { useEffect, useCallback, Suspense, useMemo } from 'react';
 import withProviders from './withProviders';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import routes from 'config/routes';
@@ -13,6 +13,7 @@ import LoadingScreen from 'screens/LoadingScreen';
 import GaService from 'services/gaService';
 import GridBackground from 'components/layout/GridBackground';
 import dataService from 'services/dataService';
+import projectSelectors from 'store/project/selectors';
 
 const Home = React.lazy(() => import('./routing/Home'));
 const Works = React.lazy(() => import('./routing/Works'));
@@ -26,6 +27,16 @@ const App: React.FC = () => {
     dataLoaded: useSelector(globalSelectors.dataLoaded),
     shouldShowContent: useSelector(globalSelectors.shouldShowContent),
   };
+
+  const project = {
+    selectedIndex: useSelector(projectSelectors.selectedIndex),
+    list: useSelector(projectSelectors.list),
+  };
+
+  const palette = useMemo(
+    () => project.list.find((x, i) => i === project.selectedIndex)?.palette,
+    [project.list, project.selectedIndex]
+  );
 
   const _finishLoading = useCallback(async () => {
     window.scrollTo({ top: 0 });
@@ -56,6 +67,7 @@ const App: React.FC = () => {
     return (
       <LoadingScreen
         theme={global.theme}
+        palette={palette}
         isDone={global.dataLoaded}
         onEnd={_finishLoading}
       />
@@ -68,7 +80,7 @@ const App: React.FC = () => {
         <HeaderContainer />
         <Suspense fallback={null}>
           <Routes>
-            <Route path={routes.home} element={<Home />} />
+            <Route path={routes.home} element={<Home palette={palette} />} />
             <Route path={routes.works} element={<Works />} />
           </Routes>
         </Suspense>

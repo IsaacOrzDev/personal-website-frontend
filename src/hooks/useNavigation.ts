@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import routes from 'config/routes';
 import globalSelectors from 'store/global/selectors';
 import GaService from 'services/gaService';
+import { projectActions } from 'store/project';
 
 export default function useNavigation(isResponsive: boolean) {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ export default function useNavigation(isResponsive: boolean) {
   const goToProjectSection = useCallback(async () => {
     dispatch(globalActions.setPage(pages.projects));
     dispatch(globalActions.setShouldShowMenu(false));
+    dispatch(projectActions.setSelectedIndex(0));
     navigate(routes.works, { replace: true });
     GaService.pageView(pages.projects);
     // eslint-disable-next-line react-hooks/exhaustive-deps

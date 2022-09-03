@@ -11,9 +11,11 @@ interface Props extends ThemeProps {
   title: string;
   name: string;
   scrollingValue: number;
+  color?: string;
+  gradientColor?: string;
 }
 
-const HomeTitle: React.FC<Props> = props => {
+const HomeTitle: React.FC<Props> = (props) => {
   const { scrollingValue } = useSpring({
     scrollingValue: props.scrollingValue,
   });
@@ -23,16 +25,14 @@ const HomeTitle: React.FC<Props> = props => {
       className={styles.container}
       style={{
         display: props.isResponsive ? 'flex' : 'none',
-        // transform: scrollingValue
-        //   .interpolate({ range: [0, 1], output: [0, 300] })
-        //   .interpolate(v => `translateY(${v}px)`),
         opacity: scrollingValue.interpolate({ range: [0, 1], output: [1, 0] }),
       }}
     >
       <TitleText
         theme={props.theme}
         fontSize={48}
-        color="tint"
+        color={props.color || 'tint'}
+        gradientColor={props.gradientColor}
         className={styles.title}
       >
         <Words

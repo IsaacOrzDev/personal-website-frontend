@@ -11,6 +11,12 @@ export enum ShowcaseTypeEnum {
   responsiveWebsite = 'responsiveWebsite',
 }
 
+export interface PaletteModel {
+  dark: string;
+  light: string;
+  gradient?: string;
+}
+
 export default interface ProjectModel {
   title: string;
   description: string[];
@@ -18,11 +24,7 @@ export default interface ProjectModel {
   links: Array<{ url: string; type: ShowcaseTypeEnum; text?: string }>;
   type: ProjectTypeEnum;
   year: string;
-  palette: {
-    dark: string;
-    light: string;
-    gradient?: string;
-  };
+  palette: PaletteModel;
   primaryColor?: string;
   titleColor?: string;
 }
