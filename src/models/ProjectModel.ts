@@ -23,8 +23,7 @@ export default interface ProjectModel {
   images: Array<{ urls: string[]; type: ShowcaseTypeEnum; path?: string }>;
   links: Array<{ url: string; type: ShowcaseTypeEnum; text?: string }>;
   type: ProjectTypeEnum;
-  year: string;
   palette: PaletteModel;
-  primaryColor?: string;
-  titleColor?: string;
+  year?: string;
+  category: string;
 }

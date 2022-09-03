@@ -18,6 +18,7 @@ const HomeScreen = React.lazy(() => import('screens/HomeScreen'));
 
 interface Props {
   palette?: PaletteModel;
+  category: string;
 }
 
 const Home: React.FC<Props> = (props) => {
@@ -128,6 +129,7 @@ const Home: React.FC<Props> = (props) => {
     >
       <HomeScreen
         palette={props.palette}
+        category={props.category}
         scrollingValue={homeScrollingValue}
         setRef={bindHomeScreen.ref}
         visible={global.visible}

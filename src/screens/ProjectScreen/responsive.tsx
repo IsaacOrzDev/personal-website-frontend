@@ -11,7 +11,6 @@ interface Props extends ThemeProps {
   list: ProjectModel[];
   title: string;
   years: string[];
-  selectedYear: string;
   visible?: boolean;
   isResponsive?: boolean;
   isHidden?: boolean;
@@ -22,7 +21,7 @@ interface Props extends ThemeProps {
   onSelectIndex: (index: number) => void;
 }
 
-const ResponsiveProjectScreen: React.FC<Props> = props => {
+const ResponsiveProjectScreen: React.FC<Props> = (props) => {
   const _setCurrentIndex = useCallback((index: number) => {
     props.onSelectIndex && props.onSelectIndex(index);
     // eslint-disable-next-line react-hooks/exhaustive-deps

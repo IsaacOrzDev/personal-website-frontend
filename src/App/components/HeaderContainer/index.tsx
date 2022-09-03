@@ -7,12 +7,15 @@ import Header from 'components/header/Header';
 import useWindow from 'hooks/useWindow';
 import useResize from 'hooks/useResize';
 
-interface Props {}
+interface Props {
+  category: string;
+}
 
-const HeaderContainer: React.FC<Props> = () => {
+const HeaderContainer: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
   const [windowOffset, ,] = useWindow();
   const [, isResponsive] = useResize();
+  const [categoryText, setCategoryText] = useState('');
 
   const global = {
     theme: useSelector(globalSelectors.theme),
@@ -54,16 +57,22 @@ const HeaderContainer: React.FC<Props> = () => {
   }, [global.page]);
 
   useEffect(() => {
+    setShouldShowTitle(false);
+    setTimeout(() => {
+      setCategoryText(props.category);
+      setShouldShowTitle(true);
+    }, 800);
+  }, [props.category]);
+
+  useEffect(() => {
     setTimeout(() => setVisible(true), 200);
   }, []);
 
   const isFloating = windowOffset.yTop > 60 && !global.shouldShowMenu;
 
   let title = global.name;
-  if (currentPage === pages.about) {
-    title = 'ABOUT ME';
-  } else if (currentPage === pages.projects) {
-    title = 'WORKS';
+  if (currentPage === pages.projects) {
+    title = categoryText;
   }
 
   return (

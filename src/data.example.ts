@@ -25,6 +25,7 @@ const data: Data = {
   },
   projects: [
     {
+      category: 'Movies',
       palette: {
         dark: '',
         light: '',
@@ -52,6 +53,7 @@ const data: Data = {
       year: '1960',
     },
     {
+      category: 'Movies',
       palette: {
         dark: '',
         light: '',
@@ -82,6 +84,7 @@ const data: Data = {
       year: '1960',
     },
     {
+      category: 'Movies',
       palette: {
         dark: '',
         light: '',

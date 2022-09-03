@@ -165,7 +165,6 @@ const Works: React.FC = () => {
           shouldListenScrollingEvent={global.shouldListenScrollingEvent}
           years={project.years}
           index={project.selectedIndex}
-          selectedYear={project.selectedYear}
           onSelectIndex={_changeProjectSelectedIndex}
           onShowDropdown={_showProjectDropdown}
           onDismissDropdown={_dismissProjectDropdown}
@@ -188,7 +187,6 @@ const Works: React.FC = () => {
           list={project.list}
           years={project.years}
           index={project.selectedIndex}
-          selectedYear={project.selectedYear}
           onSelectIndex={_changeProjectSelectedIndex}
         />
       </Suspense>
