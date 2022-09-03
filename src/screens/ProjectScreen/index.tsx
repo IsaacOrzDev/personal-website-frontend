@@ -212,6 +212,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
                   title={x.title}
                   onClick={() => _selectIndex(i)}
                   visible={props.dropdownVisible}
+                  hoverColor={props.list[i].palette[props.theme]}
                 />
               ))}
             </DropdownModal>

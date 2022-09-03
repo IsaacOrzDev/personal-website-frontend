@@ -12,6 +12,7 @@ interface Props extends ThemeProps {
   title: string;
   visible?: boolean;
   onClick?: () => void;
+  hoverColor?: string;
 }
 
 const ProjectOptionItem: React.FC<Props> = (props) => {
@@ -29,7 +30,15 @@ const ProjectOptionItem: React.FC<Props> = (props) => {
   }
 
   return (
-    <button {...bind()} className={containerClassName} onClick={props.onClick}>
+    <button
+      {...bind()}
+      className={containerClassName}
+      onClick={props.onClick}
+      style={{
+        backgroundColor:
+          isHovering && !!props.hoverColor ? props.hoverColor : '',
+      }}
+    >
       <div className={styles.number}>
         <DescriptionText theme={props.theme} fontSize={20} type={'invert'}>
           <Words
@@ -40,7 +49,11 @@ const ProjectOptionItem: React.FC<Props> = (props) => {
         </DescriptionText>
       </div>
       <div className={styles.title}>
-        <DescriptionText theme={props.theme} fontSize={20} type={'normal'}>
+        <DescriptionText
+          theme={props.theme}
+          fontSize={20}
+          type={isHovering ? 'invert' : 'normal'}
+        >
           <Words text={props.title} visible={props.visible} mode="words" />
         </DescriptionText>
       </div>
