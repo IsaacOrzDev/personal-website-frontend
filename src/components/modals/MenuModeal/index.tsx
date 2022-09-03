@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './style.module.scss';
+import buttonStyles from 'styles/button.module.scss';
 import { animated, useTransition } from 'react-spring';
 import { ThemeProps } from 'types/Props';
 import Words from 'components/text/Words';
@@ -42,7 +43,9 @@ const MenuModal: React.FC<Props> = (props) => {
                   {props.items.map((x, i) => (
                     <animated.button
                       key={i}
-                      className={styles.item}
+                      className={`${buttonStyles.button} ${
+                        buttonStyles[props.theme]
+                      } ${styles.item}`}
                       onClick={x.onClick}
                     >
                       <DescriptionText

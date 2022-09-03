@@ -2,7 +2,7 @@
 @import 'styles/_colors.scss';
 
 .container {
-  width: 120px;
+  width: 136px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,7 +12,7 @@
     background-color: transparent;
     border: 0;
     outline: 0;
-    padding: 0;
+    padding: 8px;
   }
 
   &.dark {

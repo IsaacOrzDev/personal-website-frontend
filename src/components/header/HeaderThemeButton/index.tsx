@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './style.module.scss';
+import buttonStyles from 'styles/button.module.scss';
 import { ThemeProps } from 'types/Props';
 import { animated, useSpring } from 'react-spring';
 import Words from 'components/text/Words';
@@ -9,7 +10,7 @@ interface Props extends ThemeProps {
   onClick?: () => void;
 }
 
-const HeaderThemeButton: React.FC<Props> = props => {
+const HeaderThemeButton: React.FC<Props> = (props) => {
   const [isInitialized, setIsInitialized] = useState(false);
 
   const { dark, visible } = useSpring({
@@ -29,21 +30,22 @@ const HeaderThemeButton: React.FC<Props> = props => {
       className={styles.container}
       style={{
         opacity: visible,
-        transform: visible.interpolate(v => `scale(${v})`),
+        transform: visible.to((v) => `scale(${v})`),
       }}
     >
       <button
-        className={`${styles.btn} ${styles[props.theme]}`}
+        className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
+          styles.btn
+        } ${styles[props.theme]}`}
         onClick={props.onClick}
       >
         <div className={styles.content}>
           <animated.div
             className={`${styles.toggle} ${styles[props.theme]}`}
             style={{
-              // backgroundColor: color,
               transform: dark
-                .interpolate({ range: [0, 1], output: [88, 4] })
-                .interpolate(v => `translateX(${v}px)`),
+                .to({ range: [0, 1], output: [88, 4] })
+                .to((v) => `translateX(${v}px)`),
             }}
           />
           <p className={styles.dark_text}>
