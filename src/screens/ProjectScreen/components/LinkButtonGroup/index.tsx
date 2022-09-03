@@ -11,9 +11,11 @@ interface Props extends ThemeProps {
   isResponsive?: boolean;
   center?: boolean;
   project?: string;
+  color?: string;
+  gradientColor?: string;
 }
 
-const LinkButtonGroup: React.FC<Props> = props => {
+const LinkButtonGroup: React.FC<Props> = (props) => {
   let containerClassName = `${styles.container}`;
   if (props.isResponsive) {
     containerClassName += ` ${styles.responsive}`;
@@ -38,6 +40,8 @@ const LinkButtonGroup: React.FC<Props> = props => {
             text={x.text}
             visible={props.visible}
             textVisible={props.textVisible}
+            color={props.color}
+            gradientColor={props.gradientColor}
             onClick={() => _openUrl(x.url)}
           />
         </div>

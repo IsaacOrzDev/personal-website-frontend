@@ -196,6 +196,8 @@ const ProjectScreen: React.FC<Props> = (props) => {
               project={item.title}
               visible={visibles[1] && contentVisible && !props.isResponsive}
               textVisible={visibles[2] && contentVisible && !props.isResponsive}
+              color={selectedProject?.palette[props.theme]}
+              gradientColor={selectedProject?.palette.gradient}
               isResponsive={isMd}
             />
             <DropdownModal
