@@ -143,6 +143,11 @@ const ProjectScreen: React.FC<Props> = (props) => {
                 total={props.list.length}
                 percentage={(props.index + 1) / props.list.length}
                 onClickIndex={_openDropdown}
+                disabled={!props.shouldListenScrollingEvent}
+                prevVisible={props.index !== 0}
+                nextVisible={props.index !== props.list.length - 1}
+                onSelectPrev={props.onSelectPrev}
+                onSelectNext={props.onSelectNext}
               />
               <ProjectNavigation
                 theme={props.theme}

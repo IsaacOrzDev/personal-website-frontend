@@ -38,7 +38,7 @@ const ProjectNavigation: React.FC<Props> = (props) => {
       className={`${styles.container} ${styles[props.theme]}`}
       style={{ transform: visible.interpolate((v) => `scale(${v})`) }}
     >
-      <button
+      {/* <button
         className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
           styles.btn
         }`}
@@ -46,7 +46,7 @@ const ProjectNavigation: React.FC<Props> = (props) => {
         disabled={!props.prevVisible || props.disabled}
       >
         <LeftIcon theme={props.theme} />
-      </button>
+      </button> */}
       <div className={styles.content}>
         <div className={styles.wrapper}>
           <animated.div
@@ -68,7 +68,7 @@ const ProjectNavigation: React.FC<Props> = (props) => {
           <div className={styles.placeholder} />
         </div>
       </div>
-      <button
+      {/* <button
         className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
           styles.btn
         }`}
@@ -76,7 +76,7 @@ const ProjectNavigation: React.FC<Props> = (props) => {
         disabled={!props.nextVisible || props.disabled}
       >
         <RightIcon theme={props.theme} />
-      </button>
+      </button> */}
     </animated.div>
   );
 };
