@@ -14,6 +14,7 @@ import GaService from 'services/gaService';
 import GridBackground from 'components/layout/GridBackground';
 import dataService from 'services/dataService';
 import projectSelectors from 'store/project/selectors';
+import useResize from 'hooks/useResize';
 
 const Home = React.lazy(() => import('./routing/Home'));
 const Works = React.lazy(() => import('./routing/Works'));
@@ -44,12 +45,16 @@ const App: React.FC = () => {
     [project.list, project.selectedIndex]
   );
 
+  const [, isResponsive] = useResize();
+
   const _finishLoading = useCallback(async () => {
     window.scrollTo({ top: 0 });
     dispatch(globalActions.setShouldShowContent(true));
     await TimeService.timeout(2600);
     dispatch(globalActions.setShouldListenScrollingEvent(true));
-    dispatch(globalActions.setShouldShowMessageModal(true));
+    if (!isResponsive) {
+      dispatch(globalActions.setShouldShowMessageModal(true));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

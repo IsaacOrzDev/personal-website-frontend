@@ -53,6 +53,13 @@ const Header: React.FC<Props> = (props) => {
           fontSize={titleFontSize}
         />
         <div className={styles.right}>
+          {process.env.REACT_APP_ENABLE_LIGHT_MODE === 'true' && (
+            <HeaderThemeButton
+              theme={props.theme}
+              visible={props.isMenuOpened && !props.isResponsive}
+              onClick={props.onToggleTheme}
+            />
+          )}
           {props.buttonVisible && !props.isResponsive && (
             <button
               className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
@@ -62,13 +69,6 @@ const Header: React.FC<Props> = (props) => {
             >
               <GithubIcon theme={props.theme} />
             </button>
-          )}
-          {process.env.REACT_APP_ENABLE_LIGHT_MODE === 'true' && (
-            <HeaderThemeButton
-              theme={props.theme}
-              visible={props.buttonVisible && !props.isResponsive}
-              onClick={props.onToggleTheme}
-            />
           )}
 
           <HeaderMenuButton
