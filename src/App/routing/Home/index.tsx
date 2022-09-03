@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import styles from './style.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import globalSelectors from 'store/global/selectors';
@@ -26,6 +26,7 @@ const Home: React.FC<Props> = (props) => {
 
   const global = {
     theme: useSelector(globalSelectors.theme),
+    visible: useSelector(globalSelectors.visible),
     page: useSelector(globalSelectors.page),
     name: useSelector(globalSelectors.name),
     title: useSelector(globalSelectors.title),
@@ -41,7 +42,6 @@ const Home: React.FC<Props> = (props) => {
   const [bindHomeScreen, homeScreenBounds] = useMeasure();
   const [windowOffset, currentWindowOffset] = useWindow();
 
-  const [homeVisible, setHomeVisible] = useState(false);
   // #endregion
 
   // #region functions
@@ -99,8 +99,8 @@ const Home: React.FC<Props> = (props) => {
   }, [isResponsive]);
 
   useEffect(() => {
-    window.scroll(0, 0);
-    setHomeVisible(true);
+    dispatch(globalActions.setVisible(true));
+    // setHomeVisible(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // #endregion
@@ -130,7 +130,7 @@ const Home: React.FC<Props> = (props) => {
         palette={props.palette}
         scrollingValue={homeScrollingValue}
         setRef={bindHomeScreen.ref}
-        visible={homeVisible}
+        visible={global.visible}
         breakpoint={breakpoint}
         isResponsive={isResponsive}
         theme={global.theme}

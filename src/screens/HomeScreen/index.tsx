@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from './styles.module.scss';
 import { ThemeProps } from 'types/Props';
 import ImageBackground from 'screens/HomeScreen/components/ImageBackground';
@@ -29,6 +29,15 @@ interface Props extends ThemeProps {
 
 const HomeScreen: React.FC<Props> = (props) => {
   const visibles = useVisibles([800, 1200], props.visible);
+  const [imageUrl, setImageUrl] = useState('');
+
+  useEffect(() => {
+    const max = props.imgSrc.length;
+    const min = 0;
+    const index = Math.floor(Math.random() * (max - min) + min);
+    setImageUrl(props.imgSrc[index] ?? '');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <PageSection setRef={props.setRef}>
@@ -61,7 +70,7 @@ const HomeScreen: React.FC<Props> = (props) => {
           visible={visibles[1]}
           isResponsive={props.isResponsive}
           isLooping={!props.isHidden}
-          urls={props.imgSrc}
+          urls={[imageUrl]}
         />
       </div>
       <PageScrollingButton

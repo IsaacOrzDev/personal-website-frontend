@@ -23,7 +23,6 @@ const App: React.FC = () => {
 
   const global = {
     theme: useSelector(globalSelectors.theme),
-    hasCookie: useSelector(globalSelectors.hasCookie),
     dataLoaded: useSelector(globalSelectors.dataLoaded),
     shouldShowContent: useSelector(globalSelectors.shouldShowContent),
   };
@@ -43,9 +42,7 @@ const App: React.FC = () => {
     dispatch(globalActions.setShouldShowContent(true));
     await TimeService.timeout(2600);
     dispatch(globalActions.setShouldListenScrollingEvent(true));
-    if (!global.hasCookie) {
-      dispatch(globalActions.setShouldShowCookieModal(true));
-    }
+    dispatch(globalActions.setShouldShowMessageModal(true));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -3,12 +3,12 @@ import pages from 'config/pages';
 
 export interface GlobalState {
   theme: Theme;
+  visible: boolean;
   page: string;
   name: string;
   title: string;
   homeImages: string[];
-  cookieMsgContent: string;
-  hasCookie: boolean;
+  messageContent: string;
   dataLoaded: boolean;
   shouldShowContent: boolean;
   shouldShowMenu: boolean;
@@ -18,12 +18,12 @@ export interface GlobalState {
 
 export const initialGlobalState: GlobalState = {
   theme: 'dark',
+  visible: true,
   page: pages.home,
   name: '',
   title: '',
   homeImages: [],
-  cookieMsgContent: '',
-  hasCookie: false,
+  messageContent: '',
   dataLoaded: false,
   shouldShowContent: false,
   shouldShowMenu: false,
