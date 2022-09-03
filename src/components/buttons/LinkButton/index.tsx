@@ -7,6 +7,7 @@ import Words from 'components/text/Words';
 // import AndroidIcon from 'components/icons/AndroidIcon';
 import { ShowcaseTypeEnum } from 'models/ProjectModel';
 import { useHover } from 'react-use-gesture';
+import AppleIcon from 'components/icons/AppleIcon';
 
 interface Props extends ThemeProps {
   type?: string;
@@ -14,19 +15,23 @@ interface Props extends ThemeProps {
   textVisible?: boolean;
   text?: string;
   fontSize?: number;
+  color?: string;
+  gradientColor?: string;
   onClick?: () => void;
 }
 
-const LinkButton: React.FC<Props> = props => {
-  const [, setIsHover] = useState(false);
+const LinkButton: React.FC<Props> = (props) => {
+  const [isHover, setIsHover] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
-  const bind = useHover(hover => {
+  const bind = useHover((hover) => {
     setIsHover(hover.hovering);
   });
 
-  const { visible } = useSpring({
+  const { visible, backgroundColor, backgroundImage } = useSpring({
     visible: props.visible ? 1 : 0,
+    backgroundColor: props.color ?? '',
+    backgroundImage: props.gradientColor ?? 'none',
   });
 
   const _onClick = useCallback(() => {
@@ -60,12 +65,19 @@ const LinkButton: React.FC<Props> = props => {
     <animated.button
       {...bind()}
       style={{
-        transform: visible.interpolate(v => `scale(${v})`),
+        transform: visible.to((v) => `scale(${v})`),
       }}
       className={`${styles.button} ${styles[props.theme]}`}
       onClick={_onClick}
       disabled={isClicked}
     >
+      <span className={styles.line} />
+      <span className={styles.line} />
+      <animated.span
+        className={styles.line}
+        style={isHover ? { backgroundColor, backgroundImage } : {}}
+      />
+      <span className={styles.line} />
       <p
         className={`${styles.text} ${styles[props.theme]}`}
         style={{ fontSize: props.fontSize }}
