@@ -1,0 +1,22 @@
+
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.button {
+
+  border-radius: 12px;
+
+  @include transition(background-color);
+
+  &.dark {
+    &:hover:enabled {
+      background-color: darken($color: $color-dark-text, $amount: 90);
+    }
+  }
+
+  &.light {
+    &:hover:enabled {
+      background-color: lighten($color: $color-light-text, $amount: 60);
+    }
+  }
+}

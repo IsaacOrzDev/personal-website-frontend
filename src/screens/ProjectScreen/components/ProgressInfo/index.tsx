@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import styles from './style.module.scss';
+import buttonStyles from 'styles/button.module.scss';
 import { animated, useSpring } from 'react-spring';
 import DescriptionText from 'components/text/DescriptionText';
 import Words from 'components/text/Words';
@@ -38,13 +39,15 @@ const ProgressInfo: React.FC<Props> = (props) => {
 
   return (
     <button
-      className={`${styles.container} ${styles[props.theme]}`}
+      className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
+        styles.container
+      } ${styles[props.theme]}`}
       onClick={onClickIndex}
       {...bind}
     >
       <div className={styles.current}>
         <div className={styles.text}>
-          <DescriptionText theme={props.theme} fontSize={24}>
+          <DescriptionText theme={props.theme} fontSize={32}>
             <Words
               text={TextService.getNumberText(current)}
               visible={props.textVisible && props.currentVisible}
@@ -63,7 +66,7 @@ const ProgressInfo: React.FC<Props> = (props) => {
         percentage={props.percentage}
       />
       <div className={styles.total}>
-        <DescriptionText theme={props.theme} fontSize={24}>
+        <DescriptionText theme={props.theme} fontSize={32}>
           <Words
             text={TextService.getNumberText(props.total)}
             visible={props.textVisible}

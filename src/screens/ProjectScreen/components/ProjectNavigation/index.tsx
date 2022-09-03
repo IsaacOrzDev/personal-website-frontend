@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './style.module.scss';
+import buttonStyles from 'styles/button.module.scss';
 import { ThemeProps } from 'types/Props';
 import LeftIcon from 'components/icons/LeftIcon';
 import RightIcon from 'components/icons/RightIcon';
@@ -38,7 +39,9 @@ const ProjectNavigation: React.FC<Props> = (props) => {
       style={{ transform: visible.interpolate((v) => `scale(${v})`) }}
     >
       <button
-        className={styles.btn}
+        className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
+          styles.btn
+        }`}
         onClick={_minusIndex}
         disabled={!props.prevVisible || props.disabled}
       >
@@ -66,7 +69,9 @@ const ProjectNavigation: React.FC<Props> = (props) => {
         </div>
       </div>
       <button
-        className={styles.btn}
+        className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
+          styles.btn
+        }`}
         onClick={_addIndex}
         disabled={!props.nextVisible || props.disabled}
       >

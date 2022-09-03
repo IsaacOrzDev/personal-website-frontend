@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './style.module.scss';
+import buttonStyles from 'styles/button.module.scss';
 import { useHover } from 'react-use-gesture';
 import { ThemeProps } from 'types/Props';
 import DescriptionText from 'components/text/DescriptionText';
@@ -13,14 +14,16 @@ interface Props extends ThemeProps {
   onClick?: () => void;
 }
 
-const ProjectOptionItem: React.FC<Props> = props => {
+const ProjectOptionItem: React.FC<Props> = (props) => {
   const [isHovering, setIsHovering] = useState(false);
 
   const current = props.index + 1;
 
-  const bind = useHover(state => setIsHovering(state.hovering));
+  const bind = useHover((state) => setIsHovering(state.hovering));
 
-  let containerClassName = `${styles.container} ${styles[props.theme]}`;
+  let containerClassName = `${buttonStyles.button} ${
+    buttonStyles[props.theme]
+  } ${styles.container} ${styles[props.theme]}`;
   if (isHovering) {
     containerClassName += ` ${styles.hovering}`;
   }

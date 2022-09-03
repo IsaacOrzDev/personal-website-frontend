@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './style.module.scss';
+import buttonStyles from 'styles/button.module.scss';
 import { animated, useSpring } from 'react-spring';
 import { useHover } from 'react-use-gesture';
 import DescriptionText from 'components/text/DescriptionText';
@@ -16,7 +17,7 @@ export interface ScrollingButtonProps extends ThemeProps {
   onClick?: () => void;
 }
 
-const ScrollingButton: React.FC<ScrollingButtonProps> = props => {
+const ScrollingButton: React.FC<ScrollingButtonProps> = (props) => {
   const [isHovering, setIsHovering] = useState(false);
 
   const { visible, hovering } = useSpring({
@@ -24,7 +25,7 @@ const ScrollingButton: React.FC<ScrollingButtonProps> = props => {
     hovering: isHovering ? 1 : 0,
   });
 
-  const bind = useHover(state => setIsHovering(state.hovering));
+  const bind = useHover((state) => setIsHovering(state.hovering));
 
   if (props.type === 'up') {
     return (
@@ -32,7 +33,7 @@ const ScrollingButton: React.FC<ScrollingButtonProps> = props => {
         {...bind()}
         className={`${styles.button} ${styles.up}`}
         style={{
-          transform: visible.interpolate(v => `scale(${v})`),
+          transform: visible.interpolate((v) => `scale(${v})`),
         }}
         onClick={props.onClick}
       >
@@ -41,7 +42,7 @@ const ScrollingButton: React.FC<ScrollingButtonProps> = props => {
           style={{
             transform: hovering
               .interpolate({ range: [0, 1], output: [0, 8] })
-              .interpolate(v => `translateY(${v}px)`),
+              .interpolate((v) => `translateY(${v}px)`),
           }}
         >
           <UpIcon theme={props.theme} />
@@ -62,9 +63,11 @@ const ScrollingButton: React.FC<ScrollingButtonProps> = props => {
   return (
     <animated.button
       {...bind()}
-      className={`${styles.button} ${styles.down}`}
+      className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
+        styles.button
+      } ${styles.down}`}
       style={{
-        transform: visible.interpolate(v => `scale(${v})`),
+        transform: visible.interpolate((v) => `scale(${v})`),
       }}
       onClick={props.onClick}
     >
@@ -73,7 +76,7 @@ const ScrollingButton: React.FC<ScrollingButtonProps> = props => {
         style={{
           transform: hovering
             .interpolate({ range: [0, 1], output: [0, -8] })
-            .interpolate(v => `translateY(${v}px)`),
+            .interpolate((v) => `translateY(${v}px)`),
         }}
       >
         <div className={styles.text}>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './style.module.scss';
+import buttonStyles from 'styles/button.module.scss';
 import { ThemeProps } from 'types/Props';
 import { animated, useSpring, config } from 'react-spring';
 import { useHover } from 'react-use-gesture';
@@ -10,7 +11,7 @@ interface Props extends ThemeProps {
   onToggle?: () => void;
 }
 
-const HeaderMenuButton: React.FC<Props> = props => {
+const HeaderMenuButton: React.FC<Props> = (props) => {
   const [isHovering, setIsHovering] = useState(false);
 
   const { visible } = useSpring({
@@ -35,13 +36,15 @@ const HeaderMenuButton: React.FC<Props> = props => {
     config: config.gentle,
   });
 
-  const bind = useHover(state => setIsHovering(state.hovering));
+  const bind = useHover((state) => setIsHovering(state.hovering));
 
   return (
     <animated.button
       {...bind()}
-      className={`${styles.container} ${styles[props.theme]}`}
-      style={{ transform: visible.interpolate(v => `scale(${v})`) }}
+      className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
+        styles.container
+      } ${styles[props.theme]}`}
+      style={{ transform: visible.interpolate((v) => `scale(${v})`) }}
       onClick={props.onToggle}
     >
       <div className={styles.icon}>
