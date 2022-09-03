@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { ThemeProps } from 'types/Props';
 import ImageBackground from 'screens/HomeScreen/components/ImageBackground';
@@ -14,6 +14,7 @@ interface Props extends ThemeProps {
   name: string;
   title: string;
   palette?: PaletteModel;
+  category: string;
   scrollingValue: number;
   visible?: boolean;
   breakpoint?: string;
@@ -75,7 +76,7 @@ const HomeScreen: React.FC<Props> = (props) => {
       </div>
       <PageScrollingButton
         theme={props.theme}
-        text={'SEE MY WORKS'}
+        text={`SEE MY ${props.category}`}
         visible={visibles[0]}
         textVisible={visibles[0]}
         color={props.palette ? props.palette[props.theme] : ''}

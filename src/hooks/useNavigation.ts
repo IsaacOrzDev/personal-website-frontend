@@ -29,19 +29,24 @@ export default function useNavigation(isResponsive: boolean) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, isResponsive, shouldShowMenu]);
 
-  const goToProjectSection = useCallback(async () => {
-    dispatch(globalActions.setVisible(false));
-    if (shouldShowMenu) {
-      dispatch(globalActions.setShouldShowMenu(false));
-    } else {
-      await TimeService.timeout(500);
-    }
-    dispatch(globalActions.setPage(pages.projects));
-    dispatch(projectActions.setSelectedIndex(0));
-    navigate(routes.works, { replace: true });
-    GaService.pageView(pages.projects);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, shouldShowMenu]);
+  const goToProjectSection = useCallback(
+    async (index?: number) => {
+      dispatch(globalActions.setVisible(false));
+      if (shouldShowMenu) {
+        dispatch(globalActions.setShouldShowMenu(false));
+      } else {
+        await TimeService.timeout(500);
+      }
+      dispatch(globalActions.setPage(pages.projects));
+      if (index !== undefined) {
+        dispatch(projectActions.setSelectedIndex(index));
+      }
+      navigate(routes.projects, { replace: true });
+      GaService.pageView(pages.projects);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    [dispatch, navigate, shouldShowMenu]
+  );
 
   return {
     goToHomeSection,

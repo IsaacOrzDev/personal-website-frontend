@@ -9,7 +9,6 @@ import ShowcaseScreenShots from './components/ShowcaseScreenshots';
 import ProgressInfo from './components/ProgressInfo';
 import DropdownModal from 'components/modals/DropdownModal';
 import ProjectOptionItem from './components/ProjectOptionItem';
-import ProjectNavigation from './components/ProjectNavigation';
 import PageSection from 'components/layout/PageSection';
 import BreakpointService from 'services/breakpointService';
 import LinkButtonGroup from './components/LinkButtonGroup';
@@ -23,7 +22,6 @@ interface Props extends ThemeProps {
   list: ProjectModel[];
   title: string;
   years: string[];
-  selectedYear: string;
   visible?: boolean;
   dropdownVisible?: boolean;
   isResponsive?: boolean;
@@ -146,18 +144,6 @@ const ProjectScreen: React.FC<Props> = (props) => {
                 disabled={!props.shouldListenScrollingEvent}
                 prevVisible={props.index !== 0}
                 nextVisible={props.index !== props.list.length - 1}
-                onSelectPrev={props.onSelectPrev}
-                onSelectNext={props.onSelectNext}
-              />
-              <ProjectNavigation
-                theme={props.theme}
-                activeColor={selectedProject?.palette[props.theme]}
-                visible={visibles[0] && !props.isResponsive}
-                prevVisible={props.index !== 0}
-                nextVisible={props.index !== props.list.length - 1}
-                items={props.list}
-                index={props.index}
-                disabled={!props.shouldListenScrollingEvent}
                 onSelectPrev={props.onSelectPrev}
                 onSelectNext={props.onSelectNext}
               />

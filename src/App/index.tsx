@@ -37,6 +37,13 @@ const App: React.FC = () => {
     [project.list, project.selectedIndex]
   );
 
+  const category = useMemo(
+    () =>
+      project.list.find((x, i) => i === project.selectedIndex)?.category ??
+      'Projects',
+    [project.list, project.selectedIndex]
+  );
+
   const _finishLoading = useCallback(async () => {
     window.scrollTo({ top: 0 });
     dispatch(globalActions.setShouldShowContent(true));
@@ -74,11 +81,14 @@ const App: React.FC = () => {
   return (
     <>
       <Router>
-        <HeaderContainer />
+        <HeaderContainer category={category} />
         <Suspense fallback={null}>
           <Routes>
-            <Route path={routes.home} element={<Home palette={palette} />} />
-            <Route path={routes.works} element={<Works />} />
+            <Route
+              path={routes.home}
+              element={<Home palette={palette} category={category} />}
+            />
+            <Route path={routes.projects} element={<Works />} />
           </Routes>
         </Suspense>
         <MessageModalContainer />

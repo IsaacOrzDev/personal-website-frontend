@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import MenuModal from 'components/modals/MenuModeal';
 import { useSelector } from 'react-redux';
 import globalSelectors from 'store/global/selectors';
 import useResize from 'hooks/useResize';
 import useNavigation from 'hooks/useNavigation';
+import projectSelectors from 'store/project/selectors';
 
 interface Props {}
 
@@ -17,10 +18,24 @@ const MenuModalContainer: React.FC<Props> = () => {
     shouldShowMenu: useSelector(globalSelectors.shouldShowMenu),
   };
 
-  const menu = [
-    { title: 'HOME', onClick: goToHomeSection },
-    { title: 'WORKS', onClick: goToProjectSection },
-  ];
+  const project = {
+    list: useSelector(projectSelectors.list),
+    categories: useSelector(projectSelectors.selectCategories),
+  };
+
+  const menu = useMemo(
+    () => [
+      { title: 'HOME', onClick: goToHomeSection },
+      ...project.categories.map((item) => ({
+        title: item,
+        onClick: () =>
+          goToProjectSection(
+            project.list.findIndex((project) => project.category === item)
+          ),
+      })),
+    ],
+    [goToHomeSection, goToProjectSection, project.categories, project.list]
+  );
 
   return (
     <MenuModal
