@@ -35,7 +35,6 @@ interface Props extends ThemeProps {
   onShowDropdown?: () => void;
   onDismissDropdown?: () => void;
   onToggleTheme?: () => void;
-  onSelectYear?: (year: string) => void;
   onSelectIndex: (index: number) => void;
   onSelectPrev: () => void;
   onSelectNext?: () => void;
@@ -89,15 +88,6 @@ const ProjectScreen: React.FC<Props> = (props) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.index]);
-
-  useEffect(() => {
-    return () => {
-      if (props.list.length > 0) {
-        props.onSelectIndex(0);
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const item: ProjectModel = props.list[currentIndex];
 

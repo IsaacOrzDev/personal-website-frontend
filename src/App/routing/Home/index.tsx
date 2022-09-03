@@ -12,10 +12,15 @@ import { forceCheck } from 'react-lazyload';
 import useScrollEffect from 'hooks/useScrollEffect';
 import GaService from 'services/gaService';
 import useHidden from 'hooks/useHidden';
+import { PaletteModel } from 'models/ProjectModel';
 
 const HomeScreen = React.lazy(() => import('screens/HomeScreen'));
 
-const Home: React.FC = () => {
+interface Props {
+  palette?: PaletteModel;
+}
+
+const Home: React.FC<Props> = (props) => {
   // #region variables
   const dispatch = useDispatch();
 
@@ -122,6 +127,7 @@ const Home: React.FC = () => {
       }}
     >
       <HomeScreen
+        palette={props.palette}
         scrollingValue={homeScrollingValue}
         setRef={bindHomeScreen.ref}
         visible={homeVisible}

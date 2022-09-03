@@ -9,6 +9,8 @@ interface Props extends ThemeProps {
   textVisible?: boolean;
   text: string;
   type?: 'down' | 'up';
+  color?: string;
+  gradientColor?: string;
   onClick?: () => void;
 }
 
@@ -24,6 +26,8 @@ const PageScrollingButton: React.FC<Props> = (props) => {
         text={props.text}
         visible={props.visible}
         textVisible={props.textVisible}
+        color={props.color}
+        gradientColor={props.gradientColor}
         onClick={props.onClick}
       />
     </div>

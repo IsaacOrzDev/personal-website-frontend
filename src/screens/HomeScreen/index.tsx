@@ -8,10 +8,12 @@ import HomeTitle from './components/HomeTitle';
 import PageSection from 'components/layout/PageSection';
 import useVisibles from 'hooks/useVisibles';
 import BreakpointService from 'services/breakpointService';
+import { PaletteModel } from 'models/ProjectModel';
 
 interface Props extends ThemeProps {
   name: string;
   title: string;
+  palette?: PaletteModel;
   scrollingValue: number;
   visible?: boolean;
   breakpoint?: string;
@@ -39,6 +41,8 @@ const HomeScreen: React.FC<Props> = (props) => {
           paused={props.isResponsive || props.isHidden}
           name={props.name}
           title={props.title}
+          color={props.palette ? props.palette[props.theme] : ''}
+          gradientColor={props.palette?.gradient}
         />
       </div>
       <div>
@@ -49,6 +53,8 @@ const HomeScreen: React.FC<Props> = (props) => {
           isResponsive={props.isResponsive}
           title={props.title}
           name={props.name}
+          color={props.palette ? props.palette[props.theme] : ''}
+          gradientColor={props.palette?.gradient}
         />
         <ImageBackground
           theme={props.theme}
@@ -63,6 +69,8 @@ const HomeScreen: React.FC<Props> = (props) => {
         text={'SEE MY WORKS'}
         visible={visibles[0]}
         textVisible={visibles[0]}
+        color={props.palette ? props.palette[props.theme] : ''}
+        gradientColor={props.palette?.gradient}
         onClick={props.onGoToNextSection}
       />
     </PageSection>

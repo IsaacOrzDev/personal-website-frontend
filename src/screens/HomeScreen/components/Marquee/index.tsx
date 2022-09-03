@@ -15,9 +15,11 @@ interface Props extends ThemeProps {
   visible?: boolean;
   isLg?: boolean;
   isResponsive?: boolean;
+  color?: string;
+  gradientColor?: string;
 }
 
-const Marquee: React.FC<Props> = props => {
+const Marquee: React.FC<Props> = (props) => {
   const [clones, setClones] = useState<number[]>([]);
   const [contentWidth, setContentWidth] = useState(0);
   const [isInitialized, setIsInitialized] = useState(false);
@@ -62,7 +64,7 @@ const Marquee: React.FC<Props> = props => {
       {...bindContainer}
       className={containerClassName}
       style={{
-        transform: visible.interpolate({
+        transform: visible.to({
           range: [0, 1],
           output: ['translateX(-100%)', 'translateX(0)'],
         }),
@@ -84,8 +86,10 @@ const Marquee: React.FC<Props> = props => {
           title={props.title}
           visible={true}
           isLg={props.isLg}
+          color={props.color}
+          gradientColor={props.gradientColor}
         />
-        {clones.map(x => (
+        {clones.map((x) => (
           <Part
             key={x}
             theme={props.theme}
@@ -93,6 +97,8 @@ const Marquee: React.FC<Props> = props => {
             title={props.title}
             visible={true}
             isLg={props.isLg}
+            color={props.color}
+            gradientColor={props.gradientColor}
           />
         ))}
       </div>
@@ -110,8 +116,10 @@ const Marquee: React.FC<Props> = props => {
           title={props.title}
           visible={true}
           isLg={props.isLg}
+          color={props.color}
+          gradientColor={props.gradientColor}
         />
-        {clones.map(x => (
+        {clones.map((x) => (
           <Part
             key={x}
             theme={props.theme}
@@ -119,6 +127,8 @@ const Marquee: React.FC<Props> = props => {
             title={props.title}
             visible={true}
             isLg={props.isLg}
+            color={props.color}
+            gradientColor={props.gradientColor}
           />
         ))}
       </div>

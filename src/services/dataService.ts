@@ -7,6 +7,7 @@ import data from 'data';
 const fetchAllData = (): ThunkAction<void, any, any, any> => {
   return async (dispatch) => {
     // you can fetch data from api instead of loading data from local data.ts file
+    await TimeService.timeout(1000);
     dispatch(globalActions.setName(data.home.name));
     dispatch(globalActions.setTitle(data.home.title));
     dispatch(globalActions.setHomeImages(data.home.images));

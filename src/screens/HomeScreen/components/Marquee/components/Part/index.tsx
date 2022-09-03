@@ -11,9 +11,11 @@ interface Props extends ThemeProps {
   title: string;
   visible?: boolean;
   isLg?: boolean;
+  color?: string;
+  gradientColor?: string;
 }
 
-const Part: React.FC<Props> = props => {
+const Part: React.FC<Props> = (props) => {
   return (
     <div ref={props.setRef} className={styles.container}>
       <TitleText theme={props.theme} fontSize={props.isLg ? 40 : 56}>
@@ -23,7 +25,8 @@ const Part: React.FC<Props> = props => {
       <TitleText
         className={styles.title}
         theme={props.theme}
-        color="tint"
+        color={props.color || 'tint'}
+        gradientColor={props.gradientColor}
         fontSize={props.isLg ? 40 : 56}
       >
         <Words text={props.title} visible={props.visible} mode="words" />
