@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './style.module.scss';
+import buttonStyles from 'styles/button.module.scss';
 import HeaderNameText from '../HeaderNameText';
 import HeaderThemeButton from '../HeaderThemeButton';
 import { ThemeProps } from 'types/Props';
 import { useSpring, animated } from 'react-spring';
 import HeaderMenuButton from '../HeaderMenuButton';
+import GithubIcon from 'components/icons/GithubIcon';
 
 interface Props extends ThemeProps {
   title: string;
@@ -19,7 +21,7 @@ interface Props extends ThemeProps {
   onToggleMenu?: () => void;
 }
 
-const Header: React.FC<Props> = props => {
+const Header: React.FC<Props> = (props) => {
   const { opacity } = useSpring({
     opacity: props.visible ? 1 : 0,
   });
@@ -37,6 +39,10 @@ const Header: React.FC<Props> = props => {
     headerClassName += ` ${styles.responsive}`;
   }
 
+  const navigateToGithubPage = () => {
+    window.open(process.env.REACT_APP_GITHUB_URL, '_blank');
+  };
+
   return (
     <animated.div className={headerClassName} style={{ opacity }}>
       <div className={styles.content}>
@@ -47,13 +53,24 @@ const Header: React.FC<Props> = props => {
           fontSize={titleFontSize}
         />
         <div className={styles.right}>
-          <div className={styles.theme_btn}>
+          {props.buttonVisible && !props.isResponsive && (
+            <button
+              className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
+                styles.github_button
+              }`}
+              onClick={navigateToGithubPage}
+            >
+              <GithubIcon theme={props.theme} />
+            </button>
+          )}
+          {process.env.REACT_APP_ENABLE_LIGHT_MODE && (
             <HeaderThemeButton
               theme={props.theme}
               visible={props.buttonVisible && !props.isResponsive}
               onClick={props.onToggleTheme}
             />
-          </div>
+          )}
+
           <HeaderMenuButton
             theme={props.theme}
             visible={props.menuButtonVisible}
@@ -62,11 +79,23 @@ const Header: React.FC<Props> = props => {
           />
         </div>
         <div className={styles.absolute}>
-          <HeaderThemeButton
-            theme={props.theme}
-            visible={props.isMenuOpened && props.isResponsive}
-            onClick={props.onToggleTheme}
-          />
+          {props.isMenuOpened && props.isResponsive && (
+            <button
+              className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
+                styles.github_button
+              }`}
+              onClick={navigateToGithubPage}
+            >
+              <GithubIcon theme={props.theme} />
+            </button>
+          )}
+          {process.env.REACT_APP_ENABLE_LIGHT_MODE && (
+            <HeaderThemeButton
+              theme={props.theme}
+              visible={props.isMenuOpened && props.isResponsive}
+              onClick={props.onToggleTheme}
+            />
+          )}
         </div>
       </div>
     </animated.div>

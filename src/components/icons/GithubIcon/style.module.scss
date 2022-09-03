@@ -1,0 +1,23 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  width: 36px;
+  height: 36px;
+
+  .path {
+    @include transition(fill);
+  }
+
+  &.dark {
+    .path {
+      fill: $color-dark-line;
+    }
+  }
+
+  &.light {
+    .path {
+      fill: $color-light-line;
+    }
+  }
+}

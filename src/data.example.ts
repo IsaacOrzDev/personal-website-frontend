@@ -21,14 +21,14 @@ const data: Data = {
       'https://images.unsplash.com/photo-1531259683007-016a7b628fc3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80',
     ],
     message:
-      'The website uses cookies and collects your IP address to improve and deliver content with a personalized experience.',
+      'You either die a hero or live long enough to see yourself become the villain…',
   },
   projects: [
     {
       category: 'Movies',
       palette: {
-        dark: '',
-        light: '',
+        dark: '#f3f245',
+        light: '#3e334d',
       },
       title: 'Early Life',
       description: [
@@ -55,8 +55,8 @@ const data: Data = {
     {
       category: 'Movies',
       palette: {
-        dark: '',
-        light: '',
+        dark: '#f3f245',
+        light: '#3e334d',
       },
       title: 'Golden Age',
       description: [
@@ -86,8 +86,8 @@ const data: Data = {
     {
       category: 'Movies',
       palette: {
-        dark: '',
-        light: '',
+        dark: '#f3f245',
+        light: '#3e334d',
       },
       title: 'Silver & Bronze Ages',
       description: [
