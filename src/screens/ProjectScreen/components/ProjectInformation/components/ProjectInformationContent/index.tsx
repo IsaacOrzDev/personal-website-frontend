@@ -44,7 +44,12 @@ const ProjectInformationContent: React.FC<Props> = (props) => {
         isLooping={props.isFocused && props.isLooping}
       />
       <div className={styles.text_area}>
-        <TitleText theme={props.theme} fontSize={32}>
+        <TitleText
+          theme={props.theme}
+          fontSize={32}
+          color={props.item.palette[props.theme]}
+          gradientColor={props.item.palette.gradient}
+        >
           <Words text={props.item.title} visible={props.visible} mode="words" />
         </TitleText>
         <div className={styles.description}>

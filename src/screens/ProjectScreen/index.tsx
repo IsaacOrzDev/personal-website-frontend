@@ -165,6 +165,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
               {!!item &&
                 item?.tags.map((tag) => (
                   <TagButton
+                    key={tag}
                     theme={props.theme}
                     visible={
                       visibles[2] && contentVisible && !props.isResponsive

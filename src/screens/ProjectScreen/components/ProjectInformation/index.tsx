@@ -18,7 +18,7 @@ interface Props extends ThemeProps {
   onFocus?: (index: number) => void;
 }
 
-const ProjectInformation: React.FC<Props> = props => {
+const ProjectInformation: React.FC<Props> = (props) => {
   const [bind, bounds] = useMeasure();
   const [visible, setVisible] = useState(false);
   const [isInitVisible, setIsInitVisible] = useState(false);
@@ -53,8 +53,8 @@ const ProjectInformation: React.FC<Props> = props => {
   }, [bounds, props.windowOffsetBottom]);
 
   return (
-    <PageSection setRef={bind.ref}>
-      <LazyLoad height={'100vh'}>
+    <div ref={bind.ref}>
+      <LazyLoad height={'50vh'}>
         <ProjectInformationContent
           theme={props.theme}
           index={props.index}
@@ -65,7 +65,7 @@ const ProjectInformation: React.FC<Props> = props => {
           isLooping={props.isLooping}
         />
       </LazyLoad>
-    </PageSection>
+    </div>
   );
 };
 
