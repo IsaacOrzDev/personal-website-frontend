@@ -175,15 +175,20 @@ const ProjectScreen: React.FC<Props> = (props) => {
                 ))}
             </div>
             <div className={styles.description}>
-              {item.description.map((x, i) => (
-                <ProjectDescription
-                  key={i}
-                  theme={props.theme}
-                  fontSize={isLg ? 14 : 18}
-                  visible={visibles[2] && contentVisible && !props.isResponsive}
-                  text={x}
-                />
-              ))}
+              {item.description
+                .split(/[.](?![.])/)
+                .filter((x) => !!x.trim())
+                .map((x, i) => (
+                  <ProjectDescription
+                    key={i}
+                    theme={props.theme}
+                    fontSize={isLg ? 14 : 18}
+                    visible={
+                      visibles[2] && contentVisible && !props.isResponsive
+                    }
+                    text={`${x.trim()}.`}
+                  />
+                ))}
             </div>
             <LinkButtonGroup
               theme={props.theme}
