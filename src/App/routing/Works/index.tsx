@@ -43,7 +43,6 @@ const Works: React.FC = () => {
     dropdownVisible: useSelector(projectSelectors.dropdownVisible),
     listLength: useSelector(projectSelectors.listLength),
     isLastItem: useSelector(projectSelectors.isLastItem),
-    selectedYear: useSelector(projectSelectors.selectedYear),
   };
 
   const [breakpoint, isResponsive] = useResize();

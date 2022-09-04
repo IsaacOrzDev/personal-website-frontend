@@ -31,6 +31,6 @@ export default interface ProjectModel {
   links: Array<{ url: string; type: ShowcaseTypeEnum; text?: string }>;
   type: ProjectTypeEnum;
   palette: PaletteModel;
-  year?: string;
+  tags: Array<string>;
   category: string;
 }

@@ -1,0 +1,26 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+
+.tag {
+  border: 0;
+  outline: 0;
+  padding:  0px;
+  cursor: default;
+  font-size: 12px;
+  font-weight: 600;
+  
+  &.dark {
+    background-color: $color-dark-line;
+    
+    color: $color-dark-background;
+    padding: 8px;
+    border-radius: 2px;
+    border-bottom: 1px solid;
+  }
+
+  &.light {
+    background-color: $color-light-line;
+    color: $color-light-background;
+  }
+}
