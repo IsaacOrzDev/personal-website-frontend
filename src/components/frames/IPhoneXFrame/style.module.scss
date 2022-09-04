@@ -84,3 +84,20 @@ $barWidth: $width - 116px;
     }
   }
 }
+
+.iframe_wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  
+}
+
+.iframe {
+  border: 0;
+  position: absolute;
+  transform: scale(0.5) translate(0%, 0%);
+  top: -50%;
+  left: -50%;
+  border-radius: 32px;
+}

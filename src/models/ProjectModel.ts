@@ -20,7 +20,14 @@ export interface PaletteModel {
 export default interface ProjectModel {
   title: string;
   description: string[];
-  images: Array<{ urls: string[]; type: ShowcaseTypeEnum; path?: string }>;
+  preview: Array<{
+    imageUrls: Array<string>;
+    iframe?: {
+      url: string;
+      title: string;
+    };
+    type: ShowcaseTypeEnum;
+  }>;
   links: Array<{ url: string; type: ShowcaseTypeEnum; text?: string }>;
   type: ProjectTypeEnum;
   palette: PaletteModel;

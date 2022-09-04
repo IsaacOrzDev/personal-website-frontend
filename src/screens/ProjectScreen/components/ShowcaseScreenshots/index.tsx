@@ -6,7 +6,7 @@ import IPhoneXFrame from 'components/frames/IPhoneXFrame';
 import AndroidFrame from 'components/frames/AndroidFrame';
 import IPadFrame from 'components/frames/IPadFrame';
 import BrowserFrame from 'components/frames/BrowserFrame';
-import { ShowcaseTypeEnum } from 'models/ProjectModel';
+import ProjectModel, { ShowcaseTypeEnum } from 'models/ProjectModel';
 import BreakpointService from 'services/breakpointService';
 
 interface Props extends ThemeProps {
@@ -14,20 +14,20 @@ interface Props extends ThemeProps {
   imgVisible?: boolean;
   breakpoint?: string;
   isLooping?: boolean;
-  list: Array<{ urls: string[]; type: ShowcaseTypeEnum }>;
+  list: ProjectModel['preview'];
 }
 
-const ShowcaseScreenShots: React.FC<Props> = props => {
+const ShowcaseScreenShots: React.FC<Props> = (props) => {
   const { visible } = useSpring({
     visible: props.visible ? 1 : 0,
   });
 
-  const iPad = props.list.find(x => x.type === ShowcaseTypeEnum.ipad);
-  const iPhone = props.list.find(x => x.type === ShowcaseTypeEnum.ios);
-  const android = props.list.find(x => x.type === ShowcaseTypeEnum.android);
-  const website = props.list.find(x => x.type === ShowcaseTypeEnum.website);
+  const iPad = props.list.find((x) => x.type === ShowcaseTypeEnum.ipad);
+  const iPhone = props.list.find((x) => x.type === ShowcaseTypeEnum.ios);
+  const android = props.list.find((x) => x.type === ShowcaseTypeEnum.android);
+  const website = props.list.find((x) => x.type === ShowcaseTypeEnum.website);
   const responsiveWebsite = props.list.find(
-    x => x.type === ShowcaseTypeEnum.responsiveWebsite
+    (x) => x.type === ShowcaseTypeEnum.responsiveWebsite
   );
 
   const isSm = BreakpointService.isSm(props.breakpoint!);
@@ -44,12 +44,13 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
             opacity: visible,
             transform: visible
               .interpolate({ range: [0, 1], output: [-80, 0] })
-              .interpolate(v => `translateX(${v}px)`),
+              .interpolate((v) => `translateX(${v}px)`),
           }}
         >
           <IPadFrame
             theme={props.theme}
-            src={iPad.urls}
+            src={iPad.imageUrls}
+            iframe={iPad.iframe}
             imgVisible={props.imgVisible}
             breakpoint={props.breakpoint}
             isLooping={props.isLooping}
@@ -72,17 +73,18 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
           style={{
             opacity: visible,
             transform: visible
-              .interpolate({ range: [0, 1], output: [-80, 0] })
-              .interpolate(v => `translateY(${v}px)`),
+              .to({ range: [0, 1], output: [-80, 0] })
+              .to((v) => `translateY(${v}px)`),
           }}
         >
           <AndroidFrame
             theme={props.theme}
-            src={android.urls}
+            src={android.imageUrls}
             imgVisible={props.imgVisible}
             breakpoint={props.breakpoint}
             isLooping={props.isLooping}
             isFullScreen
+            iframe={android.iframe}
           />
         </animated.div>
         <animated.div
@@ -90,17 +92,18 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
           style={{
             opacity: visible,
             transform: visible
-              .interpolate({ range: [0, 1], output: [80, 0] })
-              .interpolate(v => `translateY(${v}px)`),
+              .to({ range: [0, 1], output: [80, 0] })
+              .to((v) => `translateY(${v}px)`),
           }}
         >
           <AndroidFrame
             theme={props.theme}
-            src={android.urls}
+            src={android.imageUrls}
             imgVisible={props.imgVisible}
             breakpoint={props.breakpoint}
             isLooping={props.isLooping}
             isFullScreen
+            iframe={android.iframe}
           />
         </animated.div>
       </div>
@@ -120,15 +123,16 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
             opacity: visible,
             transform: visible
               .interpolate({ range: [0, 1], output: [-80, 0] })
-              .interpolate(v => `translateY(${v}px)`),
+              .interpolate((v) => `translateY(${v}px)`),
           }}
         >
           <IPhoneXFrame
             theme={props.theme}
-            src={iPhone.urls}
+            src={iPhone.imageUrls}
             imgVisible={props.imgVisible}
             breakpoint={props.breakpoint}
             isLooping={props.isLooping}
+            iframe={android.iframe}
           />
         </animated.div>
         <animated.div
@@ -136,16 +140,17 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
           style={{
             opacity: visible,
             transform: visible
-              .interpolate({ range: [0, 1], output: [80, 0] })
-              .interpolate(v => `translateY(${v}px)`),
+              .to({ range: [0, 1], output: [80, 0] })
+              .to((v) => `translateY(${v}px)`),
           }}
         >
           <AndroidFrame
             theme={props.theme}
-            src={android.urls}
+            src={android.imageUrls}
             imgVisible={props.imgVisible}
             breakpoint={props.breakpoint}
             isLooping={props.isLooping}
+            iframe={android.iframe}
           />
         </animated.div>
       </div>
@@ -162,15 +167,16 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
         <animated.div
           style={{
             opacity: visible,
-            transform: visible.interpolate(v => `scale(${v})`),
+            transform: visible.interpolate((v) => `scale(${v})`),
           }}
         >
           <BrowserFrame
             theme={props.theme}
-            src={website.urls}
+            src={website.imageUrls}
             imgVisible={props.imgVisible}
             breakpoint={props.breakpoint}
             isLooping={props.isLooping}
+            iframe={website.iframe}
           />
         </animated.div>
         {!!responsiveWebsite && (
@@ -178,16 +184,17 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
             <animated.div
               style={{
                 opacity: visible,
-                transform: visible.interpolate(v => `scale(${v})`),
+                transform: visible.interpolate((v) => `scale(${v})`),
               }}
             >
               <BrowserFrame
                 theme={props.theme}
                 responsive
-                src={responsiveWebsite.urls}
+                src={responsiveWebsite.imageUrls}
                 imgVisible={props.imgVisible}
                 breakpoint={props.breakpoint}
                 isLooping={props.isLooping}
+                iframe={responsiveWebsite.iframe}
               />
             </animated.div>
           </div>

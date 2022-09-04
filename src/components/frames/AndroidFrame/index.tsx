@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from './style.module.scss';
 import { ThemeProps } from 'types/Props';
 import ImageViewer from 'components/images/ImageViewer';
 import BreakpointService from 'services/breakpointService';
+import { useRect } from '@reach/rect';
 
 const maxWidth = 240;
 const maxBarHeight = 40;
@@ -16,6 +17,10 @@ interface Props extends ThemeProps {
   isLooping?: boolean;
   isFullScreen?: boolean;
   duration?: number;
+  iframe?: {
+    title: string;
+    url: string;
+  };
 }
 
 const AndroidFrame: React.FC<Props> = (props) => {
@@ -43,6 +48,9 @@ const AndroidFrame: React.FC<Props> = (props) => {
 
   const height = width * 2.165;
 
+  const contentRef = useRef(null);
+  const contentRect = useRect(contentRef, { observe: !!props.iframe });
+
   return (
     <div
       className={`${styles.container} ${styles[props.theme]}`}
@@ -52,7 +60,19 @@ const AndroidFrame: React.FC<Props> = (props) => {
         className={styles.content}
         style={{ width: '100%', height: `${height - barHeight}px` }}
       >
-        {props.imgVisible && (
+        {props.imgVisible && !!props.iframe && (
+          <div className={styles.iframe_wrapper} ref={contentRef}>
+            <iframe
+              className={styles.iframe}
+              title={props.iframe.title}
+              src={props.iframe.url}
+              width={(contentRect?.width ?? 0) * 2}
+              height={(contentRect?.height ?? 0) * 2}
+            />
+          </div>
+        )}
+
+        {props.imgVisible && !props.iframe && (
           <ImageViewer
             resizeMode="cover"
             src={props.src}

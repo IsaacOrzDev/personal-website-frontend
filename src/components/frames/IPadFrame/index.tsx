@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from './style.module.scss';
 import { ThemeProps } from 'types/Props';
 import ImageViewer from 'components/images/ImageViewer';
 import breakpoints from 'config/breakpoints';
+import { useRect } from '@reach/rect';
 
 interface Props extends ThemeProps {
   src: string[];
@@ -10,6 +11,10 @@ interface Props extends ThemeProps {
   breakpoint?: string;
   isLooping?: boolean;
   duration?: number;
+  iframe?: {
+    title: string;
+    url: string;
+  };
 }
 
 const maxWidth = 600;
@@ -52,6 +57,9 @@ const IPadFrame: React.FC<Props> = (props) => {
     homeSize = maxHomeSize * 0.55;
   }
 
+  const contentRef = useRef(null);
+  const contentRect = useRect(contentRef, { observe: !!props.iframe });
+
   return (
     <div
       className={`${styles.container} ${styles[props.theme]}`}
@@ -85,13 +93,26 @@ const IPadFrame: React.FC<Props> = (props) => {
         className={styles.img}
         style={{ padding: `${barWidth}px ${barHeight}px` }}
       >
-        <ImageViewer
-          resizeMode="cover"
-          src={props.src}
-          visible={props.imgVisible}
-          isLooping={props.isLooping}
-          duration={props.duration}
-        />
+        {props.imgVisible && !!props.iframe && (
+          <div className={styles.iframe_wrapper} ref={contentRef}>
+            <iframe
+              className={styles.iframe}
+              title={props.iframe.title}
+              src={props.iframe.url}
+              width={(contentRect?.width ?? 0) * 2}
+              height={(contentRect?.height ?? 0) * 2}
+            />
+          </div>
+        )}
+        {!props.iframe && (
+          <ImageViewer
+            resizeMode="cover"
+            src={props.src}
+            visible={props.imgVisible}
+            isLooping={props.isLooping}
+            duration={props.duration}
+          />
+        )}
       </div>
     </div>
   );
