@@ -16,6 +16,7 @@ import ProjectDescription from './components/ProjectDescription';
 import pages from 'config/pages';
 import useVisibles from 'hooks/useVisibles';
 import GaService from 'services/gaService';
+import TagButton from 'components/buttons/TagButton';
 
 interface Props extends ThemeProps {
   index: number;
@@ -152,7 +153,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
               theme={props.theme}
               color={selectedProject?.palette[props.theme] ?? 'tint'}
               gradientColor={selectedProject?.palette.gradient}
-              fontSize={isLg ? 32 : 60}
+              fontSize={isLg ? 32 : 48}
             >
               <Words
                 text={item.title}
@@ -160,6 +161,19 @@ const ProjectScreen: React.FC<Props> = (props) => {
                 visible={visibles[2] && contentVisible && !props.isResponsive}
               />
             </TitleText>
+            <div className={styles.tag_group}>
+              {!!item &&
+                item?.tags.map((tag) => (
+                  <TagButton
+                    theme={props.theme}
+                    visible={
+                      visibles[2] && contentVisible && !props.isResponsive
+                    }
+                  >
+                    {tag}
+                  </TagButton>
+                ))}
+            </div>
             <div className={styles.description}>
               {item.description.map((x, i) => (
                 <ProjectDescription

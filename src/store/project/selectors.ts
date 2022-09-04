@@ -11,9 +11,6 @@ const isLastItem = createSelector(
   [selectedIndex, listLength],
   (index, length) => index === length - 1
 );
-const selectedYear = createSelector([selectedIndex, list], (index, list) =>
-  list.length > 0 ? list[index].year : ''
-);
 
 const selectCategories = createSelector([list], (list) =>
   list
@@ -32,7 +29,6 @@ const projectSelectors = {
   dropdownVisible,
   listLength,
   isLastItem,
-  selectedYear,
   selectCategories,
 };
 

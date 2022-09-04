@@ -50,7 +50,7 @@ const data: Data = {
           type: ShowcaseTypeEnum.website,
         },
       ],
-      year: '1960',
+      tags: [],
     },
     {
       category: 'Movies',
@@ -82,7 +82,7 @@ const data: Data = {
         },
       ],
       links: [],
-      year: '1960',
+      tags: [],
     },
     {
       category: 'Movies',
@@ -106,7 +106,7 @@ const data: Data = {
         },
       ],
       links: [],
-      year: '1960',
+      tags: [],
     },
   ],
 };
