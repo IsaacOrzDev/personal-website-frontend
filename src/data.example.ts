@@ -31,10 +31,10 @@ const data: Data = {
         light: '#3e334d',
       },
       title: 'Early Life',
-      description: [
-        'As he grows up, Bruce engages in intense intellectual and physical training. After returning to Gotham, Bruce realizes that these skills alone would not be enough.',
-        'He also travels abroad, training in various martial arts, fields of science, criminology and detective skills.',
-      ],
+      description: `
+        As he grows up, Bruce engages in intense intellectual and physical training. 
+        After returning to Gotham, Bruce realizes that these skills alone would not be enough. He also travels abroad, training in various martial arts, fields of science, criminology and detective skills.
+        `,
       type: ProjectTypeEnum.website,
       preview: [
         {
@@ -59,12 +59,12 @@ const data: Data = {
         light: '#3e334d',
       },
       title: 'Golden Age',
-      description: [
-        "In the early strips, Batman's career as a vigilante initially earns him the ire of the police.",
-        'He initially operates alone, using only street contacts and circumstantial allies in his investigations',
-        'Batman also comes into conflict with various criminals, including mad scientist Doctor Death, a vampire called the Monk, and criminal mastermind Professor Hugo Strange.',
-        'During this period Wayne was engaged to actress Julie Madison, though this is called off after several encounters with the serial killer Clayface.',
-      ],
+      description: `
+        In the early strips, Batman's career as a vigilante initially earns him the ire of the police...
+        He initially operates alone, using only street contacts and circumstantial allies in his investigations.
+        Batman also comes into conflict with various criminals, including mad scientist Doctor Death, a vampire called the Monk, and criminal mastermind Professor Hugo Strange.
+        During this period Wayne was engaged to actress Julie Madison, though this is called off after several encounters with the serial killer Clayface.
+      `,
       type: ProjectTypeEnum.website,
       preview: [
         {
@@ -91,11 +91,11 @@ const data: Data = {
         light: '#3e334d',
       },
       title: 'Silver & Bronze Ages',
-      description: [
-        "Batman meets and regularly works with other heroes during the Silver Age, most notably Superman, whom he began regularly working alongside in a series of team-ups in World's Finest Comics, starting in 1954 and continuing through the series' cancellation in 1986",
-        'Batman and Superman are usually depicted as close friends.',
-        'Batman becomes a founding member of the Justice League of America',
-      ],
+      description: `
+        Batman meets and regularly works with other heroes during the Silver Age, most notably Superman, whom he began regularly working alongside in a series of team-ups in World's Finest Comics, starting in 1954 and continuing through the series' cancellation in 1986.
+        Batman and Superman are usually depicted as close friends.
+        Batman becomes a founding member of the Justice League of America.
+      `,
       type: ProjectTypeEnum.website,
       preview: [
         {

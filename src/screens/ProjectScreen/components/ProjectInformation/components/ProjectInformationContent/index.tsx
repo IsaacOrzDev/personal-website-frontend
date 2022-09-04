@@ -48,15 +48,18 @@ const ProjectInformationContent: React.FC<Props> = (props) => {
           <Words text={props.item.title} visible={props.visible} mode="words" />
         </TitleText>
         <div className={styles.description}>
-          {props.item.description.map((x, i) => (
-            <ProjectDescription
-              key={i}
-              theme={props.theme}
-              fontSize={16}
-              visible={props.visible}
-              text={x}
-            />
-          ))}
+          {props.item.description
+            .split(/[.](?![.])/)
+            .filter((x) => !!x.trim())
+            .map((x, i) => (
+              <ProjectDescription
+                key={i}
+                theme={props.theme}
+                fontSize={16}
+                visible={props.visible}
+                text={`${x.trim()}.`}
+              />
+            ))}
         </div>
         <LinkButtonGroup
           theme={props.theme}
