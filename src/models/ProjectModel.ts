@@ -22,6 +22,10 @@ export default interface ProjectModel {
   description: string[];
   images: Array<{ urls: string[]; type: ShowcaseTypeEnum; path?: string }>;
   links: Array<{ url: string; type: ShowcaseTypeEnum; text?: string }>;
+  iframe?: {
+    url: string;
+    title: string;
+  };
   type: ProjectTypeEnum;
   palette: PaletteModel;
   year?: string;

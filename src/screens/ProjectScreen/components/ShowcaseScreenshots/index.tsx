@@ -15,19 +15,23 @@ interface Props extends ThemeProps {
   breakpoint?: string;
   isLooping?: boolean;
   list: Array<{ urls: string[]; type: ShowcaseTypeEnum }>;
+  iframe?: {
+    title: string;
+    url: string;
+  };
 }
 
-const ShowcaseScreenShots: React.FC<Props> = props => {
+const ShowcaseScreenShots: React.FC<Props> = (props) => {
   const { visible } = useSpring({
     visible: props.visible ? 1 : 0,
   });
 
-  const iPad = props.list.find(x => x.type === ShowcaseTypeEnum.ipad);
-  const iPhone = props.list.find(x => x.type === ShowcaseTypeEnum.ios);
-  const android = props.list.find(x => x.type === ShowcaseTypeEnum.android);
-  const website = props.list.find(x => x.type === ShowcaseTypeEnum.website);
+  const iPad = props.list.find((x) => x.type === ShowcaseTypeEnum.ipad);
+  const iPhone = props.list.find((x) => x.type === ShowcaseTypeEnum.ios);
+  const android = props.list.find((x) => x.type === ShowcaseTypeEnum.android);
+  const website = props.list.find((x) => x.type === ShowcaseTypeEnum.website);
   const responsiveWebsite = props.list.find(
-    x => x.type === ShowcaseTypeEnum.responsiveWebsite
+    (x) => x.type === ShowcaseTypeEnum.responsiveWebsite
   );
 
   const isSm = BreakpointService.isSm(props.breakpoint!);
@@ -44,7 +48,7 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
             opacity: visible,
             transform: visible
               .interpolate({ range: [0, 1], output: [-80, 0] })
-              .interpolate(v => `translateX(${v}px)`),
+              .interpolate((v) => `translateX(${v}px)`),
           }}
         >
           <IPadFrame
@@ -72,8 +76,8 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
           style={{
             opacity: visible,
             transform: visible
-              .interpolate({ range: [0, 1], output: [-80, 0] })
-              .interpolate(v => `translateY(${v}px)`),
+              .to({ range: [0, 1], output: [-80, 0] })
+              .to((v) => `translateY(${v}px)`),
           }}
         >
           <AndroidFrame
@@ -90,8 +94,8 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
           style={{
             opacity: visible,
             transform: visible
-              .interpolate({ range: [0, 1], output: [80, 0] })
-              .interpolate(v => `translateY(${v}px)`),
+              .to({ range: [0, 1], output: [80, 0] })
+              .to((v) => `translateY(${v}px)`),
           }}
         >
           <AndroidFrame
@@ -120,7 +124,7 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
             opacity: visible,
             transform: visible
               .interpolate({ range: [0, 1], output: [-80, 0] })
-              .interpolate(v => `translateY(${v}px)`),
+              .interpolate((v) => `translateY(${v}px)`),
           }}
         >
           <IPhoneXFrame
@@ -136,8 +140,8 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
           style={{
             opacity: visible,
             transform: visible
-              .interpolate({ range: [0, 1], output: [80, 0] })
-              .interpolate(v => `translateY(${v}px)`),
+              .to({ range: [0, 1], output: [80, 0] })
+              .to((v) => `translateY(${v}px)`),
           }}
         >
           <AndroidFrame
@@ -162,7 +166,7 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
         <animated.div
           style={{
             opacity: visible,
-            transform: visible.interpolate(v => `scale(${v})`),
+            transform: visible.interpolate((v) => `scale(${v})`),
           }}
         >
           <BrowserFrame
@@ -171,6 +175,7 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
             imgVisible={props.imgVisible}
             breakpoint={props.breakpoint}
             isLooping={props.isLooping}
+            iframe={props.iframe}
           />
         </animated.div>
         {!!responsiveWebsite && (
@@ -178,7 +183,7 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
             <animated.div
               style={{
                 opacity: visible,
-                transform: visible.interpolate(v => `scale(${v})`),
+                transform: visible.interpolate((v) => `scale(${v})`),
               }}
             >
               <BrowserFrame
@@ -188,6 +193,7 @@ const ShowcaseScreenShots: React.FC<Props> = props => {
                 imgVisible={props.imgVisible}
                 breakpoint={props.breakpoint}
                 isLooping={props.isLooping}
+                iframe={props.iframe}
               />
             </animated.div>
           </div>

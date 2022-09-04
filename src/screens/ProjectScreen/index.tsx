@@ -123,6 +123,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
                   list={item.images}
                   breakpoint={props.breakpoint}
                   isLooping={!props.isHidden && !props.isResponsive}
+                  iframe={selectedProject?.iframe}
                 />
               </div>
             </div>
