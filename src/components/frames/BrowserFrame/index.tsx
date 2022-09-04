@@ -118,7 +118,6 @@ const BrowserFrame: React.FC<Props> = (props) => {
             src={props.iframe.url}
             width={contentWidth * 2}
             height={contentHeight * 2}
-            onError={(e) => console.log(e)}
           />
         </div>
       )}

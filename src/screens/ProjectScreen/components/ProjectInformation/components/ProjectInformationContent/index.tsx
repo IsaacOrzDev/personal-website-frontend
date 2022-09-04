@@ -18,7 +18,7 @@ interface Props extends ThemeProps {
   isLooping?: boolean;
 }
 
-const ProjectInformationContent: React.FC<Props> = props => {
+const ProjectInformationContent: React.FC<Props> = (props) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const ProjectInformationContent: React.FC<Props> = props => {
         theme={props.theme}
         visible={visible}
         imgVisible={props.visible}
-        list={props.item.images}
+        list={props.item.preview}
         breakpoint={props.breakpoint}
         isLooping={props.isFocused && props.isLooping}
       />

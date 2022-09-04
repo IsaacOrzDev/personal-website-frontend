@@ -65,10 +65,10 @@ const ProjectScreen: React.FC<Props> = (props) => {
   useEffect(() => {
     if (currentIndex !== props.index) {
       GaService.pageView(`${pages.projects}/${props.list[props.index].title}`);
-      const currentImages = props.list[currentIndex].images
+      const currentImages = props.list[currentIndex].preview
         .map((x) => x.type)
         .join('');
-      const nextImages = props.list[props.index].images
+      const nextImages = props.list[props.index].preview
         .map((x) => x.type)
         .join('');
       const isDifferentShowcase = currentImages !== nextImages;
@@ -120,10 +120,9 @@ const ProjectScreen: React.FC<Props> = (props) => {
                   theme={props.theme}
                   visible={visibles[1] && frameVisible && !props.isResponsive}
                   imgVisible={visibles[2] && contentVisible}
-                  list={item.images}
+                  list={item.preview}
                   breakpoint={props.breakpoint}
                   isLooping={!props.isHidden && !props.isResponsive}
-                  iframe={selectedProject?.iframe}
                 />
               </div>
             </div>

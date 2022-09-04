@@ -45,6 +45,22 @@ $width: 240px;
     @include transition(border-color);
   }
 
+  .iframe_wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    
+  }
+  
+  .iframe {
+    border: 0;
+    position: absolute;
+    transform: scale(0.5) translate(0%, 0%);
+    top: -50%;
+    left: -50%;
+  }
+
   .home {
     width: 16px;
     height: 16px;

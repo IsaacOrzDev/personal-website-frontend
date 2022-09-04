@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from './style.module.scss';
 import { ThemeProps } from 'types/Props';
 import ImageViewer from 'components/images/ImageViewer';
 import BreakpointService from 'services/breakpointService';
+import { useRect } from '@reach/rect';
 
 interface Props extends ThemeProps {
   src: string[];
@@ -10,6 +11,10 @@ interface Props extends ThemeProps {
   breakpoint?: string;
   isLooping?: boolean;
   duration?: number;
+  iframe?: {
+    title: string;
+    url: string;
+  };
 }
 
 const maxWidth = 240;
@@ -51,6 +56,9 @@ const IPhoneXFrame: React.FC<Props> = (props) => {
   const height = width * 2.165;
   const barWidth = width * 0.5;
 
+  const contentRef = useRef(null);
+  const contentRect = useRect(contentRef, { observe: !!props.iframe });
+
   return (
     <div
       className={`${styles.container} ${styles[props.theme]}`}
@@ -67,7 +75,18 @@ const IPhoneXFrame: React.FC<Props> = (props) => {
         {/* <div className={styles.microphone} />
         <div className={styles.camera} /> */}
       </div>
-      {props.imgVisible && (
+      {props.imgVisible && !!props.iframe && (
+        <div className={styles.iframe_wrapper} ref={contentRef}>
+          <iframe
+            className={styles.iframe}
+            title={props.iframe.title}
+            src={props.iframe.url}
+            width={(contentRect?.width ?? 0) * 2}
+            height={(contentRect?.height ?? 0) * 2}
+          />
+        </div>
+      )}
+      {props.imgVisible && !props.iframe && (
         <ImageViewer
           resizeMode="cover"
           src={props.src}

@@ -6,7 +6,7 @@ import IPhoneXFrame from 'components/frames/IPhoneXFrame';
 import AndroidFrame from 'components/frames/AndroidFrame';
 import IPadFrame from 'components/frames/IPadFrame';
 import BrowserFrame from 'components/frames/BrowserFrame';
-import { ShowcaseTypeEnum } from 'models/ProjectModel';
+import ProjectModel, { ShowcaseTypeEnum } from 'models/ProjectModel';
 import BreakpointService from 'services/breakpointService';
 
 interface Props extends ThemeProps {
@@ -14,11 +14,7 @@ interface Props extends ThemeProps {
   imgVisible?: boolean;
   breakpoint?: string;
   isLooping?: boolean;
-  list: Array<{ urls: string[]; type: ShowcaseTypeEnum }>;
-  iframe?: {
-    title: string;
-    url: string;
-  };
+  list: ProjectModel['preview'];
 }
 
 const ShowcaseScreenShots: React.FC<Props> = (props) => {
@@ -53,7 +49,8 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
         >
           <IPadFrame
             theme={props.theme}
-            src={iPad.urls}
+            src={iPad.imageUrls}
+            iframe={iPad.iframe}
             imgVisible={props.imgVisible}
             breakpoint={props.breakpoint}
             isLooping={props.isLooping}
@@ -82,11 +79,12 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
         >
           <AndroidFrame
             theme={props.theme}
-            src={android.urls}
+            src={android.imageUrls}
             imgVisible={props.imgVisible}
             breakpoint={props.breakpoint}
             isLooping={props.isLooping}
             isFullScreen
+            iframe={android.iframe}
           />
         </animated.div>
         <animated.div
@@ -100,11 +98,12 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
         >
           <AndroidFrame
             theme={props.theme}
-            src={android.urls}
+            src={android.imageUrls}
             imgVisible={props.imgVisible}
             breakpoint={props.breakpoint}
             isLooping={props.isLooping}
             isFullScreen
+            iframe={android.iframe}
           />
         </animated.div>
       </div>
@@ -129,10 +128,11 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
         >
           <IPhoneXFrame
             theme={props.theme}
-            src={iPhone.urls}
+            src={iPhone.imageUrls}
             imgVisible={props.imgVisible}
             breakpoint={props.breakpoint}
             isLooping={props.isLooping}
+            iframe={android.iframe}
           />
         </animated.div>
         <animated.div
@@ -146,10 +146,11 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
         >
           <AndroidFrame
             theme={props.theme}
-            src={android.urls}
+            src={android.imageUrls}
             imgVisible={props.imgVisible}
             breakpoint={props.breakpoint}
             isLooping={props.isLooping}
+            iframe={android.iframe}
           />
         </animated.div>
       </div>
@@ -171,11 +172,11 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
         >
           <BrowserFrame
             theme={props.theme}
-            src={website.urls}
+            src={website.imageUrls}
             imgVisible={props.imgVisible}
             breakpoint={props.breakpoint}
             isLooping={props.isLooping}
-            iframe={props.iframe}
+            iframe={website.iframe}
           />
         </animated.div>
         {!!responsiveWebsite && (
@@ -189,11 +190,11 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
               <BrowserFrame
                 theme={props.theme}
                 responsive
-                src={responsiveWebsite.urls}
+                src={responsiveWebsite.imageUrls}
                 imgVisible={props.imgVisible}
                 breakpoint={props.breakpoint}
                 isLooping={props.isLooping}
-                iframe={props.iframe}
+                iframe={responsiveWebsite.iframe}
               />
             </animated.div>
           </div>

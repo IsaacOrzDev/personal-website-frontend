@@ -36,9 +36,9 @@ const data: Data = {
         'He also travels abroad, training in various martial arts, fields of science, criminology and detective skills.',
       ],
       type: ProjectTypeEnum.website,
-      images: [
+      preview: [
         {
-          urls: [
+          imageUrls: [
             'https://images.unsplash.com/photo-1624371960524-ade99abadb34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3212&q=80',
           ],
           type: ShowcaseTypeEnum.website,
@@ -66,15 +66,16 @@ const data: Data = {
         'During this period Wayne was engaged to actress Julie Madison, though this is called off after several encounters with the serial killer Clayface.',
       ],
       type: ProjectTypeEnum.website,
-      images: [
+      preview: [
         {
-          urls: [
+          imageUrls: [
             'https://images.unsplash.com/photo-1608433034711-ef6974daf968?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80',
           ],
           type: ShowcaseTypeEnum.ios,
         },
+
         {
-          urls: [
+          imageUrls: [
             'https://images.unsplash.com/photo-1608433034711-ef6974daf968?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80',
           ],
           type: ShowcaseTypeEnum.android,
@@ -96,9 +97,9 @@ const data: Data = {
         'Batman becomes a founding member of the Justice League of America',
       ],
       type: ProjectTypeEnum.website,
-      images: [
+      preview: [
         {
-          urls: [
+          imageUrls: [
             'https://images.unsplash.com/photo-1636628575750-d1631948f596?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80',
           ],
           type: ShowcaseTypeEnum.ipad,
