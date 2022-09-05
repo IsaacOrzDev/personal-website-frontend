@@ -12,6 +12,7 @@
   padding: 8px;
   border-radius: 2px;
   border-bottom: 1px solid;
+  text-transform: lowercase;
   
   &.dark {
     background-color: $color-dark-line;

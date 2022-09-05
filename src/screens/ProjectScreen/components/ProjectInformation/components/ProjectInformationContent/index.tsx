@@ -45,6 +45,7 @@ const ProjectInformationContent: React.FC<Props> = (props) => {
       />
       <div className={styles.text_area}>
         <TitleText
+          className={styles.title}
           theme={props.theme}
           fontSize={32}
           color={props.item.palette[props.theme]}
@@ -54,7 +55,7 @@ const ProjectInformationContent: React.FC<Props> = (props) => {
         </TitleText>
         <div className={styles.description}>
           {props.item.description
-            .split(/[.](?![.])/)
+            .split(/[.](?!.)/)
             .filter((x) => !!x.trim())
             .map((x, i) => (
               <ProjectDescription
