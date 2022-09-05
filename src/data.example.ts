@@ -37,8 +37,8 @@ const data: Data = {
       },
       title: 'Early Life',
       description: `
-        As he grows up, Bruce engages in intense intellectual and physical training. 
-        After returning to Gotham, Bruce realizes that these skills alone would not be enough. 
+        As he grows up, Bruce engages in intense intellectual and physical training.
+        After returning to Gotham, Bruce realizes that these skills alone would not be enough.
         He also travels abroad, training in various martial arts, fields of science, criminology and detective skills.
       `,
       type: ProjectTypeEnum.website,
