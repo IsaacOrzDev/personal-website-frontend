@@ -22,13 +22,18 @@
 }
 
 .container.dark .bg {
-  background-color: rgba($color-dark-line, 0.2);
+  // background-color: rgba($color-dark-line, 0.1);
+  border: 2px solid rgba($color-dark-line, 0.1);
 }
 
 .container.light .bg {
   background-color: rgba($color-light-line, 0.4);
 }
 
-.img {
+.container.dark .img {
+  opacity: 0.6;
+}
+
+.container.light .img {
   opacity: 0.8;
 }

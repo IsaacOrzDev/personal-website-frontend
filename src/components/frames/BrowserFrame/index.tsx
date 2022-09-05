@@ -122,7 +122,7 @@ const BrowserFrame: React.FC<Props> = (props) => {
         </div>
       )}
 
-      {!props.iframe && (
+      {props.imgVisible && !props.iframe && (
         <ImageViewer
           resizeMode="cover"
           src={props.src}
