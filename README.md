@@ -21,9 +21,7 @@ An open source frontend project to build personal website.
 
 ### - Install dependencies and start the project locally
 
-`npm install`
-
-`npm start`
+`yarn && yarn start`
 
 ### - Modify .env and src/data.ts files and put the content you like
 
