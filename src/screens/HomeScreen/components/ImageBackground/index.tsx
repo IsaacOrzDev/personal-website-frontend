@@ -13,7 +13,7 @@ interface Props extends ThemeProps {
   isLooping?: boolean;
 }
 
-const ImageBackground: React.FC<Props> = props => {
+const ImageBackground: React.FC<Props> = (props) => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [index, setIndex] = useState(0);
@@ -34,7 +34,7 @@ const ImageBackground: React.FC<Props> = props => {
 
   useInterval(
     () => {
-      setIndex(i => {
+      setIndex((i) => {
         return (i + 1) % props.urls.length;
       });
     },

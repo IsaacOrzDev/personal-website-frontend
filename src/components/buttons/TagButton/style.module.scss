@@ -9,14 +9,14 @@
   cursor: default;
   font-size: 12px;
   font-weight: 600;
+  padding: 8px;
+  border-radius: 2px;
+  border-bottom: 1px solid;
   
   &.dark {
     background-color: $color-dark-line;
     
     color: $color-dark-background;
-    padding: 8px;
-    border-radius: 2px;
-    border-bottom: 1px solid;
   }
 
   &.light {
