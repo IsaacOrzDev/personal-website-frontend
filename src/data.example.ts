@@ -56,7 +56,7 @@ const data: Data = {
         {
           url: 'https://batman.fandom.com/wiki/Batman',
           type: ShowcaseTypeEnum.website,
-          text: 'Vist Wiki',
+          text: 'Visit Wiki',
         },
       ],
       tags: ['childhood'],
