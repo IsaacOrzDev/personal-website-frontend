@@ -1,8 +1,14 @@
 # Personal Website Frontend
 
+<!-- <p>
+<a href="https://github.com/IsaacOrzDev/personal-website-frontend-2020/pulls"><img alt="GitHub Pull Requests" src="https://img.shields.io/github/issues-pr-raw/IsaacOrzDev/personal-website-frontend-2020.svg"></a>
+</p> -->
+
 An open source frontend project to build personal website.
 
 ## Preview
+
+[Live Demo](https://personal-website-frontend-2020.vercel.app/)
 
 ![Home Page](public/images/screenshots/02.png?raw=true 'React Reduction')
 
