@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import styles from './style.module.scss';
 import { ThemeProps } from 'types/Props';
 import ProjectModel from 'models/ProjectModel';
@@ -27,6 +27,8 @@ const ResponsiveProjectScreen: React.FC<Props> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // const palette = useMemo(() => props.list[props.index].palette, []);
+
   useEffect(() => {
     forceCheck();
   }, []);
@@ -54,6 +56,7 @@ const ResponsiveProjectScreen: React.FC<Props> = (props) => {
         theme={props.theme}
         yBottom={props.windowOffsetBottom}
         visible={props.visible && !props.shouldShowMenu}
+        // color={palette[props.theme]}
       />
     </div>
   );

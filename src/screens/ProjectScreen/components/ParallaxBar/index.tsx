@@ -6,11 +6,13 @@ import { ThemeProps } from 'types/Props';
 interface Props extends ThemeProps {
   yBottom: number;
   visible?: boolean;
+  color?: string;
 }
 
-const ParallaxBar: React.FC<Props> = props => {
-  const { visible } = useSpring({
+const ParallaxBar: React.FC<Props> = (props) => {
+  const { visible, backgroundColor } = useSpring({
     visible: props.visible ? 1 : 0,
+    backgroundColor: props.color ?? '',
   });
 
   const [spring, setSpring] = useSpring(() => ({ value: 0 }));
@@ -31,7 +33,8 @@ const ParallaxBar: React.FC<Props> = props => {
       <animated.div
         className={styles.progress}
         style={{
-          height: spring.value.interpolate(v => `${v * 100}vh`),
+          height: spring.value.interpolate((v) => `${v * 100}vh`),
+          // backgroundColor,
         }}
       />
     </animated.div>
