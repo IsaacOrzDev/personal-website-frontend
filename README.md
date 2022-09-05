@@ -10,7 +10,7 @@ An open source frontend project to build personal website.
 
 [Live Demo](https://personal-website-frontend-2020.vercel.app/)
 
-![Home Page](public/images/screenshots/02.png?raw=true 'React Reduction')
+![Home Page](public-example/images/screenshots/02.png?raw=true 'React Reduction')
 
 <!-- ![Home Page](public/images/screenshots/03.png?raw=true 'React Reduction') -->
 

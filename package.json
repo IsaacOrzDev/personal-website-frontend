@@ -39,7 +39,7 @@
     "serve": "npm run build && npx serve -s build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "paste": "cp ./.env.example ./.env && cp ./src/data.example.ts ./src/data.ts",
+    "paste": "cp ./.env.example ./.env && cp ./src/data.example.ts ./src/data.ts && cp -R public-example public",
     "prepare": "npm run paste"
   },
   "eslintConfig": {
