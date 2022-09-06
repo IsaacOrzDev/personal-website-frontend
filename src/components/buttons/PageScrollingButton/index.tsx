@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './style.module.scss';
 import LinkButton from '../LinkButton';
 import { ThemeProps } from 'types/Props';
+import browserService from 'services/browserService';
 
 interface Props extends ThemeProps {
   isResponsive?: boolean;
@@ -16,7 +17,7 @@ interface Props extends ThemeProps {
 
 const PageScrollingButton: React.FC<Props> = (props) => {
   let className = `${styles[props.type!]}`;
-  if (props.isResponsive) {
+  if (props.isResponsive || browserService.isIos()) {
     className += ` ${styles.responsive}`;
   }
   return (

@@ -81,6 +81,7 @@ const HomeScreen: React.FC<Props> = (props) => {
         textVisible={visibles[0]}
         color={props.palette ? props.palette[props.theme] : ''}
         gradientColor={props.palette?.gradient}
+        isResponsive={props.isResponsive}
         onClick={props.onGoToNextSection}
       />
     </PageSection>
