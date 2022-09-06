@@ -47,8 +47,9 @@ const ResponsiveProjectScreen: React.FC<Props> = (props) => {
           breakpoint={props.breakpoint}
           windowOffsetTop={props.windowOffsetTop}
           windowOffsetBottom={props.windowOffsetBottom}
+          // FIXME The props.index should be updated when the project component is showing up on screen
           isFocused={props.index === i}
-          isLooping={!props.isHidden && props.isResponsive}
+          isLooping={false}
           onFocus={_setCurrentIndex}
         />
       ))}

@@ -8,6 +8,7 @@ import ProjectModel from 'models/ProjectModel';
 import ShowcaseScreenShots from '../../../ShowcaseScreenshots';
 import LinkButtonGroup from '../../../LinkButtonGroup';
 import ProjectDescription from '../../../ProjectDescription';
+import TagButton from 'components/buttons/TagButton';
 
 interface Props extends ThemeProps {
   index: number;
@@ -53,6 +54,13 @@ const ProjectInformationContent: React.FC<Props> = (props) => {
         >
           <Words text={props.item.title} visible={props.visible} mode="words" />
         </TitleText>
+        <div className={styles.tag_group}>
+          {props.item.tags.map((tag) => (
+            <TagButton key={tag} visible={visible} theme={props.theme}>
+              {tag}
+            </TagButton>
+          ))}
+        </div>
         <div className={styles.description}>
           {props.item.description
             .split(/[.](?!.)/)
