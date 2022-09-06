@@ -63,7 +63,7 @@ const ProjectInformationContent: React.FC<Props> = (props) => {
         </div>
         <div className={styles.description}>
           {props.item.description
-            .split(/[.](?!.)/)
+            .split(/[.](?=\s)/)
             .filter((x) => !!x.trim())
             .map((x, i) => (
               <ProjectDescription

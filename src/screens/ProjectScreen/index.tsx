@@ -177,7 +177,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
             </div>
             <div className={styles.description}>
               {item.description
-                .split(/[.](?!.)/)
+                .split(/[.](?=\s)/)
                 .filter((x) => !!x.trim())
                 .map((x, i) => (
                   <ProjectDescription

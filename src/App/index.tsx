@@ -1,6 +1,11 @@
 import React, { useEffect, useCallback, Suspense, useMemo } from 'react';
 import withProviders from './withProviders';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  HashRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router-dom';
 import routes from 'config/routes';
 import { useSelector, useDispatch } from 'react-redux';
 import globalSelectors from 'store/global/selectors';
@@ -72,7 +77,7 @@ const App: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!global.shouldShowContent && !global.shouldShowContent) {
+  if (!global.shouldShowContent) {
     return (
       <LoadingScreen
         theme={global.theme}
@@ -94,6 +99,7 @@ const App: React.FC = () => {
               element={<Home palette={palette} category={category} />}
             />
             <Route path={routes.projects} element={<Works />} />
+            <Route path="*" element={<Navigate to={routes.home} replace />} />
           </Routes>
         </Suspense>
         <MessageModalContainer />
