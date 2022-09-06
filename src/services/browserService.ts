@@ -52,6 +52,21 @@ const isMobile = () => {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 };
 
+const isIos = () => {
+  return (
+    [
+      'iPad Simulator',
+      'iPhone Simulator',
+      'iPod Simulator',
+      'iPad',
+      'iPhone',
+      'iPod',
+    ].includes(navigator.platform) ||
+    // iPad on iOS 13 detection
+    (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+  );
+};
+
 const browserService = {
   isChrome,
   isFirefox,
@@ -62,6 +77,7 @@ const browserService = {
   isIE,
   isOpera,
   isMobile,
+  isIos,
 };
 
 export default browserService;
