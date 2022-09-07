@@ -7,7 +7,6 @@ import Words from 'components/text/Words';
 // import AndroidIcon from 'components/icons/AndroidIcon';
 import { ShowcaseTypeEnum } from 'models/ProjectModel';
 import { useHover } from 'react-use-gesture';
-import AppleIcon from 'components/icons/AppleIcon';
 
 interface Props extends ThemeProps {
   type?: string;

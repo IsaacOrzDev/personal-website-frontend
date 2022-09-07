@@ -16,6 +16,8 @@ src/data.ts
 
 /public
 
+src/data.json
+
 # misc
 .DS_Store
 

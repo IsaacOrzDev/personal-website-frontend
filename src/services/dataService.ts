@@ -2,7 +2,8 @@ import { ThunkAction } from '@reduxjs/toolkit';
 import { projectActions } from 'store/project';
 import { globalActions } from 'store/global';
 import TimeService from 'services/timeService';
-import data from 'data';
+import data from 'data.json';
+import ProjectModel from 'models/ProjectModel';
 
 const fetchAllData = (): ThunkAction<void, any, any, any> => {
   return async (dispatch) => {
@@ -13,7 +14,9 @@ const fetchAllData = (): ThunkAction<void, any, any, any> => {
     dispatch(globalActions.setHomeImages(data.home.images));
     dispatch(globalActions.setMessageContent(data.home.message));
     dispatch(projectActions.setYears([]));
-    dispatch(projectActions.setList([...data.projects]));
+    dispatch(
+      projectActions.setList([...(data.projects as Array<ProjectModel>)])
+    );
     await TimeService.timeout(1500);
     dispatch(globalActions.setDataLoaded(true));
   };
