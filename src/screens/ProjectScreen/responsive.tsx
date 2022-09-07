@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styles from './style.module.scss';
 import { ThemeProps } from 'types/Props';
 import ProjectModel from 'models/ProjectModel';

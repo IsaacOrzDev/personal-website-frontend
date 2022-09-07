@@ -10,7 +10,7 @@ interface Props extends ThemeProps {
 }
 
 const ParallaxBar: React.FC<Props> = (props) => {
-  const { visible, backgroundColor } = useSpring({
+  const { visible } = useSpring({
     visible: props.visible ? 1 : 0,
     backgroundColor: props.color ?? '',
   });

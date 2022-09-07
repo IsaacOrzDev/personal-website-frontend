@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { ThemeProps } from 'types/Props';
-import PageSection from 'components/layout/PageSection';
 import ProjectModel from 'models/ProjectModel';
 import useMeasure from 'hooks/useMeasure';
 import LazyLoad from 'react-lazyload';
