@@ -2,21 +2,28 @@ import { ThunkAction } from '@reduxjs/toolkit';
 import { projectActions } from 'store/project';
 import { globalActions } from 'store/global';
 import TimeService from 'services/timeService';
-import data from 'data.json';
-import ProjectModel from 'models/ProjectModel';
+import dataJson from 'data.json';
 
 const fetchAllData = (): ThunkAction<void, any, any, any> => {
   return async (dispatch) => {
-    // TODO: you can fetch data from api or...
+    let data = null;
     await TimeService.timeout(1000);
+    if (!!process.env.REACT_APP_API_URL) {
+      try {
+        data = await (await fetch(process.env.REACT_APP_API_URL)).json();
+      } catch (err) {
+        console.log('fetching data error', err);
+      }
+    } else {
+      data = dataJson;
+    }
+
     dispatch(globalActions.setName(data.home.name));
     dispatch(globalActions.setTitle(data.home.title));
     dispatch(globalActions.setHomeImages(data.home.images));
     dispatch(globalActions.setMessageContent(data.home.message));
     dispatch(projectActions.setYears([]));
-    dispatch(
-      projectActions.setList([...(data.projects as Array<ProjectModel>)])
-    );
+    dispatch(projectActions.setList([...data.projects]));
     await TimeService.timeout(1500);
     dispatch(globalActions.setDataLoaded(true));
   };
