@@ -38,6 +38,7 @@ PORT=3001
 
 REACT_APP_GA_KEY=""
 
+REACT_APP_API_URL=
 REACT_APP_ENABLE_LIGHT_MODE=false
 REACT_APP_GITHUB_URL="https://github.com/exmaple"
 REACT_APP_LOADING_TEXT="EXAMPLE"
@@ -83,4 +84,10 @@ projects:
     tags:
       - Tag1
       - Tag2
+```
+
+#### If you want to get data from API instead of data.yml file, please update .env file as:
+
+```
+REACT_APP_API_URL=http://localhost:3000/
 ```
