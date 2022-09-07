@@ -40,7 +40,7 @@
     "serve": "npm run build && npx serve -s build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "paste": "cp ./.env.example ./.env && cp -R public-example public",
+    "paste": "cp ./.env.example ./.env && cp ./data.example.yml ./data.yml && cp -R public-example public",
     "prepare": "npm run paste && npm run yaml-convert",
     "yaml-convert": "node scripts/yamlConvert.js"
   },
