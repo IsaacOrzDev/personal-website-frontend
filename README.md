@@ -29,7 +29,7 @@ An open source frontend project to build personal website.
 
 `yarn && yarn start`
 
-### - Modify .env and src/data.ts files and put the content you like
+### - Modify .env and data.yml files and put the content you like
 
 #### Data structure of .env file:
 
@@ -50,40 +50,37 @@ REACT_APP_META_URL="https://personal.example.com/"
 REACT_APP_META_IMAGE="https://personal.example.com/favicon.png"
 ```
 
-#### Data structure of src/data.ts file:
+#### Data structure of data.yml file:
 
 ```
-interface DataStructure {
-  home: {
-    name: string;
-    title: string;
-    images: Array<string>;
-    message: string;
-  };
-  projects: Array<{
-    title: string;
-    description: string;
-    preview: Array<{
-      imageUrls: Array<string>;
-      iframe?: {
-        url: string;
-        title: string;
-      };
-      type: 'ios' | 'android' | 'ipad' | 'website' | 'responsiveWebsite';
-    }>;
-    links: Array<{
-      url: string;
-      type: 'ios' | 'android' | 'website';
-      text?: string;
-    }>;
-    type: 'W' | 'M';
-    palette: {
-      dark: string;
-      light: string;
-      gradient?: string;
-    };
-    tags: Array<string>;
-    category: string;
-  }>;
-}
+home:
+  name: Name
+  title: Title
+  images:
+    - https://images.unsplash.com/photo-1531259683007-016a7b628fc3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80
+    - https://images.unsplash.com/photo-1636628575750-d1631948f596?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80
+  message: This is message
+projects:
+  -
+    category: Category
+    palette:
+        dark: '#f3f245'
+        light: '#3e334d'
+    title: Title
+    description: >
+      This is description
+    type: W
+    preview:
+      -
+        imageUrls:
+          - https://images.unsplash.com/photo-1624371960524-ade99abadb34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3212&q=80
+        type: website
+    links:
+      -
+        url: https://example.com/
+        type: website
+        text: Visit Website
+    tags:
+      - Tag1
+      - Tag2
 ```
