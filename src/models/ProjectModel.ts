@@ -1,8 +1,3 @@
-export enum ProjectTypeEnum {
-  website = 'W',
-  mobile = 'M',
-}
-
 export enum ShowcaseTypeEnum {
   ios = 'ios',
   android = 'android',
@@ -29,7 +24,6 @@ export default interface ProjectModel {
     type: ShowcaseTypeEnum;
   }>;
   links: Array<{ url: string; type: ShowcaseTypeEnum; text?: string }>;
-  type: ProjectTypeEnum;
   palette: PaletteModel;
   tags: Array<string>;
   category: string;
