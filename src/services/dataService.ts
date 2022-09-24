@@ -7,7 +7,7 @@ import dataJson from 'data.json';
 const fetchAllData = (): ThunkAction<void, any, any, any> => {
   return async (dispatch) => {
     let data = null;
-    await TimeService.timeout(1000);
+
     if (!!process.env.REACT_APP_API_URL) {
       try {
         data = await (await fetch(process.env.REACT_APP_API_URL)).json();
@@ -15,6 +15,7 @@ const fetchAllData = (): ThunkAction<void, any, any, any> => {
         console.log('fetching data error', err);
       }
     } else {
+      await TimeService.timeout(1000);
       data = dataJson;
     }
 
