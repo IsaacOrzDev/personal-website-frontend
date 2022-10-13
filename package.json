@@ -42,7 +42,10 @@
     "eject": "react-scripts eject",
     "paste": "cp ./.env.example ./.env && cp ./data.example.yml ./data.yml && cp -R public-example public",
     "prepare": "npm run paste && npm run yaml-convert",
-    "yaml-convert": "node scripts/yamlConvert.js"
+    "yaml-convert": "node scripts/yamlConvert.js",
+    "aws:upload": "aws s3 sync build/ s3://$(grep AWS_S3_BUCKET_NAME .env | cut -d '=' -f2)",
+    "aws:clearCache": "aws cloudfront create-invalidation --distribution-id=$(grep AWS_CLOUDFRONT_DISTRIBUTION_ID .env | cut -d '=' -f2) --paths /",
+    "aws:deploy": "npm run aws:upload && npm run aws:clearCache"
   },
   "eslintConfig": {
     "extends": [
