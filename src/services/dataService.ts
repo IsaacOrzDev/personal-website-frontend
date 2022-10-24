@@ -25,7 +25,7 @@ const fetchAllData = (): ThunkAction<void, any, any, any> => {
     dispatch(globalActions.setMessageContent(data.home.message));
     dispatch(projectActions.setYears([]));
     dispatch(projectActions.setList([...data.projects]));
-    await TimeService.timeout(1500);
+    await TimeService.timeout(1000);
     dispatch(globalActions.setDataLoaded(true));
   };
 };
