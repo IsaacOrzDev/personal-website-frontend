@@ -5,6 +5,7 @@ import styles from './style.module.scss';
 
 interface Props extends ThemeProps {
   visible?: boolean;
+  url?: string;
   children: React.ReactNode;
 }
 
@@ -15,11 +16,16 @@ export default function TagButton(props: Props) {
 
   return (
     <animated.button
-      className={`${styles.tag} ${styles[props.theme]}`}
+      className={`${styles.tag} ${styles[props.theme]} ${
+        props.url ? styles.link : ''
+      }`}
       style={{
         opacity: visible,
       }}
-      disabled
+      disabled={!props.url}
+      onClick={() => {
+        window.open(props.url, '_blank');
+      }}
     >
       {props.children}
     </animated.button>

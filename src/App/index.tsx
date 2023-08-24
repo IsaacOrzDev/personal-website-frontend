@@ -6,6 +6,8 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import routes from 'config/routes';
 import { useSelector, useDispatch } from 'react-redux';
 import globalSelectors from 'store/global/selectors';
@@ -23,6 +25,8 @@ import useResize from 'hooks/useResize';
 
 const Home = React.lazy(() => import('./routing/Home'));
 const Works = React.lazy(() => import('./routing/Works'));
+
+const queryClient = new QueryClient();
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -90,22 +94,25 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Router>
-        <HeaderContainer category={category} />
-        <Suspense fallback={null}>
-          <Routes>
-            <Route
-              path={routes.home}
-              element={<Home palette={palette} category={category} />}
-            />
-            <Route path={routes.projects} element={<Works />} />
-            <Route path="*" element={<Navigate to={routes.home} replace />} />
-          </Routes>
-        </Suspense>
-        <MessageModalContainer />
-        <MenuModalContainer />
-      </Router>
-      <GridBackground theme={global.theme} />
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <HeaderContainer category={category} />
+          <Suspense fallback={null}>
+            <Routes>
+              <Route
+                path={routes.home}
+                element={<Home palette={palette} category={category} />}
+              />
+              <Route path={routes.projects} element={<Works />} />
+              <Route path="*" element={<Navigate to={routes.home} replace />} />
+            </Routes>
+          </Suspense>
+          <MessageModalContainer />
+          <MenuModalContainer />
+        </Router>
+        <GridBackground theme={global.theme} />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </>
   );
 };

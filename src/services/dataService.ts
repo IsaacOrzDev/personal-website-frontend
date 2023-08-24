@@ -30,8 +30,27 @@ const fetchAllData = (): ThunkAction<void, any, any, any> => {
   };
 };
 
+const fetchTags = async () => {
+  let data = [];
+
+  if (!!process.env.REACT_APP_API_URL) {
+    try {
+      data = await (
+        await fetch(`${process.env.REACT_APP_API_URL}/tags`)
+      ).json();
+    } catch (err) {
+      console.log('fetching data error', err);
+    }
+  } else {
+    await TimeService.timeout(1000);
+  }
+
+  return data;
+};
+
 const dataService = {
   fetchAllData,
+  fetchTags,
 };
 
 export default dataService;

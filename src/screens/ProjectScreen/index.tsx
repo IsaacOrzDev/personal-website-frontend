@@ -17,6 +17,8 @@ import pages from 'config/pages';
 import useVisibles from 'hooks/useVisibles';
 import GaService from 'services/gaService';
 import TagButton from 'components/buttons/TagButton';
+import { useQuery } from '@tanstack/react-query';
+import dataService from 'services/dataService';
 
 interface Props extends ThemeProps {
   index: number;
@@ -42,6 +44,10 @@ interface Props extends ThemeProps {
 
 const ProjectScreen: React.FC<Props> = (props) => {
   const visibles = useVisibles([800, 1400, 2200], props.visible);
+
+  const tagsQuery = useQuery(['/tags'], () => dataService.fetchTags(), {
+    refetchOnWindowFocus: false,
+  });
 
   const selectedProject = useMemo(
     () => props.list.find((x, i) => i === props.index),
@@ -170,6 +176,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
                     visible={
                       visibles[2] && contentVisible && !props.isResponsive
                     }
+                    url={tagsQuery.data && tagsQuery.data[tag.toLowerCase()]}
                   >
                     {tag}
                   </TagButton>

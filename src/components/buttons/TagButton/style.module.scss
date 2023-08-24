@@ -16,12 +16,26 @@
   
   &.dark {
     background-color: $color-dark-line;
-    
     color: $color-dark-background;
   }
 
   &.light {
     background-color: $color-light-line;
     color: $color-light-background;
+  }
+
+  &.link {
+    cursor: pointer;
+    &:hover {
+      &.dark {
+        background-color: $color-light-line;
+        color: $color-light-background;
+      }
+    
+      &.light {
+        background-color: $color-dark-line;
+        color: $color-dark-background;
+      }
+    }
   }
 }
