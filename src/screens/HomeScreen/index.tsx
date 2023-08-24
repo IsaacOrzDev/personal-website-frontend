@@ -51,8 +51,8 @@ const HomeScreen: React.FC<Props> = (props) => {
           paused={props.isResponsive || props.isHidden}
           name={props.name}
           title={props.title}
-          color={props.palette ? props.palette[props.theme] : ''}
-          gradientColor={props.palette?.gradient}
+          // color={props.palette ? props.palette[props.theme] : ''}
+          // gradientColor={props.palette?.gradient}
         />
       </div>
       <div>

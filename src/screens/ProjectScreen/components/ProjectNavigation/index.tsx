@@ -36,7 +36,7 @@ const ProjectNavigation: React.FC<Props> = (props) => {
   return (
     <animated.div
       className={`${styles.container} ${styles[props.theme]}`}
-      style={{ transform: visible.interpolate((v) => `scale(${v})`) }}
+      // style={{ transform: visible.interpolate((v) => `scale(${v})`) }}
     >
       <button
         className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${

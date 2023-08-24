@@ -89,7 +89,7 @@ const ProgressInfo: React.FC<Props> = (props) => {
           <animated.div
             className={styles.down}
             style={{
-              transform: visible.to((v) => `scale(${v})`),
+              // transform: visible.to((v) => `scale(${v})`),
               borderColor: color,
             }}
           />

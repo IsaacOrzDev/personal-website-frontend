@@ -32,9 +32,9 @@ const ScrollingButton: React.FC<ScrollingButtonProps> = (props) => {
       <animated.button
         {...bind()}
         className={`${styles.button} ${styles.up}`}
-        style={{
-          transform: visible.interpolate((v) => `scale(${v})`),
-        }}
+        // style={{
+        //   transform: visible.interpolate((v) => `scale(${v})`),
+        // }}
         onClick={props.onClick}
       >
         <animated.div

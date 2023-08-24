@@ -14,7 +14,7 @@ interface Props extends ThemeProps {
   onClick?: () => void;
 }
 
-const IndexItem: React.FC<Props> = props => {
+const IndexItem: React.FC<Props> = (props) => {
   const { active, visible } = useSpring({
     active: props.active ? 1 : 0.6,
     visible: props.visible && props.active ? 1 : 0,
@@ -34,7 +34,7 @@ const IndexItem: React.FC<Props> = props => {
       </animated.div>
       <animated.div
         className={styles.point}
-        style={{ transform: visible.interpolate(v => `scale(${v})`) }}
+        // style={{ transform: visible.interpolate(v => `scale(${v})`) }}
       />
     </button>
   );

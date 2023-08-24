@@ -31,8 +31,8 @@ const HomeTitle: React.FC<Props> = (props) => {
       <TitleText
         theme={props.theme}
         fontSize={48}
-        color={props.color || 'tint'}
-        gradientColor={props.gradientColor}
+        // color={props.color || 'tint'}
+        // gradientColor={props.gradientColor}
         className={styles.title}
       >
         <Words

@@ -64,7 +64,8 @@ const LinkButton: React.FC<Props> = (props) => {
     <animated.button
       {...bind()}
       style={{
-        transform: visible.to((v) => `scale(${v})`),
+        opacity: visible.to((v) => v),
+        // transform: visible.to((v) => `scale(${v})`),
       }}
       className={`${styles.button} ${styles[props.theme]}`}
       onClick={_onClick}
