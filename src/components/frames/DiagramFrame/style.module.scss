@@ -1,0 +1,40 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 2px;
+  overflow: hidden;
+  @include transition(border-color, background-color);
+
+  &.dark {
+    // border-color: $color-dark-line;
+    // background-color: $color-dark-background;
+    background-color: $color-light-background;
+    border-color: $color-light-line;
+
+  }
+
+  &.light {
+    border-color: $color-light-line;
+    background-color: $color-light-background;
+
+  }
+}
+
+.iframe_wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  
+}
+
+.iframe {
+  border: 0;
+  position: absolute;
+  transform: scale(0.5) translate(-0.5%, 1.5%);
+  top: -50%;
+  left: -50%;
+}

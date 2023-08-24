@@ -4,6 +4,7 @@ export enum ShowcaseTypeEnum {
   ipad = 'ipad',
   website = 'website',
   responsiveWebsite = 'responsiveWebsite',
+  diagram = 'diagram',
 }
 
 export interface PaletteModel {

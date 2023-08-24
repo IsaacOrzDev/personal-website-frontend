@@ -125,6 +125,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
                   list={item.preview}
                   breakpoint={props.breakpoint}
                   isLooping={!props.isHidden && !props.isResponsive}
+                  tintColor={item.palette[props.theme]}
                 />
               </div>
             </div>

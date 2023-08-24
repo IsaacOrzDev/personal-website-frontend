@@ -44,6 +44,7 @@ const ProjectInformationContent: React.FC<Props> = (props) => {
         list={props.item.preview}
         breakpoint={props.breakpoint}
         isLooping={props.isFocused && props.isLooping}
+        tintColor={props.item.palette[props.theme]}
       />
       <div className={styles.text_area}>
         <TitleText

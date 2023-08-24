@@ -8,6 +8,7 @@ import IPadFrame from 'components/frames/IPadFrame';
 import BrowserFrame from 'components/frames/BrowserFrame';
 import ProjectModel, { ShowcaseTypeEnum } from 'models/ProjectModel';
 import BreakpointService from 'services/breakpointService';
+import DiagramFrame from 'components/frames/DiagramFrame';
 
 interface Props extends ThemeProps {
   visible?: boolean;
@@ -15,6 +16,7 @@ interface Props extends ThemeProps {
   breakpoint?: string;
   isLooping?: boolean;
   list: ProjectModel['preview'];
+  tintColor: string;
 }
 
 const ShowcaseScreenShots: React.FC<Props> = (props) => {
@@ -26,6 +28,7 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
   const iPhone = props.list.find((x) => x.type === ShowcaseTypeEnum.ios);
   const android = props.list.find((x) => x.type === ShowcaseTypeEnum.android);
   const website = props.list.find((x) => x.type === ShowcaseTypeEnum.website);
+  const diagram = props.list.find((x) => x.type === ShowcaseTypeEnum.diagram);
   const responsiveWebsite = props.list.find(
     (x) => x.type === ShowcaseTypeEnum.responsiveWebsite
   );
@@ -162,6 +165,9 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
     if (isSm) {
       containerClassName += ` ${styles.responsive}`;
     }
+    if (diagram) {
+      containerClassName += ` ${styles.with_diagram}`;
+    }
     return (
       <div className={containerClassName}>
         <animated.div
@@ -195,6 +201,25 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
                 breakpoint={props.breakpoint}
                 isLooping={props.isLooping}
                 iframe={responsiveWebsite.iframe}
+              />
+            </animated.div>
+          </div>
+        )}
+
+        {!!diagram && (
+          <div className={styles.diagram}>
+            <animated.div
+              style={{
+                opacity: visible,
+              }}
+            >
+              <DiagramFrame
+                theme={props.theme}
+                src={diagram.imageUrls}
+                imgVisible={props.imgVisible}
+                breakpoint={props.breakpoint}
+                isLooping={props.isLooping}
+                tintColor={props.tintColor}
               />
             </animated.div>
           </div>

@@ -49,6 +49,12 @@
     right: -6%;
   }
 
+  .diagram {
+    position: absolute;
+    bottom: -5%;
+    right: -6%;
+  }
+
   &.responsive {
     margin-top: 0;
     margin-bottom: 34px;
@@ -61,5 +67,18 @@
       top: 20%;
       right: 5%;
     }
+
+    .diagram {
+      position: relative;
+      bottom: 0%;
+      right: 0%;
+    }
   }
+
+  &.with_diagram {
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  
 }

@@ -1,0 +1,29 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
+.container {
+
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 6;
+
+  @include transition(background-color);
+
+  &.dark {
+    background-color: $color-dark-background;
+  }
+
+  &.light {
+    background-color: $color-light-background;
+  }
+}
+
+.close_button {
+  position: absolute;
+  z-index: 5;
+  top: 16px;
+  right: 16px;
+}

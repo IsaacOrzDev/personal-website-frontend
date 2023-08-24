@@ -15,7 +15,6 @@ import { globalActions } from 'store/global';
 import TimeService from 'services/timeService';
 import MenuModalContainer from './components/MenuModalContainer';
 import HeaderContainer from './components/HeaderContainer';
-import MessageModalContainer from './components/MessageModalContainer';
 import LoadingScreen from 'screens/LoadingScreen';
 import GaService from 'services/gaService';
 import GridBackground from 'components/layout/GridBackground';
@@ -23,6 +22,7 @@ import dataService from 'services/dataService';
 import projectSelectors from 'store/project/selectors';
 import useResize from 'hooks/useResize';
 import pages from 'config/pages';
+import ImageViewerModal from './components/ImageViwerModal';
 
 const Home = React.lazy(() => import('./routing/Home'));
 const Works = React.lazy(() => import('./routing/Works'));
@@ -122,6 +122,7 @@ const App: React.FC = () => {
           </Suspense>
           {/* <MessageModalContainer /> */}
           <MenuModalContainer />
+          <ImageViewerModal />
         </Router>
         <GridBackground theme={global.theme} />
         <ReactQueryDevtools initialIsOpen={false} />
