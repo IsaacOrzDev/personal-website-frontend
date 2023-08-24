@@ -29,8 +29,7 @@ const HeaderThemeButton: React.FC<Props> = (props) => {
     <animated.div
       className={styles.container}
       style={{
-        opacity: visible,
-        transform: visible.to((v) => `scale(${v})`),
+        display: props.visible ? 'block' : 'none',
       }}
     >
       <button

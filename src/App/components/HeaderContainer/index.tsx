@@ -72,7 +72,7 @@ const HeaderContainer: React.FC<Props> = (props) => {
 
   let title = global.name;
   if (currentPage === pages.projects) {
-    title = categoryText;
+    title = isResponsive ? 'PROJECTS' : categoryText;
   }
 
   return (

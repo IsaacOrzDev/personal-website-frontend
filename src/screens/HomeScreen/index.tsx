@@ -63,6 +63,7 @@ const HomeScreen: React.FC<Props> = (props) => {
           name={props.name}
           color={props.palette ? props.palette[props.theme] : ''}
           gradientColor={props.palette?.gradient}
+          backgroundImageUrl={imageUrl}
         />
         <ImageBackground
           theme={props.theme}
@@ -74,7 +75,7 @@ const HomeScreen: React.FC<Props> = (props) => {
       </div>
       <PageScrollingButton
         theme={props.theme}
-        text={`SEE MY ${props.category}`}
+        text={`SEE MY ${props.isResponsive ? 'PROJECTS' : props.category}`}
         visible={visibles[0]}
         textVisible={visibles[0]}
         color={props.palette ? props.palette[props.theme] : ''}

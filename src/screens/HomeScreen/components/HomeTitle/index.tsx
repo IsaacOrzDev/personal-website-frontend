@@ -4,6 +4,7 @@ import TitleText from 'components/text/TitleText';
 import Words from 'components/text/Words';
 import { ThemeProps } from 'types/Props';
 import { animated, useSpring } from 'react-spring';
+import ImageItem from 'components/images/ImageItem';
 
 interface Props extends ThemeProps {
   visible?: boolean;
@@ -13,11 +14,13 @@ interface Props extends ThemeProps {
   scrollingValue: number;
   color?: string;
   gradientColor?: string;
+  backgroundImageUrl?: string;
 }
 
 const HomeTitle: React.FC<Props> = (props) => {
-  const { scrollingValue } = useSpring({
+  const { scrollingValue, opacity } = useSpring({
     scrollingValue: props.scrollingValue,
+    opacity: props.visible ? 1 : 0,
   });
 
   return (
@@ -25,13 +28,17 @@ const HomeTitle: React.FC<Props> = (props) => {
       className={styles.container}
       style={{
         display: props.isResponsive ? 'flex' : 'none',
-        opacity: scrollingValue.interpolate({ range: [0, 1], output: [1, 0] }),
+        opacity,
+        backgroundImage:
+          props.theme === 'dark'
+            ? `linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)), url(${props.backgroundImageUrl})`
+            : `linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${props.backgroundImageUrl})`,
       }}
     >
       <TitleText
         theme={props.theme}
         fontSize={48}
-        color={props.color || 'tint'}
+        color={'tint'}
         gradientColor={props.gradientColor}
         className={styles.title}
       >
@@ -41,7 +48,12 @@ const HomeTitle: React.FC<Props> = (props) => {
           mode="words"
         />
       </TitleText>
-      <TitleText theme={props.theme} fontSize={24} className={styles.name}>
+      <TitleText
+        theme={props.theme}
+        fontSize={24}
+        className={styles.name}
+        color={props.color || 'tint'}
+      >
         <Words
           text={props.title}
           visible={props.isResponsive && props.visible}

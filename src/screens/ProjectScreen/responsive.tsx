@@ -18,6 +18,7 @@ interface Props extends ThemeProps {
   shouldShowMenu?: boolean;
   windowOffsetTop: number;
   windowOffsetBottom: number;
+  tags: Record<string, string>;
   onSelectIndex: (index: number) => void;
 }
 
@@ -51,6 +52,7 @@ const ResponsiveProjectScreen: React.FC<Props> = (props) => {
           isFocused={props.index === i}
           isLooping={false}
           onFocus={_setCurrentIndex}
+          tags={props.tags}
         />
       ))}
       <ParallaxBar

@@ -17,6 +17,7 @@ interface Props extends ThemeProps {
   breakpoint?: string;
   isFocused?: boolean;
   isLooping?: boolean;
+  tags: Record<string, string>;
 }
 
 const ProjectInformationContent: React.FC<Props> = (props) => {
@@ -56,7 +57,12 @@ const ProjectInformationContent: React.FC<Props> = (props) => {
         </TitleText>
         <div className={styles.tag_group}>
           {props.item.tags.map((tag) => (
-            <TagButton key={tag} visible={visible} theme={props.theme}>
+            <TagButton
+              key={tag}
+              visible={visible}
+              theme={props.theme}
+              url={props.tags && props.tags[tag.toLowerCase()]}
+            >
               {tag}
             </TagButton>
           ))}

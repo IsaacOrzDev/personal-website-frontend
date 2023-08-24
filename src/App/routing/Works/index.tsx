@@ -13,6 +13,8 @@ import { forceCheck } from 'react-lazyload';
 import useScrollEffect from 'hooks/useScrollEffect';
 import GaService from 'services/gaService';
 import useHidden from 'hooks/useHidden';
+import { useQuery } from '@tanstack/react-query';
+import dataService from 'services/dataService';
 
 const ProjectScreen = React.lazy(() => import('screens/ProjectScreen/index'));
 const ResponsiveProjectScreen = React.lazy(() =>
@@ -50,6 +52,10 @@ const Works: React.FC = () => {
   const { goToHomeSection } = useNavigation(isResponsive);
   const [windowOffset, currentWindowOffset] = useWindow();
   // #endregion
+
+  const tagsQuery = useQuery(['/tags'], () => dataService.fetchTags(), {
+    refetchOnWindowFocus: false,
+  });
 
   // #region functions
 
@@ -170,6 +176,7 @@ const Works: React.FC = () => {
           onSelectPrev={_clickPreviousProject}
           onSelectNext={_clickNextProject}
           onGoBack={goToHomeSection}
+          tags={tagsQuery.data}
         />
       </Suspense>
       <Suspense fallback={null}>
@@ -187,6 +194,7 @@ const Works: React.FC = () => {
           years={project.years}
           index={project.selectedIndex}
           onSelectIndex={_changeProjectSelectedIndex}
+          tags={tagsQuery.data}
         />
       </Suspense>
     </div>

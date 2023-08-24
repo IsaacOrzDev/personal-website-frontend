@@ -30,21 +30,22 @@ const ImageBackground: React.FC<Props> = (props) => {
       setWidth(size * 0.8);
       setHeight(size * 0.8);
     }
+    setIndex(0);
   }, [bounds]);
 
-  useInterval(
-    () => {
-      setIndex((i) => {
-        return (i + 1) % props.urls.length;
-      });
-    },
-    props.urls.length > 1 &&
-      props.visible &&
-      !props.isResponsive &&
-      props.isLooping
-      ? 12000
-      : null
-  );
+  // useInterval(
+  //   () => {
+  //     setIndex((i) => {
+  //       return (i + 1) % props.urls.length;
+  //     });
+  //   },
+  //   props.urls.length > 1 &&
+  //     props.visible &&
+  //     !props.isResponsive &&
+  //     props.isLooping
+  //     ? 12000
+  //     : null
+  // );
 
   return (
     <div

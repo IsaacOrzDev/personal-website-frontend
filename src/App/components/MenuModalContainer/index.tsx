@@ -23,19 +23,32 @@ const MenuModalContainer: React.FC<Props> = () => {
     categories: useSelector(projectSelectors.selectCategories),
   };
 
-  const menu = useMemo(
-    () => [
-      { title: 'HOME', onClick: goToHomeSection },
-      ...project.categories.map((item) => ({
-        title: item,
-        onClick: () =>
-          goToProjectSection(
-            project.list.findIndex((project) => project.category === item)
-          ),
-      })),
-    ],
-    [goToHomeSection, goToProjectSection, project.categories, project.list]
-  );
+  const menu = useMemo(() => {
+    let items = [{ title: 'HOME', onClick: goToHomeSection }];
+    if (isResponsive) {
+      items.push({
+        title: 'PROJECTS',
+        onClick: () => goToProjectSection(0),
+      });
+    } else {
+      items = items.concat([
+        ...project.categories.map((item) => ({
+          title: item,
+          onClick: () =>
+            goToProjectSection(
+              project.list.findIndex((project) => project.category === item)
+            ),
+        })),
+      ]);
+    }
+    return items;
+  }, [
+    goToHomeSection,
+    goToProjectSection,
+    project.categories,
+    project.list,
+    isResponsive,
+  ]);
 
   return (
     <MenuModal

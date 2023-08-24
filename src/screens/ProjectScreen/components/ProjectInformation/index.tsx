@@ -14,6 +14,7 @@ interface Props extends ThemeProps {
   isLooping?: boolean;
   windowOffsetTop: number;
   windowOffsetBottom: number;
+  tags: Record<string, string>;
   onFocus?: (index: number) => void;
 }
 
@@ -62,6 +63,7 @@ const ProjectInformation: React.FC<Props> = (props) => {
           breakpoint={props.breakpoint}
           isFocused={isFocused}
           isLooping={props.isLooping}
+          tags={props.tags}
         />
       </LazyLoad>
     </div>

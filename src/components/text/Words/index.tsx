@@ -53,7 +53,7 @@ const Words: React.FC<Props> = (props) => {
                   <animated.span
                     key={`${index}-${wordIndex}`}
                     className={className}
-                    style={{ opacity: visible, transform }}
+                    style={{ opacity: visible }}
                   >
                     {`${word}`}
                   </animated.span>
@@ -63,7 +63,7 @@ const Words: React.FC<Props> = (props) => {
                 <animated.span
                   key={`${index}-${wordIndex}`}
                   className={className}
-                  style={{ opacity: visible, transform }}
+                  style={{ opacity: visible }}
                 >
                   {`${word}`}&nbsp;
                 </animated.span>
