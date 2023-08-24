@@ -22,7 +22,8 @@ interface Props extends ThemeProps {
   shouldShowScrollBtn?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setRef?: React.RefObject<any>;
-  imgSrc: string[];
+  imgSrc: Array<{ url: string; palette: PaletteModel }>;
+  selectedHomeImage: number;
   isHidden?: boolean;
   onToggleTheme?: () => void;
   onGoToNextSection?: () => void;
@@ -33,12 +34,9 @@ const HomeScreen: React.FC<Props> = (props) => {
   const [imageUrl, setImageUrl] = useState('');
 
   useEffect(() => {
-    const max = props.imgSrc.length;
-    const min = 0;
-    const index = Math.floor(Math.random() * (max - min) + min);
-    setImageUrl(props.imgSrc[index] ?? '');
+    setImageUrl(props.imgSrc[props.selectedHomeImage].url ?? '');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [props.selectedHomeImage]);
 
   return (
     <PageSection setRef={props.setRef}>
@@ -51,8 +49,8 @@ const HomeScreen: React.FC<Props> = (props) => {
           paused={props.isResponsive || props.isHidden}
           name={props.name}
           title={props.title}
-          // color={props.palette ? props.palette[props.theme] : ''}
-          // gradientColor={props.palette?.gradient}
+          color={props.palette ? props.palette[props.theme] : ''}
+          gradientColor={props.palette?.gradient}
         />
       </div>
       <div>

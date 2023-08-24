@@ -32,6 +32,7 @@ const Home: React.FC<Props> = (props) => {
     name: useSelector(globalSelectors.name),
     title: useSelector(globalSelectors.title),
     homeImages: useSelector(globalSelectors.homeImages),
+    selectedHomeImage: useSelector(globalSelectors.selectedHomeImage),
     shouldListenScrollingEvent: useSelector(
       globalSelectors.shouldListenScrollingEvent
     ),
@@ -139,6 +140,7 @@ const Home: React.FC<Props> = (props) => {
         name={global.name}
         title={global.title}
         imgSrc={global.homeImages}
+        selectedHomeImage={global.selectedHomeImage ?? 0}
         isHidden={isHidden}
         onGoToNextSection={_goToProjectSection}
       />

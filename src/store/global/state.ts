@@ -1,5 +1,6 @@
 import { Theme } from 'types/Types';
 import pages from 'config/pages';
+import { PaletteModel } from 'models/ProjectModel';
 
 export interface GlobalState {
   theme: Theme;
@@ -7,13 +8,14 @@ export interface GlobalState {
   page: string;
   name: string;
   title: string;
-  homeImages: string[];
+  homeImages: Array<{ url: string; palette: PaletteModel }>;
   messageContent: string;
   dataLoaded: boolean;
   shouldShowContent: boolean;
   shouldShowMenu: boolean;
   shouldShowCookieModal: boolean;
   shouldListenScrollingEvent: boolean;
+  selectedHomeImage: number | null;
 }
 
 export const initialGlobalState: GlobalState = {
@@ -29,4 +31,5 @@ export const initialGlobalState: GlobalState = {
   shouldShowMenu: false,
   shouldShowCookieModal: false,
   shouldListenScrollingEvent: false,
+  selectedHomeImage: null,
 };

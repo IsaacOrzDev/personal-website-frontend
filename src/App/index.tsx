@@ -22,6 +22,7 @@ import GridBackground from 'components/layout/GridBackground';
 import dataService from 'services/dataService';
 import projectSelectors from 'store/project/selectors';
 import useResize from 'hooks/useResize';
+import pages from 'config/pages';
 
 const Home = React.lazy(() => import('./routing/Home'));
 const Works = React.lazy(() => import('./routing/Works'));
@@ -35,6 +36,9 @@ const App: React.FC = () => {
     theme: useSelector(globalSelectors.theme),
     dataLoaded: useSelector(globalSelectors.dataLoaded),
     shouldShowContent: useSelector(globalSelectors.shouldShowContent),
+    homeImages: useSelector(globalSelectors.homeImages),
+    selectedHomeImage: useSelector(globalSelectors.selectedHomeImage),
+    page: useSelector(globalSelectors.page),
   };
 
   const project = {
@@ -43,8 +47,11 @@ const App: React.FC = () => {
   };
 
   const palette = useMemo(
-    () => project.list.find((x, i) => i === project.selectedIndex)?.palette,
-    [project.list, project.selectedIndex]
+    () =>
+      global.selectedHomeImage !== null
+        ? global.homeImages[global.selectedHomeImage].palette
+        : undefined,
+    [global.homeImages, global.selectedHomeImage]
   );
 
   const category = useMemo(
@@ -81,6 +88,12 @@ const App: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (global.dataLoaded && global.page === pages.home) {
+      dispatch(globalActions.randomSetSelectedHomeImage());
+    }
+  }, [dispatch, global.dataLoaded, global.page]);
+
   if (!global.shouldShowContent) {
     return (
       <LoadingScreen
@@ -107,7 +120,7 @@ const App: React.FC = () => {
               <Route path="*" element={<Navigate to={routes.home} replace />} />
             </Routes>
           </Suspense>
-          <MessageModalContainer />
+          {/* <MessageModalContainer /> */}
           <MenuModalContainer />
         </Router>
         <GridBackground theme={global.theme} />

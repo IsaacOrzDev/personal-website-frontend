@@ -14,6 +14,7 @@ const shouldShowCookieModal = (state: State) =>
   state.global.shouldShowCookieModal;
 const shouldListenScrollingEvent = (state: State) =>
   state.global.shouldListenScrollingEvent;
+const selectedHomeImage = (state: State) => state.global.selectedHomeImage;
 
 const globalSelectors = {
   theme,
@@ -28,6 +29,7 @@ const globalSelectors = {
   shouldShowMenu,
   shouldShowCookieModal,
   shouldListenScrollingEvent,
+  selectedHomeImage,
 };
 
 export default globalSelectors;

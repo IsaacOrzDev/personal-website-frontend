@@ -19,8 +19,14 @@ const slice = createSlice({
     setPage: (state, action: PayloadAction<string>) => {
       state.page = action.payload;
     },
-    setHomeImages: (state, action: PayloadAction<string[]>) => {
+    setHomeImages: (state, action: PayloadAction<any[]>) => {
       state.homeImages = action.payload;
+    },
+    randomSetSelectedHomeImage: (state, action: PayloadAction) => {
+      const max = state.homeImages.length;
+      const min = 0;
+      const index = Math.floor(Math.random() * (max - min) + min);
+      state.selectedHomeImage = index;
     },
     setName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
