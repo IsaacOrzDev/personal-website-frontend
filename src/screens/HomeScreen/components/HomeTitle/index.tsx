@@ -4,7 +4,6 @@ import TitleText from 'components/text/TitleText';
 import Words from 'components/text/Words';
 import { ThemeProps } from 'types/Props';
 import { animated, useSpring } from 'react-spring';
-import ImageItem from 'components/images/ImageItem';
 
 interface Props extends ThemeProps {
   visible?: boolean;
@@ -29,10 +28,6 @@ const HomeTitle: React.FC<Props> = (props) => {
       style={{
         display: props.isResponsive ? 'flex' : 'none',
         opacity,
-        backgroundImage:
-          props.theme === 'dark'
-            ? `linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)), url(${props.backgroundImageUrl})`
-            : `linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${props.backgroundImageUrl})`,
       }}
     >
       <TitleText

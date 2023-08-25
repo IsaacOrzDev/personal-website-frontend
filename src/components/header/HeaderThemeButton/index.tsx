@@ -20,7 +20,8 @@ const HeaderThemeButton: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (props.visible && !isInitialized) {
-      setTimeout(() => setIsInitialized(true), 800);
+      // setTimeout(() => setIsInitialized(true), 800);
+      setIsInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.visible]);

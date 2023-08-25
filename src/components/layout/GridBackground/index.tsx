@@ -15,6 +15,7 @@ interface Props extends ThemeProps {
   animationSpeed: 'normal' | 'slow';
   seed?: number;
   palette?: PaletteModel;
+  backgroundImageUrl?: string;
 }
 
 const cx = classNames.bind(styles);
@@ -77,6 +78,20 @@ const GridBackground: React.FC<Props> = (props) => {
   return (
     <div className={cx(['container', props.theme])}>
       {props.children}
+
+      {props.backgroundImageUrl && (
+        <div
+          className={styles.imageBackground}
+          style={{
+            opacity: props.theme === 'dark' ? 0.6 : 0.2,
+            backgroundImage:
+              props.theme === 'dark'
+                ? `linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url(${props.backgroundImageUrl})`
+                : `url(${props.backgroundImageUrl})`,
+          }}
+        />
+      )}
+
       {list.map((item) => (
         <div
           className={`${styles.node} ${
@@ -87,7 +102,7 @@ const GridBackground: React.FC<Props> = (props) => {
             height: '40px',
             top: item.height,
             left: item.width,
-            position: 'absolute',
+            position: 'fixed',
             backgroundColor: props.palette
               ? darken(0.1, props.palette[props.theme])
               : '#ffffff',
@@ -104,7 +119,7 @@ const GridBackground: React.FC<Props> = (props) => {
             height: '40px',
             top: item.height,
             left: item.width,
-            position: 'absolute',
+            position: 'fixed',
             backgroundColor: props.palette
               ? darken(0.1, props.palette[props.theme])
               : '#ffffff',

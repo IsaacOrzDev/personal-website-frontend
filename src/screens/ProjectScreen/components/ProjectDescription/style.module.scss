@@ -14,10 +14,11 @@
 
   &.dark {
     background-color: $color-dark-background;
-      border-left: 1px solid #ffffff;
+      border-left: 1px solid $color-dark-line;
   }
 
   &.light {
     background-color: $color-light-background;
+    border-left: 1px solid $color-light-line; 
   }
 }

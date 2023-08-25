@@ -135,9 +135,17 @@ const App: React.FC = () => {
         <GridBackground
           theme={global.theme}
           palette={palette}
-          enableAnimation={!isResponsive}
-          seed={global.page === pages.projects ? 0.4 : 1}
+          // enableAnimation={!(global.page !== pages.home && isResponsive)}
+          enableAnimation
+          seed={global.page === pages.projects ? 0.6 : 1}
           animationSpeed={global.page === pages.projects ? 'slow' : 'normal'}
+          backgroundImageUrl={
+            global.selectedHomeImage !== null &&
+            global.page === pages.home &&
+            isResponsive
+              ? global.homeImages[global.selectedHomeImage].url
+              : ''
+          }
         />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
