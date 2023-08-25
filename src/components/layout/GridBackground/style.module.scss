@@ -9,6 +9,7 @@
   left: 0;
   z-index: -1;
   background-size: 40px 40px;
+  overflow-x: hidden;
   @include transition(background-color);
 
   &.dark {
@@ -53,5 +54,15 @@
     height: 100%;
     // object-fit: cover;
     // object-position: center;
+  }
+}
+
+.node {
+  opacity: 0.4;
+
+  @include transition(opacity, background-color);
+
+  &.hidden {
+    opacity: 0;
   }
 }

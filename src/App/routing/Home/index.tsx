@@ -102,6 +102,7 @@ const Home: React.FC<Props> = (props) => {
 
   useEffect(() => {
     dispatch(globalActions.setVisible(true));
+    window.scrollTo({ top: 0 });
     // setHomeVisible(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

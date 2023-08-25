@@ -5,6 +5,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import reducerNames from 'config/reducerNames';
 import TimeService from 'services/timeService';
+import RandomService from 'services/randomService';
 
 const slice = createSlice({
   name: reducerNames.global,
@@ -25,7 +26,7 @@ const slice = createSlice({
     randomSetSelectedHomeImage: (state, action: PayloadAction) => {
       const max = state.homeImages.length;
       const min = 0;
-      const index = Math.floor(Math.random() * (max - min) + min);
+      const index = RandomService.getRandomNumber(min, max);
       state.selectedHomeImage = index;
     },
     setName: (state, action: PayloadAction<string>) => {

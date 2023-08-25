@@ -1,3 +1,23 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
 .container {
+  opacity: 1;
   margin-bottom: 24px;
+  padding: 8px;
+
+  @include transition(opacity);
+
+  &.hidden {
+    opacity: 0;
+  }
+
+  &.dark {
+    background-color: $color-dark-background;
+      border-left: 1px solid #ffffff;
+  }
+
+  &.light {
+    background-color: $color-light-background;
+  }
 }

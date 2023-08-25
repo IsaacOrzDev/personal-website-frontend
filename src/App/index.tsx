@@ -46,13 +46,21 @@ const App: React.FC = () => {
     list: useSelector(projectSelectors.list),
   };
 
-  const palette = useMemo(
-    () =>
-      global.selectedHomeImage !== null
+  const palette = useMemo(() => {
+    if (global.page === pages.home) {
+      return global.selectedHomeImage !== null
         ? global.homeImages[global.selectedHomeImage].palette
-        : undefined,
-    [global.homeImages, global.selectedHomeImage]
-  );
+        : undefined;
+    } else {
+      return project.list.find((x, i) => i === project.selectedIndex)?.palette;
+    }
+  }, [
+    global.homeImages,
+    global.page,
+    global.selectedHomeImage,
+    project.list,
+    project.selectedIndex,
+  ]);
 
   const category = useMemo(
     () =>
@@ -124,7 +132,13 @@ const App: React.FC = () => {
           <MenuModalContainer />
           <ImageViewerModal />
         </Router>
-        <GridBackground theme={global.theme} />
+        <GridBackground
+          theme={global.theme}
+          palette={palette}
+          enableAnimation={!isResponsive}
+          seed={global.page === pages.projects ? 0.4 : 1}
+          animationSpeed={global.page === pages.projects ? 'slow' : 'normal'}
+        />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>

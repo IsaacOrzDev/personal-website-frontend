@@ -24,7 +24,7 @@ const getDeviceConfig = (width: number, height: number) => {
   return breakpoint;
 };
 
-const useResize = (): [string | undefined, boolean] => {
+const useResize = (): [string | undefined, boolean, number, number] => {
   const [brkPnt, setBrkPnt] = useState(() =>
     getDeviceConfig(window.innerWidth, window.innerHeight)
   );
@@ -44,7 +44,7 @@ const useResize = (): [string | undefined, boolean] => {
     return () => window.removeEventListener('resize', calcInnerWidth);
   }, []);
 
-  return [brkPnt, isResponsive];
+  return [brkPnt, isResponsive, window.innerWidth, window.innerHeight];
 };
 
 export default useResize;
