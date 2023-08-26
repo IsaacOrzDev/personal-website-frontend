@@ -92,34 +92,30 @@ const GridBackground: React.FC<Props> = (props) => {
         />
       )}
 
-      {list.map((item) => (
+      {list.map((item, index) => (
         <div
+          key={`list-${index}`}
           className={`${styles.node} ${
             visibleList === 2 || !props.enableAnimation ? styles.hidden : ''
           }`}
           style={{
-            width: '40px',
-            height: '40px',
             top: item.height,
             left: item.width,
-            position: 'fixed',
             backgroundColor: props.palette
               ? darken(0.1, props.palette[props.theme])
               : '#ffffff',
           }}
         />
       ))}
-      {list2.map((item) => (
+      {list2.map((item, index) => (
         <div
+          key={`list2-${index}`}
           className={`${styles.node} ${
             visibleList === 1 || !props.enableAnimation ? styles.hidden : ''
           }`}
           style={{
-            width: '40px',
-            height: '40px',
             top: item.height,
             left: item.width,
-            position: 'fixed',
             backgroundColor: props.palette
               ? darken(0.1, props.palette[props.theme])
               : '#ffffff',

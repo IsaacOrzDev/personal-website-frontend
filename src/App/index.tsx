@@ -82,6 +82,17 @@ const App: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const _detectTurningSystemLightTheme = (event: any) => {
+    if (event.matches) {
+      dispatch(globalActions.setTheme('light'));
+    }
+  };
+
+  const _detectTurningSystemDarkTheme = (event: any) => {
+    if (event.matches) {
+      dispatch(globalActions.setTheme('dark'));
+    }
+  };
   useEffect(() => {
     if (global.theme === 'dark') {
       document.body.style.backgroundColor = '#000000';
@@ -93,6 +104,27 @@ const App: React.FC = () => {
   useEffect(() => {
     GaService.initialize();
     dispatch(dataService.fetchAllData());
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: light)').matches
+    ) {
+      dispatch(globalActions.setTheme('light'));
+    }
+    window
+      .matchMedia('(prefers-color-scheme: light)')
+      .addEventListener('change', _detectTurningSystemLightTheme);
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', _detectTurningSystemDarkTheme);
+
+    return () => {
+      window
+        .matchMedia('(prefers-color-scheme: light)')
+        .removeEventListener('change', _detectTurningSystemLightTheme);
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .removeEventListener('change', _detectTurningSystemDarkTheme);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
