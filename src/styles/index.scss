@@ -35,15 +35,9 @@ code {
 //   display: none;
 // }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-span {
-  -webkit-touch-callout: none; /* iOS Safari */
+
+button {
+    -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Old versions of Firefox */

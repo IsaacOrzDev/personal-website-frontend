@@ -9,6 +9,7 @@
 .text {
   margin: 0;
   position: absolute;
+  z-index: 1;
   line-height: 1.4;
   letter-spacing: 1.2;
   @include transition(color);
@@ -46,4 +47,5 @@
   opacity: 0;
   line-height: 1.4;
   letter-spacing: 1.2;
+  user-select: none;
 }
