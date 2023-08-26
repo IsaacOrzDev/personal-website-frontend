@@ -17,11 +17,19 @@
   &.dark {
     background-color: $color-dark-line;
     color: $color-dark-background;
+
+    &:disabled {
+      background-color: darken($color: $color-dark-line, $amount: 20%) 
+     }
   }
 
   &.light {
     background-color: $color-light-line;
     color: $color-light-background;
+
+    &:disabled {
+      background-color: lighten($color: $color-light-line, $amount: 20%) 
+     }
   }
 
   &.link {
