@@ -10,11 +10,15 @@ interface Props extends ThemeProps {
   fontSize?: number;
 }
 
-const HeaderNameText: React.FC<Props> = props => {
+const HeaderNameText: React.FC<Props> = (props) => {
   return (
     <div className={styles.container}>
       <TitleText theme={props.theme} fontSize={props.fontSize}>
-        <Words text={props.text} visible={props.visible} mode="words" />
+        <Words
+          text={`${props.text}/`.replace(' ', '-')}
+          visible={props.visible}
+          mode="words"
+        />
       </TitleText>
     </div>
   );

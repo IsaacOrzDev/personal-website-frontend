@@ -7,6 +7,7 @@ import useInterval from 'hooks/useInterval';
 import useResize from 'hooks/useResize';
 import { PaletteModel } from 'models/ProjectModel';
 import { darken } from 'polished';
+import ImageItem from 'components/images/ImageItem';
 
 interface Props extends ThemeProps {
   visible?: boolean;
@@ -16,13 +17,14 @@ interface Props extends ThemeProps {
   seed?: number;
   palette?: PaletteModel;
   backgroundImageUrl?: string;
+  backgroundImageVisible: boolean;
 }
 
 const cx = classNames.bind(styles);
 
 const GridBackground: React.FC<Props> = (props) => {
   const [, , width, height] = useResize();
-  const [visibleList, setVisibleList] = useState(1);
+  const [visibleList, setVisibleList] = useState(0);
 
   const array = useMemo(() => {
     const size = Math.max(width, height);
@@ -75,22 +77,32 @@ const GridBackground: React.FC<Props> = (props) => {
     }
   }, [props.enableAnimation]);
 
+  useEffect(() => {
+    setVisibleList(1);
+  }, []);
+
   return (
     <div className={cx(['container', props.theme])}>
       {props.children}
-
-      {props.backgroundImageUrl && (
+      <div
+        className={styles.imageBackground}
+        style={{ opacity: props.theme === 'dark' ? 0.6 : 0.2 }}
+      >
         <div
-          className={styles.imageBackground}
+          className={styles.overlay}
           style={{
-            opacity: props.theme === 'dark' ? 0.6 : 0.2,
             backgroundImage:
               props.theme === 'dark'
-                ? `linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url(${props.backgroundImageUrl})`
-                : `url(${props.backgroundImageUrl})`,
+                ? `linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4))`
+                : ``,
           }}
         />
-      )}
+        <ImageItem
+          src={props.backgroundImageUrl ?? ''}
+          visible={props.backgroundImageVisible}
+          resizeMode="cover"
+        />
+      </div>
 
       {list.map((item, index) => (
         <div

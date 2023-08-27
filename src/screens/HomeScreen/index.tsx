@@ -75,7 +75,7 @@ const HomeScreen: React.FC<Props> = (props) => {
       </div>
       <PageScrollingButton
         theme={props.theme}
-        text={`SEE MY ${props.isResponsive ? 'PROJECTS' : props.category}`}
+        text={`SEE MY ${props.isResponsive ? 'PROJECTS' : props.category}/`}
         visible={visibles[0]}
         textVisible={visibles[0]}
         color={props.palette ? props.palette[props.theme] : ''}

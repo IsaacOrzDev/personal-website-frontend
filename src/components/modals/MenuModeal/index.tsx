@@ -54,7 +54,7 @@ const MenuModal: React.FC<Props> = (props) => {
                       >
                         <Words
                           visible={textVisible}
-                          text={x.title}
+                          text={`${x.title}/`}
                           mode="words"
                         />
                       </DescriptionText>
