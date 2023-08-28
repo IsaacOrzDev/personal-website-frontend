@@ -26,6 +26,16 @@
     &.tint {
       color: $color-dark-tint;
     }
+
+    ::-moz-selection { /* Code for Firefox */
+      background: $color-dark-text !important;
+      color: $color-dark-background !important;
+    }
+
+    ::selection {
+      background: $color-dark-text !important;
+      color: $color-dark-background !important; 
+    }
   }
 
   &.light {
@@ -39,7 +49,18 @@
     &.tint {
       color: $color-light-tint;
     }
+
+    ::-moz-selection { /* Code for Firefox */
+      background: $color-light-text !important;
+      color: $color-light-background !important;
+    }
+
+    ::selection {
+      background: $color-light-text !important;
+      color: $color-light-background !important;
+    }
   }
+
 }
 
 .placeholder {

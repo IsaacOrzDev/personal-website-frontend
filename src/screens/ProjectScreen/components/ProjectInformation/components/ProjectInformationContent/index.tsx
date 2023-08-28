@@ -79,6 +79,7 @@ const ProjectInformationContent: React.FC<Props> = (props) => {
                 fontSize={16}
                 visible={props.visible}
                 text={`${x.trim()}.`}
+                palette={props.item.palette}
               />
             ))}
         </div>

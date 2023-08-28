@@ -190,6 +190,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
                     visible={
                       visibles[2] && contentVisible && !props.isResponsive
                     }
+                    palette={item.palette}
                     text={`${x.trim()}.`}
                   />
                 ))}

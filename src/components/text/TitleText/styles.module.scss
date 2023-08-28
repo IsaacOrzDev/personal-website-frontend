@@ -13,6 +13,14 @@
     &.tint {
       background-color: $color-dark-tint;
     }
+
+    ::-moz-selection { /* Code for Firefox */
+      background: rgba($color-dark-text, 0.7) !important;
+    }
+
+    ::selection {
+      background: rgba($color-dark-text, 0.7) !important;
+    }
   }
 
   &.light {
@@ -22,6 +30,14 @@
 
     &.tint {
       background-color: $color-light-tint;
+    }
+
+    ::-moz-selection { /* Code for Firefox */
+      background: rgba($color-light-text, 0.7) !important;
+    }
+
+    ::selection {
+      background: rgba($color-light-text, 0.7) !important;
     }
   }
 
