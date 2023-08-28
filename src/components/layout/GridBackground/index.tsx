@@ -18,6 +18,7 @@ interface Props extends ThemeProps {
   palette?: PaletteModel;
   backgroundImageUrl?: string;
   backgroundImageVisible: boolean;
+  responsive?: boolean;
 }
 
 const cx = classNames.bind(styles);
@@ -40,10 +41,10 @@ const GridBackground: React.FC<Props> = (props) => {
 
   const getRandomList = useCallback(() => {
     return array.map((item) => ({
-      width: `${RandomService.getRandomNumber(0, Math.ceil(width / 40)) *
+      x: `${RandomService.getRandomNumber(0, Math.ceil(width / 40)) * item}px`,
+      y: `${RandomService.getRandomNumber(0, Math.ceil(height / 40) - 1) *
         item}px`,
-      height: `${RandomService.getRandomNumber(0, Math.ceil(height / 40) - 1) *
-        item}px`,
+      percentage: RandomService.getRandomNumber(0, 2) / 10,
     }));
   }, [array, width, height]);
 
@@ -86,7 +87,7 @@ const GridBackground: React.FC<Props> = (props) => {
       {props.children}
       <div
         className={styles.imageBackground}
-        style={{ opacity: props.theme === 'dark' ? 0.6 : 0.2 }}
+        style={{ opacity: props.theme === 'dark' ? 0.8 : 0.6 }}
       >
         <div
           className={styles.overlay}
@@ -94,7 +95,7 @@ const GridBackground: React.FC<Props> = (props) => {
             backgroundImage:
               props.theme === 'dark'
                 ? `linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4))`
-                : ``,
+                : `linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4))`,
           }}
         />
         <ImageItem
@@ -109,12 +110,12 @@ const GridBackground: React.FC<Props> = (props) => {
           key={`list-${index}`}
           className={`${styles.node} ${
             visibleList === 2 || !props.enableAnimation ? styles.hidden : ''
-          }`}
+          } ${props.responsive ? styles.responsive : ''}`}
           style={{
-            top: item.height,
-            left: item.width,
+            top: item.y,
+            left: item.x,
             backgroundColor: props.palette
-              ? darken(0.1, props.palette[props.theme])
+              ? darken(item.percentage, props.palette[props.theme])
               : '#ffffff',
           }}
         />
@@ -124,12 +125,12 @@ const GridBackground: React.FC<Props> = (props) => {
           key={`list2-${index}`}
           className={`${styles.node} ${
             visibleList === 1 || !props.enableAnimation ? styles.hidden : ''
-          }`}
+          } ${props.responsive ? styles.responsive : ''}`}
           style={{
-            top: item.height,
-            left: item.width,
+            top: item.y,
+            left: item.x,
             backgroundColor: props.palette
-              ? darken(0.1, props.palette[props.theme])
+              ? darken(item.percentage, props.palette[props.theme])
               : '#ffffff',
           }}
         />

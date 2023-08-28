@@ -177,6 +177,7 @@ const App: React.FC = () => {
               : ''
           }
           backgroundImageVisible={global.page === pages.home && isResponsive}
+          responsive={isResponsive}
         />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
