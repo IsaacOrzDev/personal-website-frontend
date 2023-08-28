@@ -131,7 +131,6 @@ const Home: React.FC<Props> = (props) => {
     >
       <HomeScreen
         palette={props.palette}
-        category={props.category}
         scrollingValue={homeScrollingValue}
         setRef={bindHomeScreen.ref}
         visible={global.visible}
@@ -143,7 +142,6 @@ const Home: React.FC<Props> = (props) => {
         imgSrc={global.homeImages}
         selectedHomeImage={global.selectedHomeImage ?? 0}
         isHidden={isHidden}
-        onGoToNextSection={_goToProjectSection}
       />
     </div>
   );
