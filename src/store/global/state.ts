@@ -13,7 +13,7 @@ export interface GlobalState {
   dataLoaded: boolean;
   shouldShowContent: boolean;
   shouldShowMenu: boolean;
-  shouldShowCookieModal: boolean;
+  shouldShowMessageModal: boolean;
   shouldListenScrollingEvent: boolean;
   selectedHomeImage: number | null;
 }
@@ -29,7 +29,7 @@ export const initialGlobalState: GlobalState = {
   dataLoaded: false,
   shouldShowContent: false,
   shouldShowMenu: false,
-  shouldShowCookieModal: false,
+  shouldShowMessageModal: false,
   shouldListenScrollingEvent: false,
   selectedHomeImage: null,
 };

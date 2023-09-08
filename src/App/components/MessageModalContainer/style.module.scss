@@ -1,0 +1,11 @@
+.chat {
+  position: fixed;
+  bottom: 8px;
+  right: 16px;
+
+  button {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+  }
+}

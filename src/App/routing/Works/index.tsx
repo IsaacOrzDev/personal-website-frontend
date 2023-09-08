@@ -31,7 +31,7 @@ const Works: React.FC = () => {
     dataLoaded: useSelector(globalSelectors.dataLoaded),
     shouldShowContent: useSelector(globalSelectors.shouldShowContent),
     shouldShowMenu: useSelector(globalSelectors.shouldShowMenu),
-    shouldShowCookieModal: useSelector(globalSelectors.shouldShowCookieModal),
+    shouldShowMessageModal: useSelector(globalSelectors.shouldShowMessageModal),
     shouldListenScrollingEvent: useSelector(
       globalSelectors.shouldListenScrollingEvent
     ),

@@ -46,20 +46,28 @@ const HomeScreen: React.FC<Props> = (props) => {
   };
 
   const nextItems = useMemo(() => {
+    let items: any[] = [];
+
     if (props.isResponsive) {
-      const items = [
-        { text: `> Projects/`, onClick: () => goToProjectSection(0) },
-      ];
-      return items;
+      items.push({ text: `> Projects/`, onClick: () => goToProjectSection(0) });
+      items.push({
+        text: '> Chat/',
+        onClick: async () => {
+          window.open(process.env.REACT_APP_CHAT_URL!);
+        },
+      });
+    } else {
+      items = items.concat(
+        project.categories.map((item) => ({
+          text: `> ${item}/`,
+          onClick: () =>
+            goToProjectSection(
+              project.list.findIndex((project) => project.category === item)
+            ),
+        }))
+      );
     }
 
-    const items = project.categories.map((item) => ({
-      text: `> ${item}/`,
-      onClick: () =>
-        goToProjectSection(
-          project.list.findIndex((project) => project.category === item)
-        ),
-    }));
     return items;
   }, [
     goToProjectSection,

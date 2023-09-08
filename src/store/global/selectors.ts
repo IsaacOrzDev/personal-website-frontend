@@ -10,8 +10,8 @@ const messageContent = (state: State) => state.global.messageContent;
 const dataLoaded = (state: State) => state.global.dataLoaded;
 const shouldShowContent = (state: State) => state.global.shouldShowContent;
 const shouldShowMenu = (state: State) => state.global.shouldShowMenu;
-const shouldShowCookieModal = (state: State) =>
-  state.global.shouldShowCookieModal;
+const shouldShowMessageModal = (state: State) =>
+  state.global.shouldShowMessageModal;
 const shouldListenScrollingEvent = (state: State) =>
   state.global.shouldListenScrollingEvent;
 const selectedHomeImage = (state: State) => state.global.selectedHomeImage;
@@ -27,7 +27,7 @@ const globalSelectors = {
   dataLoaded,
   shouldShowContent,
   shouldShowMenu,
-  shouldShowCookieModal,
+  shouldShowMessageModal,
   shouldListenScrollingEvent,
   selectedHomeImage,
 };

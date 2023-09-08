@@ -42,23 +42,22 @@ const MessageModal: React.FC<Props> = (props) => {
           .to((v) => `translateY(${v})`),
       }}
     >
-      <div className={`${styles.header} ${styles[props.theme]}`}>
-        <DescriptionText fontSize={14} theme={props.theme}>
-          {`From ${props.name}:`}
-        </DescriptionText>
+      <div className={styles.content}>
         <button
           className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
             styles.close
           }`}
           onClick={props.onClose}
         >
-          <CloseIcon theme={props.theme} />
+          <CloseIcon theme="dark" />
         </button>
-      </div>
-      <div className={styles.content}>
-        <DescriptionText fontSize={14} theme={props.theme}>
-          <Words mode="words" visible={true} speed={10} text={props.text} />
-        </DescriptionText>
+        <iframe
+          src={process.env.REACT_APP_CHAT_URL}
+          width="100%"
+          height="500px"
+          frameBorder="0"
+          title="Chat"
+        />
       </div>
     </animated.div>
   );

@@ -1,6 +1,11 @@
 .container {
   display: flex;
   column-gap: 16px;
+
+  &.responsive {
+    flex-direction: column;
+    row-gap: 16px;
+  }
 }
 
 .down {

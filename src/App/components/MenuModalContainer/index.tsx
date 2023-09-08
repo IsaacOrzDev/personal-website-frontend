@@ -41,6 +41,14 @@ const MenuModalContainer: React.FC<Props> = () => {
         })),
       ]);
     }
+    if (!!process.env.REACT_APP_CHAT_URL) {
+      items.push({
+        title: 'Chat',
+        onClick: async () => {
+          window.open(process.env.REACT_APP_CHAT_URL);
+        },
+      });
+    }
     return items;
   }, [
     goToHomeSection,

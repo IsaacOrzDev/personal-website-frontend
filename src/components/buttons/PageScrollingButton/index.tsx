@@ -18,7 +18,9 @@ interface Props extends ThemeProps {
 }
 
 const PageScrollingButton: React.FC<Props> = (props) => {
-  let className = `${styles.container} ${styles[props.type!]}`;
+  let className = `${styles.container} ${styles[props.type!]} ${
+    props.isResponsive ? styles.responsive : ''
+  }}`;
   if (props.isResponsive || browserService.isIos()) {
     className += ` ${styles.responsive}`;
   }

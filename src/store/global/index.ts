@@ -51,7 +51,7 @@ const slice = createSlice({
       state.shouldShowMenu = action.payload;
     },
     setShouldShowMessageModal: (state, action: PayloadAction<boolean>) => {
-      state.shouldShowCookieModal = action.payload;
+      state.shouldShowMessageModal = action.payload;
     },
     setShouldListenScrollingEvent: (state, action: PayloadAction<boolean>) => {
       state.shouldListenScrollingEvent = action.payload;

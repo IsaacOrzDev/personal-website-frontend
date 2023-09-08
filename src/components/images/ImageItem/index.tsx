@@ -7,9 +7,10 @@ interface Props {
   resizeMode: 'cover' | 'contain';
   visible?: boolean;
   isCircle?: boolean;
+  className?: string;
 }
 
-const ImageItem: React.FC<Props> = props => {
+const ImageItem: React.FC<Props> = (props) => {
   const [isVisible, setIsVisible] = useState(false);
   const { visible } = useSpring({
     visible: props.visible && isVisible ? 1 : 0,
@@ -21,7 +22,9 @@ const ImageItem: React.FC<Props> = props => {
     }
   }, [isVisible]);
 
-  let containerClassName = `${styles.content} ${styles[props.resizeMode]}`;
+  let containerClassName = `${styles.content} ${
+    styles[props.resizeMode]
+  } ${props.className ?? ''}`;
 
   if (props.isCircle) {
     containerClassName += ` ${styles.circle}`;
