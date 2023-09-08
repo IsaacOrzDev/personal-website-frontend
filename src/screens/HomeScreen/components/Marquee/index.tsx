@@ -4,6 +4,8 @@ import { ThemeProps } from 'types/Props';
 import Part from './components/Part';
 import useMeasure from 'hooks/useMeasure';
 import { animated, useSpring } from 'react-spring';
+import { useDispatch } from 'react-redux';
+import { globalActions } from 'store/global';
 
 const baseWidth = 800;
 
@@ -26,6 +28,8 @@ const Marquee: React.FC<Props> = (props) => {
 
   const [bind, bounds] = useMeasure();
   const [bindContainer, containerBounds] = useMeasure();
+
+  const dispatch = useDispatch();
 
   const { visible } = useSpring({
     visible: props.visible && !props.isResponsive ? 1 : 0,
@@ -88,6 +92,7 @@ const Marquee: React.FC<Props> = (props) => {
           isLg={props.isLg}
           color={props.color}
           gradientColor={props.gradientColor}
+          onClick={() => dispatch(globalActions.randomSetSelectedHomeImage())}
         />
         {clones.map((x) => (
           <Part
@@ -99,6 +104,7 @@ const Marquee: React.FC<Props> = (props) => {
             isLg={props.isLg}
             color={props.color}
             gradientColor={props.gradientColor}
+            onClick={() => dispatch(globalActions.randomSetSelectedHomeImage())}
           />
         ))}
       </div>
@@ -118,6 +124,7 @@ const Marquee: React.FC<Props> = (props) => {
           isLg={props.isLg}
           color={props.color}
           gradientColor={props.gradientColor}
+          onClick={() => dispatch(globalActions.randomSetSelectedHomeImage())}
         />
         {clones.map((x) => (
           <Part
@@ -129,6 +136,7 @@ const Marquee: React.FC<Props> = (props) => {
             isLg={props.isLg}
             color={props.color}
             gradientColor={props.gradientColor}
+            onClick={() => dispatch(globalActions.randomSetSelectedHomeImage())}
           />
         ))}
       </div>

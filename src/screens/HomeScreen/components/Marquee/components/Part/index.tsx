@@ -13,12 +13,21 @@ interface Props extends ThemeProps {
   isLg?: boolean;
   color?: string;
   gradientColor?: string;
+  onClick?: () => void;
 }
 
 const Part: React.FC<Props> = (props) => {
   return (
-    <div ref={props.setRef} className={styles.container}>
-      <TitleText theme={props.theme} fontSize={props.isLg ? 40 : 56}>
+    <div
+      ref={props.setRef}
+      className={styles.container}
+      onClick={props.onClick}
+    >
+      <TitleText
+        className={styles.title}
+        theme={props.theme}
+        fontSize={props.isLg ? 40 : 56}
+      >
         <Words text={props.name} visible={props.visible} mode="words" />
       </TitleText>
       <Dash theme={props.theme} visible={props.visible} />

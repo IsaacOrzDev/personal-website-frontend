@@ -4,6 +4,8 @@ import TitleText from 'components/text/TitleText';
 import Words from 'components/text/Words';
 import { ThemeProps } from 'types/Props';
 import { animated, useSpring } from 'react-spring';
+import { useDispatch } from 'react-redux';
+import { globalActions } from 'store/global';
 
 interface Props extends ThemeProps {
   visible?: boolean;
@@ -22,6 +24,8 @@ const HomeTitle: React.FC<Props> = (props) => {
     opacity: props.visible ? 1 : 0,
   });
 
+  const dispatch = useDispatch();
+
   return (
     <animated.div
       className={styles.container}
@@ -29,6 +33,7 @@ const HomeTitle: React.FC<Props> = (props) => {
         display: props.isResponsive ? 'flex' : 'none',
         opacity,
       }}
+      onClick={() => dispatch(globalActions.randomSetSelectedHomeImage())}
     >
       <TitleText
         theme={props.theme}

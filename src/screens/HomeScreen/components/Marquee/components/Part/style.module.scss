@@ -1,3 +1,5 @@
+@import 'styles/_utils.scss';
+
 .container {
   display: flex;
   align-items: center;
@@ -5,5 +7,11 @@
 }
 
 .title {
-  font-style: italic;
+
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 0.5;
+    @include transition(opacity);
+  }
 }
