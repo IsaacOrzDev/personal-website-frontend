@@ -14,8 +14,6 @@ src/data.ts
 # production
 /build
 
-/public
-
 src/data.json
 data.yml
 
