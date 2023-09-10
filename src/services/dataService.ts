@@ -2,7 +2,6 @@ import { ThunkAction } from '@reduxjs/toolkit';
 import { projectActions } from 'store/project';
 import { globalActions } from 'store/global';
 import TimeService from 'services/timeService';
-import dataJson from 'data.json';
 
 const fetchAllData = (): ThunkAction<void, any, any, any> => {
   return async (dispatch) => {
@@ -16,7 +15,6 @@ const fetchAllData = (): ThunkAction<void, any, any, any> => {
       }
     } else {
       await TimeService.timeout(1000);
-      data = dataJson;
     }
 
     dispatch(globalActions.setName(data.home.name));
