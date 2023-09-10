@@ -27,7 +27,7 @@ const LoadingIcon: React.FC<Props> = (props) => {
   useInterval(
     async () => {
       if (props.isDone && !isEnd) {
-        await TimeService.timeout(200);
+        await TimeService.timeout(400);
         setIsEnd(true);
         setLineVisible(false);
         await TimeService.timeout(props.duration);
