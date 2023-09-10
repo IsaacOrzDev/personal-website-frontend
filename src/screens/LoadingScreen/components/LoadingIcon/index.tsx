@@ -21,12 +21,13 @@ const LoadingIcon: React.FC<Props> = (props) => {
   const [isEnd, setIsEnd] = useState(false);
 
   const { visible } = useSpring({
-    visible: props.isDone ? 0 : 1,
+    visible: isEnd ? 0 : 1,
   });
 
   useInterval(
     async () => {
       if (props.isDone && !isEnd) {
+        await TimeService.timeout(200);
         setIsEnd(true);
         setLineVisible(false);
         await TimeService.timeout(props.duration);

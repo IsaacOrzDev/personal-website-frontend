@@ -35,11 +35,12 @@ const TitleText: React.FC<Props> = (props) => {
     }
   }, [props.fontSize, props.tag]);
 
-  const { fontSize, backgroundColor, backgroundImage } = useSpring({
+  const backgroundColor: any =
+    ['text', 'tint'].indexOf(props.color ?? '') === -1 ? props.color : '';
+  const backgroundImage = props.gradientColor ?? 'none';
+
+  const { fontSize } = useSpring({
     fontSize: _getFontSize(),
-    backgroundColor:
-      ['text', 'tint'].indexOf(props.color ?? '') === -1 ? props.color : '',
-    backgroundImage: props.gradientColor ?? 'none',
   });
 
   let className = `${styles.content} ${props.className} ${
