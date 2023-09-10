@@ -75,7 +75,7 @@ const App: React.FC = () => {
   const _finishLoading = useCallback(async () => {
     window.scrollTo({ top: 0 });
     dispatch(globalActions.setShouldShowContent(true));
-    await TimeService.timeout(2600);
+    await TimeService.timeout(1400);
     dispatch(globalActions.setShouldListenScrollingEvent(true));
     // if (!isResponsive) {
     //   dispatch(globalActions.setShouldShowMessageModal(true));

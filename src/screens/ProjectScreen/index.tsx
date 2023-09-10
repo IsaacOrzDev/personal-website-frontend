@@ -42,7 +42,7 @@ interface Props extends ThemeProps {
 }
 
 const ProjectScreen: React.FC<Props> = (props) => {
-  const visibles = useVisibles([200, 600, 800], props.visible);
+  const visibles = useVisibles([200, 400, 600], props.visible);
 
   const selectedProject = useMemo(
     () => props.list.find((x, i) => i === props.index),
@@ -84,7 +84,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
           setFrameVisible(true);
         }
         setContentVisible(true);
-      }, 1200);
+      }, 600);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.index]);

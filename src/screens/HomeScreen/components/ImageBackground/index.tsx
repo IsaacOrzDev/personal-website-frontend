@@ -5,6 +5,8 @@ import useMeasure from 'hooks/useMeasure';
 import { ThemeProps } from 'types/Props';
 import ImageItem from 'components/images/ImageItem';
 import useInterval from 'hooks/useInterval';
+import { useDispatch } from 'react-redux';
+import { globalActions } from 'store/global';
 
 interface Props extends ThemeProps {
   urls: string[];
@@ -19,6 +21,8 @@ const ImageBackground: React.FC<Props> = (props) => {
   const [index, setIndex] = useState(0);
 
   const [bind, bounds] = useMeasure();
+
+  const dispatch = useDispatch();
 
   const { visible } = useSpring({
     visible: props.visible ? 1 : 0,
@@ -62,7 +66,11 @@ const ImageBackground: React.FC<Props> = (props) => {
         }}
       >
         {props.urls.map((x, i) => (
-          <div key={x} className={styles.img}>
+          <div
+            key={x}
+            className={styles.img}
+            onClick={() => dispatch(globalActions.randomSetSelectedHomeImage())}
+          >
             <ImageItem
               visible={index === i}
               resizeMode="cover"

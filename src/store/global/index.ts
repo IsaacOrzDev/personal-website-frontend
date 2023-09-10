@@ -64,7 +64,7 @@ const { reducer, actions } = slice;
 function stopScrollingDuringAnimation(): ThunkAction<void, any, any, any> {
   return async (dispatch) => {
     dispatch(actions.setShouldListenScrollingEvent(false));
-    await TimeService.timeout(1600);
+    await TimeService.timeout(1000);
     dispatch(actions.setShouldListenScrollingEvent(true));
   };
 }
