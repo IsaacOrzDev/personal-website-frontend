@@ -39,8 +39,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npm run yaml-convert && react-scripts start",
-    "build": "npm run yaml-convert && react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "serve": "npm run build && npx serve -s build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
