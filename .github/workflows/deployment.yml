@@ -33,6 +33,7 @@ jobs:
           REACT_APP_META_URL: ${{ vars.META_URL }}
           REACT_APP_META_IMAGE: ${{ vars.META_IMAGE }}
           REACT_APP_CHAT_URL: ${{ vars.CHAT_URL }}
+          DISABLE_ESLINT_PLUGIN: true
       - name: Delete items from S3
         run: yarn aws:clearBucket
         env:
