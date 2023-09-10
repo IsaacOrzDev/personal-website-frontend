@@ -23,7 +23,7 @@ jobs:
         env:
           REACT_APP_API_URL: ${{ vars.API_URL }}
           REACT_APP_ENABLE_LIGHT_MODE: true
-          REACT_APP_GITHUB_URL: ${{ vars.GITHUB_URL }}
+          REACT_APP_GITHUB_URL: ${{ vars.AGITHUB_URL }}
           REACT_APP_LOADING_TEXT: ${{ vars.LOADING_TEXT }}
           REACT_APP_META_TITLE: ${{ vars.META_TITLE }}
           REACT_APP_META_DESCRIPTION: ${{ vars.META_DESCRIPTION }}
@@ -33,4 +33,25 @@ jobs:
           REACT_APP_META_URL: ${{ vars.META_URL }}
           REACT_APP_META_IMAGE: ${{ vars.META_IMAGE }}
           REACT_APP_CHAT_URL: ${{ vars.CHAT_URL }}
+      - name: Delete items from S3
+        run: yarn aws:clearBucket
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-west-1
+          AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
+      - name: Upload items to S3
+        run: aws:upload
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-west-1
+          AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
+      - name: Clear cache of cloudfront
+        run: aws:clearCache
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-west-1
+          AWS_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}          
 
