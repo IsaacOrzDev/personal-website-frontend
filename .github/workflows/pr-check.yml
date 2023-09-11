@@ -33,4 +33,5 @@ jobs:
           REACT_APP_META_URL: ${{ vars.META_URL }}
           REACT_APP_META_IMAGE: ${{ vars.META_IMAGE }}
           REACT_APP_CHAT_URL: ${{ vars.CHAT_URL }}
+          REACT_APP_SUBPAGE_URL: ${{ vars.SUBPAGE_URL }}
           DISABLE_ESLINT_PLUGIN: true

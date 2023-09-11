@@ -49,6 +49,14 @@ const MenuModalContainer: React.FC<Props> = () => {
         },
       });
     }
+    if (!!process.env.REACT_APP_SUBPAGE_URL) {
+      items.push({
+        title: 'Gallery',
+        onClick: async () => {
+          window.open(`${process.env.REACT_APP_SUBPAGE_URL}/gallery`);
+        },
+      });
+    }
     return items;
   }, [
     goToHomeSection,
