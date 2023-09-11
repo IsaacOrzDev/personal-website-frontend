@@ -53,17 +53,20 @@ const MenuModalContainer: React.FC<Props> = () => {
       items.push({
         title: 'Gallery',
         onClick: async () => {
-          window.open(`${process.env.REACT_APP_SUBPAGE_URL}/gallery`);
+          window.open(
+            `${process.env.REACT_APP_SUBPAGE_URL}/gallery?theme=${global.theme}`
+          );
         },
       });
     }
     return items;
   }, [
     goToHomeSection,
+    isResponsive,
     goToProjectSection,
     project.categories,
     project.list,
-    isResponsive,
+    global.theme,
   ]);
 
   return (

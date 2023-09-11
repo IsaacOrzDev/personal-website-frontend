@@ -46,9 +46,16 @@ const fetchTags = async () => {
   return data;
 };
 
+const wakeUpSubpages = (): ThunkAction<void, any, any, any> => {
+  return () => {
+    fetch(`${process.env.REACT_APP_SUBPAGE_URL}/api/wake-up`);
+  };
+};
+
 const dataService = {
   fetchAllData,
   fetchTags,
+  wakeUpSubpages,
 };
 
 export default dataService;
