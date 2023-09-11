@@ -126,6 +126,21 @@ const ProjectScreen: React.FC<Props> = (props) => {
                   breakpoint={props.breakpoint}
                   isLooping={!props.isHidden && !props.isResponsive}
                   tintColor={item.palette[props.theme]}
+                  onClickDevice={
+                    item.imageFolders.length > 0
+                      ? () => {
+                          window.open(
+                            `${
+                              process.env.REACT_APP_SUBPAGE_URL
+                            }/gallery?theme=${props.theme}&name=${
+                              item.title
+                            }${item.imageFolders
+                              .map((name: string) => `&folder=${name}`)
+                              .join('')}`
+                          );
+                        }
+                      : undefined
+                  }
                 />
               </div>
             </div>

@@ -17,6 +17,7 @@ interface Props extends ThemeProps {
   isLooping?: boolean;
   list: ProjectModel['preview'];
   tintColor: string;
+  onClickDevice?: () => void;
 }
 
 const ShowcaseScreenShots: React.FC<Props> = (props) => {
@@ -72,13 +73,14 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
     return (
       <div className={containerClassName}>
         <animated.div
-          className={styles.iphone}
+          className={`${styles.iphone} ${styles[props.theme]}`}
           style={{
             opacity: visible,
             transform: visible
               .to({ range: [0, 1], output: [-80, 0] })
               .to((v) => `translateY(${v}px)`),
           }}
+          onClick={props.onClickDevice}
         >
           <AndroidFrame
             theme={props.theme}
@@ -91,13 +93,14 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
           />
         </animated.div>
         <animated.div
-          className={styles.android}
+          className={`${styles.android} ${styles[props.theme]}`}
           style={{
             opacity: visible,
             transform: visible
               .to({ range: [0, 1], output: [80, 0] })
               .to((v) => `translateY(${v}px)`),
           }}
+          onClick={props.onClickDevice}
         >
           <AndroidFrame
             theme={props.theme}
@@ -121,13 +124,14 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
     return (
       <div className={containerClassName}>
         <animated.div
-          className={styles.iphone}
+          className={`${styles.iphone} ${styles[props.theme]}`}
           style={{
             opacity: visible,
             transform: visible
               .interpolate({ range: [0, 1], output: [-80, 0] })
               .interpolate((v) => `translateY(${v}px)`),
           }}
+          onClick={props.onClickDevice}
         >
           <IPhoneXFrame
             theme={props.theme}
@@ -139,13 +143,14 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
           />
         </animated.div>
         <animated.div
-          className={styles.android}
+          className={`${styles.android} ${styles[props.theme]}`}
           style={{
             opacity: visible,
             transform: visible
               .to({ range: [0, 1], output: [80, 0] })
               .to((v) => `translateY(${v}px)`),
           }}
+          onClick={props.onClickDevice}
         >
           <AndroidFrame
             theme={props.theme}
@@ -174,7 +179,9 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
           style={{
             opacity: visible,
             transform: visible.interpolate((v) => `scale(${v})`),
+            cursor: !!props.onClickDevice ? 'pointer' : 'default',
           }}
+          onClick={props.onClickDevice}
         >
           <BrowserFrame
             theme={props.theme}
@@ -186,12 +193,13 @@ const ShowcaseScreenShots: React.FC<Props> = (props) => {
           />
         </animated.div>
         {!!responsiveWebsite && (
-          <div className={styles.responsive}>
+          <div className={`${styles.responsive} ${styles[props.theme]}`}>
             <animated.div
               style={{
                 opacity: visible,
                 transform: visible.interpolate((v) => `scale(${v})`),
               }}
+              onClick={props.onClickDevice}
             >
               <BrowserFrame
                 theme={props.theme}

@@ -1,15 +1,48 @@
+@import 'styles/_utils.scss';
+@import 'styles/_colors.scss';
+
 .mobile_both {
   display: flex;
   justify-content: space-around;
   align-items: center;
 
   .iphone {
+    cursor: pointer;
     margin-right: 48px;
     margin-top: -10%;
+    border-radius: 36px;
+
+    @include media-breakpoint-down(sm) {
+      border-radius: 16px;
+    }
+
+    @include transition(outline);
+
+    &.dark:hover {
+      outline: 5px solid $color-dark-line;
+    }
+
+    &.light:hover {
+      outline: 5px solid $color-light-line;
+      
+    }
   }
 
   .android {
+    cursor: pointer;
     margin-top: 20%;
+    border-radius: 8px;
+
+    @include transition(outline);
+
+    &.dark:hover {
+      outline: 5px solid $color-dark-line;
+    }
+
+    &.light:hover {
+      outline: 5px solid $color-light-line;
+      
+    }
   }
 
   &.responsive {
@@ -47,6 +80,20 @@
     position: absolute;
     bottom: -5%;
     right: -6%;
+    cursor: pointer;
+
+    border-radius: 4px;
+
+    @include transition(outline);
+
+    &.dark:hover {
+      outline: 5px solid $color-dark-line;
+    }
+
+    &.light:hover {
+      outline: 5px solid $color-light-line;
+      
+    }
   }
 
   .diagram {

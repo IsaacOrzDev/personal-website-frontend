@@ -16,6 +16,7 @@ export interface PaletteModel {
 export default interface ProjectModel {
   title: string;
   description: string;
+  imageFolders: [];
   preview: Array<{
     imageUrls: Array<string>;
     iframe?: {

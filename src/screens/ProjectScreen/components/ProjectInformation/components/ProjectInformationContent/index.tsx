@@ -45,6 +45,19 @@ const ProjectInformationContent: React.FC<Props> = (props) => {
         breakpoint={props.breakpoint}
         isLooping={props.isFocused && props.isLooping}
         tintColor={props.item.palette[props.theme]}
+        onClickDevice={
+          props.item.imageFolders.length > 0
+            ? () => {
+                window.open(
+                  `${process.env.REACT_APP_SUBPAGE_URL}/gallery?theme=${
+                    props.theme
+                  }&name=${props.item.title}${props.item.imageFolders
+                    .map((name: string) => `&folder=${name}`)
+                    .join('')}`
+                );
+              }
+            : undefined
+        }
       />
       <div className={styles.text_area}>
         <TitleText
