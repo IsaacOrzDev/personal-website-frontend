@@ -161,7 +161,7 @@ const App: React.FC = () => {
               <Route path="*" element={<Navigate to={routes.home} replace />} />
             </Routes>
           </Suspense>
-          {!isResponsive && <MessageModalContainer />}
+          {!isResponsive && <MessageModalContainer palette={palette} />}
           <MenuModalContainer />
           <ImageViewerModal />
         </Router>

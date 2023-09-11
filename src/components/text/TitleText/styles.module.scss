@@ -3,7 +3,10 @@
 
 .content {
   margin: 0;
-  // @include transition(color, background-color);
+
+  &:not(.disableColorAnimation){
+    @include transition(color, background-color);
+  }
 
   &.dark {
     &.text {

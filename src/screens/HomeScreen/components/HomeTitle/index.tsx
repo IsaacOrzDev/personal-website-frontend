@@ -41,6 +41,7 @@ const HomeTitle: React.FC<Props> = (props) => {
         color={'tint'}
         gradientColor={props.gradientColor}
         className={styles.title}
+        disableColorAnimation
       >
         <Words
           text={props.name}
@@ -53,6 +54,7 @@ const HomeTitle: React.FC<Props> = (props) => {
         fontSize={24}
         className={styles.name}
         color={props.color || 'tint'}
+        disableColorAnimation
       >
         <Words
           text={props.title}

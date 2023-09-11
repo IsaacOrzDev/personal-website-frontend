@@ -27,6 +27,7 @@ const Part: React.FC<Props> = (props) => {
         className={styles.title}
         theme={props.theme}
         fontSize={props.isLg ? 40 : 56}
+        disableColorAnimation
       >
         <Words text={props.name} visible={props.visible} mode="words" />
       </TitleText>
@@ -37,6 +38,7 @@ const Part: React.FC<Props> = (props) => {
         color={props.color || 'tint'}
         gradientColor={props.gradientColor}
         fontSize={props.isLg ? 40 : 56}
+        disableColorAnimation
       >
         <Words text={props.title} visible={props.visible} mode="words" />
       </TitleText>

@@ -8,12 +8,17 @@ import buttonStyles from 'styles/button.module.scss';
 import ChatIcon from 'components/icons/ChatIcon';
 import DescriptionText from 'components/text/DescriptionText';
 import styles from './style.module.scss';
-import { useTransition, animated } from 'react-spring';
+import { useTransition, animated, useSpring } from 'react-spring';
+import useInterval from 'hooks/useInterval';
+import { PaletteModel } from 'models/ProjectModel';
 
-interface Props {}
+interface Props {
+  palette?: PaletteModel;
+}
 
-const MessageModalContainer: React.FC<Props> = () => {
+const MessageModalContainer: React.FC<Props> = (props: Props) => {
   const dispatch = useDispatch();
+  const [plus, setPlus] = React.useState(false);
 
   const global = {
     theme: useSelector(globalSelectors.theme),
@@ -43,6 +48,14 @@ const MessageModalContainer: React.FC<Props> = () => {
     },
   });
 
+  const { opacity: opacityOfCircle } = useSpring({
+    opacity: plus ? 0.5 : 0.4,
+  });
+
+  useInterval(() => {
+    setPlus((plus) => !plus);
+  }, 4000);
+
   return (
     <>
       <MessageModal
@@ -56,19 +69,40 @@ const MessageModalContainer: React.FC<Props> = () => {
       {transitions(
         ({ opacity }, item) =>
           item && (
-            <animated.div className={styles.chat} style={{ opacity }}>
-              <button
-                className={`${buttonStyles.button} ${
-                  buttonStyles[global.theme]
-                }`}
-                onClick={_openMessageModal}
+            <>
+              <animated.div
+                className={styles.chat}
+                style={{ opacity, borderRadius: '4px' }}
               >
-                <ChatIcon theme={global.theme} />
-                <DescriptionText fontSize={10} theme={global.theme}>
-                  Chat/
-                </DescriptionText>
-              </button>
-            </animated.div>
+                <button
+                  className={`${buttonStyles.button} ${
+                    buttonStyles[global.theme]
+                  }`}
+                  onClick={_openMessageModal}
+                >
+                  <ChatIcon theme={global.theme} />
+                  <DescriptionText fontSize={10} theme={global.theme}>
+                    Chat/
+                  </DescriptionText>
+                </button>
+              </animated.div>
+              <animated.div
+                className={styles.circle}
+                style={{
+                  opacity,
+                }}
+              >
+                <animated.div
+                  className={styles.inner}
+                  style={{
+                    backgroundColor: props.palette
+                      ? props.palette[global.theme]
+                      : '',
+                    opacity: opacityOfCircle,
+                  }}
+                />
+              </animated.div>
+            </>
           )
       )}
     </>

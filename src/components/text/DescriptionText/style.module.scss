@@ -12,7 +12,10 @@
   z-index: 1;
   line-height: 1.4;
   letter-spacing: 1.2;
-  @include transition(color);
+
+  &:not(.disableColorAnimation){
+    @include transition(color);
+  }
 
   &.dark {
     &.normal {

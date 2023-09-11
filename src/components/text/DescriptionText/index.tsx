@@ -11,9 +11,10 @@ interface Props extends ThemeProps {
 }
 
 const DescriptionText: React.FC<Props> = (props) => {
-  const { fontSize, color } = useSpring({
+  const color = props.color ?? '';
+
+  const { fontSize } = useSpring({
     fontSize: props.fontSize!,
-    color: props.color ?? '',
   });
 
   return (

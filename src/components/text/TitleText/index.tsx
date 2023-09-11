@@ -9,6 +9,7 @@ interface Props extends ThemeProps {
   gradientColor?: string;
   fontSize?: number;
   className?: string;
+  disableColorAnimation?: boolean;
   children: React.ReactNode;
 }
 
@@ -49,6 +50,10 @@ const TitleText: React.FC<Props> = (props) => {
 
   if (props.gradientColor) {
     className += ` ${styles.gradient}`;
+  }
+
+  if (props.disableColorAnimation) {
+    className += ` ${styles.disableColorAnimation}`;
   }
 
   switch (props.tag) {
