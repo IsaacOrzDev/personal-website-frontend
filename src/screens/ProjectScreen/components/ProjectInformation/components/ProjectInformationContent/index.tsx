@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styles from './style.module.scss';
 import { ThemeProps } from 'types/Props';
 import TextService from 'services/textService';
 import TitleText from 'components/text/TitleText';
 import Words from 'components/text/Words';
-import ProjectModel from 'models/ProjectModel';
+import ProjectModel, { ShowcaseTypeEnum } from 'models/ProjectModel';
 import ShowcaseScreenShots from '../../../ShowcaseScreenshots';
 import LinkButtonGroup from '../../../LinkButtonGroup';
 import ProjectDescription from '../../../ProjectDescription';
@@ -22,6 +22,29 @@ interface Props extends ThemeProps {
 
 const ProjectInformationContent: React.FC<Props> = (props) => {
   const [visible, setVisible] = useState(false);
+
+  const galleryUrl = useMemo(() => {
+    return `${process.env.REACT_APP_SUBPAGE_URL}/gallery?theme=${
+      props.theme
+    }&name=${props.item.title}${props.item.imageFolders
+      .map((name: string) => `&folder=${name}`)
+      .join('')}`;
+  }, [props.item.imageFolders, props.item.title, props.theme]);
+
+  const links = useMemo(() => {
+    if (props.item.links.length === 2) {
+      return props.item.links;
+    } else if (props.item.imageFolders.length > 0) {
+      const galleryLink = {
+        text: 'Visit Gallery',
+        url: galleryUrl,
+        type: ShowcaseTypeEnum.website,
+      };
+      return [...props.item.links, galleryLink];
+    } else {
+      return props.item.links;
+    }
+  }, [galleryUrl, props.item.imageFolders.length, props.item.links]);
 
   useEffect(() => {
     setTimeout(() => setVisible(true), 100);
@@ -98,7 +121,7 @@ const ProjectInformationContent: React.FC<Props> = (props) => {
         </div>
         <LinkButtonGroup
           theme={props.theme}
-          items={props.item.links}
+          items={links}
           visible={visible}
           project={props.item.title}
           textVisible={props.visible}

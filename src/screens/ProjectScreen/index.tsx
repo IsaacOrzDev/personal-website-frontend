@@ -4,7 +4,7 @@ import ProgressCircle from './components/ProgressCircle';
 import { ThemeProps } from 'types/Props';
 import TitleText from 'components/text/TitleText';
 import Words from 'components/text/Words';
-import ProjectModel from 'models/ProjectModel';
+import ProjectModel, { ShowcaseTypeEnum } from 'models/ProjectModel';
 import ShowcaseScreenShots from './components/ShowcaseScreenshots';
 import ProgressInfo from './components/ProgressInfo';
 import DropdownModal from 'components/modals/DropdownModal';
@@ -101,6 +101,29 @@ const ProjectScreen: React.FC<Props> = (props) => {
     circleSize = 600 * 0.8;
   }
 
+  const galleryUrl = useMemo(() => {
+    return `${process.env.REACT_APP_SUBPAGE_URL}/gallery?theme=${
+      props.theme
+    }&name=${item.title}${item.imageFolders
+      .map((name: string) => `&folder=${name}`)
+      .join('')}`;
+  }, [item.imageFolders, item.title, props.theme]);
+
+  const links = useMemo(() => {
+    if (item.links.length === 2) {
+      return item.links;
+    } else if (item.imageFolders.length > 0) {
+      const galleryLink = {
+        text: 'Visit Gallery',
+        url: galleryUrl,
+        type: ShowcaseTypeEnum.website,
+      };
+      return [...item.links, galleryLink];
+    } else {
+      return item.links;
+    }
+  }, [galleryUrl, item.imageFolders.length, item.links]);
+
   return (
     <PageSection
       setRef={props.setRef}
@@ -127,17 +150,9 @@ const ProjectScreen: React.FC<Props> = (props) => {
                   isLooping={!props.isHidden && !props.isResponsive}
                   tintColor={item.palette[props.theme]}
                   onClickDevice={
-                    item.imageFolders.length > 0
+                    !!galleryUrl
                       ? () => {
-                          window.open(
-                            `${
-                              process.env.REACT_APP_SUBPAGE_URL
-                            }/gallery?theme=${props.theme}&name=${
-                              item.title
-                            }${item.imageFolders
-                              .map((name: string) => `&folder=${name}`)
-                              .join('')}`
-                          );
+                          window.open(galleryUrl);
                         }
                       : undefined
                   }
@@ -212,7 +227,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
             </div>
             <LinkButtonGroup
               theme={props.theme}
-              items={item.links}
+              items={links}
               project={item.title}
               visible={visibles[1] && contentVisible && !props.isResponsive}
               textVisible={visibles[2] && contentVisible && !props.isResponsive}
