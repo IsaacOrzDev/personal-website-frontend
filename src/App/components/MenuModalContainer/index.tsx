@@ -41,14 +41,6 @@ const MenuModalContainer: React.FC<Props> = () => {
         })),
       ]);
     }
-    if (!!process.env.REACT_APP_CHAT_URL) {
-      items.push({
-        title: 'Chat',
-        onClick: async () => {
-          window.open(process.env.REACT_APP_CHAT_URL);
-        },
-      });
-    }
     if (!!process.env.REACT_APP_SUBPAGE_URL) {
       items.push({
         title: 'Gallery',
@@ -59,6 +51,25 @@ const MenuModalContainer: React.FC<Props> = () => {
         },
       });
     }
+    if (!!process.env.REACT_APP_CHAT_URL) {
+      items.push({
+        title: 'Chat',
+        onClick: async () => {
+          window.open(process.env.REACT_APP_CHAT_URL);
+        },
+      });
+    }
+    if (!!process.env.REACT_APP_SUBPAGE_URL) {
+      items.push({
+        title: 'CONTACT-ME',
+        onClick: async () => {
+          window.open(
+            `${process.env.REACT_APP_SUBPAGE_URL}/contact-me?theme=${global.theme}`
+          );
+        },
+      });
+    }
+
     return items;
   }, [
     goToHomeSection,
