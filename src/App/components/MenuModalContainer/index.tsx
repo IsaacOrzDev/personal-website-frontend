@@ -54,7 +54,7 @@ const MenuModalContainer: React.FC<Props> = () => {
         title: 'Gallery',
         onClick: async () => {
           window.open(
-            `${process.env.REACT_APP_SUBPAGE_URL}/gallery?theme=${global.theme}&name=Home&folder=home/`
+            `${process.env.REACT_APP_SUBPAGE_URL}/gallery?theme=${global.theme}&folder=home/&name=personal website`
           );
         },
       });
