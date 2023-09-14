@@ -31,7 +31,7 @@ interface Props extends ThemeProps {
 }
 
 const HomeScreen: React.FC<Props> = (props) => {
-  const visibles = useVisibles([200, 400], props.visible);
+  const visibles = useVisibles([0, 200], props.visible);
   const [imageUrl, setImageUrl] = useState('');
   const { goToProjectSection } = useNavigation(props.isResponsive ?? false);
 
