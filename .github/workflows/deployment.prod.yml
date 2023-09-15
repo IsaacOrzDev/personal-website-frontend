@@ -22,6 +22,7 @@ jobs:
       - name: Build the application
         run: yarn build
         env:
+          REACT_APP_GA_KEY: ${{ secrets.GA_KEY }}
           REACT_APP_API_URL: ${{ vars.API_URL }}
           REACT_APP_ENABLE_LIGHT_MODE: true
           REACT_APP_GITHUB_URL: ${{ vars.AGITHUB_URL }}
