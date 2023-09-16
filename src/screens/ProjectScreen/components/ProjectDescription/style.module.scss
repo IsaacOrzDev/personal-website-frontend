@@ -6,6 +6,10 @@
   margin-bottom: 24px;
   padding: 8px;
 
+  @media (max-height: 800px) {
+    margin-bottom: 12px;
+  }
+
   @include transition(opacity);
 
   &.hidden {
