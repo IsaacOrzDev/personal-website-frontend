@@ -41,45 +41,5 @@ REACT_APP_META_COPYRIGHT="copyright@ 2020"
 REACT_APP_META_TYPE="personal_website"
 REACT_APP_META_URL="https://personal.example.com/"
 REACT_APP_META_IMAGE="https://personal.example.com/favicon.png"
-```
-
-#### Data structure of data.yml file:
-
-```
-home:
-  name: Name
-  title: Title
-  images:
-    - https://images.unsplash.com/photo-1531259683007-016a7b628fc3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80
-    - https://images.unsplash.com/photo-1636628575750-d1631948f596?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80
-  message: This is message
-projects:
-  -
-    category: Category
-    palette:
-        dark: '#f3f245'
-        light: '#3e334d'
-    title: Title
-    description: >
-      This is description
-    type: W
-    preview:
-      -
-        imageUrls:
-          - https://images.unsplash.com/photo-1624371960524-ade99abadb34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3212&q=80
-        type: website
-    links:
-      -
-        url: https://example.com/
-        type: website
-        text: Visit Website
-    tags:
-      - Tag1
-      - Tag2
-```
-
-#### If you want to get data from API instead of data.yml file, please update .env file as:
-
-```
-REACT_APP_API_URL=http://localhost:3000/
+REACT_APP_API_URL=
 ```
