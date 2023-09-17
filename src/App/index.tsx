@@ -48,6 +48,7 @@ const App: React.FC = () => {
   };
 
   const palette = useMemo(() => {
+    
     if (global.page === pages.home) {
       return global.selectedHomeImage !== null
         ? global.homeImages[global.selectedHomeImage].palette
