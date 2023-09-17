@@ -47,7 +47,7 @@ const LoadingIcon: React.FC<Props> = (props) => {
         gradientColor={props.palette?.gradient}
         fontSize={props.fontSize}
       >
-        {process.env.REACT_APP_LOADING_TEXT}
+        {import.meta.env.VITE_LOADING_TEXT}
       </TitleText>
       <TitleText
         theme={props.theme}

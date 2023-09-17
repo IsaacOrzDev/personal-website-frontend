@@ -105,7 +105,7 @@ const App: React.FC = () => {
   useEffect(() => {
     GaService.initialize();
     dispatch(dataService.fetchAllData());
-    if (process.env.REACT_APP_SUBPAGE_URL) {
+    if (import.meta.env.VITE_SUBPAGE_URL) {
       dispatch(dataService.wakeUpSubpages());
     }
     if (

@@ -53,7 +53,7 @@ const HomeScreen: React.FC<Props> = (props) => {
       items.push({
         text: '> Chat/',
         onClick: async () => {
-          window.open(process.env.REACT_APP_CHAT_URL!);
+          window.open(import.meta.env.VITE_CHAT_URL!);
         },
       });
     } else {

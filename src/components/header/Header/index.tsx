@@ -40,7 +40,7 @@ const Header: React.FC<Props> = (props) => {
   }
 
   const navigateToGithubPage = () => {
-    window.open(process.env.REACT_APP_GITHUB_URL, '_blank');
+    window.open(import.meta.env.VITE_GITHUB_URL, '_blank');
   };
 
   return (
@@ -53,7 +53,7 @@ const Header: React.FC<Props> = (props) => {
           fontSize={titleFontSize}
         />
         <div className={styles.right}>
-          {process.env.REACT_APP_ENABLE_LIGHT_MODE === 'true' && (
+          {import.meta.env.VITE_ENABLE_LIGHT_MODE === 'true' && (
             <HeaderThemeButton
               theme={props.theme}
               visible={props.isMenuOpened && !props.isResponsive}
@@ -89,7 +89,7 @@ const Header: React.FC<Props> = (props) => {
               <GithubIcon theme={props.theme} />
             </button>
           )}
-          {process.env.REACT_APP_ENABLE_LIGHT_MODE === 'true' && (
+          {import.meta.env.VITE_ENABLE_LIGHT_MODE === 'true' && (
             <HeaderThemeButton
               theme={props.theme}
               visible={props.isMenuOpened && props.isResponsive}

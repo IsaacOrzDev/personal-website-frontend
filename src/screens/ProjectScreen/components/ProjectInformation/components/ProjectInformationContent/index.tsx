@@ -24,7 +24,7 @@ const ProjectInformationContent: React.FC<Props> = (props) => {
   const [visible, setVisible] = useState(false);
 
   const galleryUrl = useMemo(() => {
-    return `${process.env.REACT_APP_SUBPAGE_URL}/gallery?theme=${
+    return `${import.meta.env.VITE_SUBPAGE_URL}/gallery?theme=${
       props.theme
     }&name=${props.item.title}${props.item.imageFolders
       .map((name: string) => `&folder=${name}`)
@@ -72,7 +72,7 @@ const ProjectInformationContent: React.FC<Props> = (props) => {
           props.item.imageFolders.length > 0
             ? () => {
                 window.open(
-                  `${process.env.REACT_APP_SUBPAGE_URL}/gallery?theme=${
+                  `${import.meta.env.VITE_SUBPAGE_URL}/gallery?theme=${
                     props.theme
                   }&name=${props.item.title}${props.item.imageFolders
                     .map((name: string) => `&folder=${name}`)

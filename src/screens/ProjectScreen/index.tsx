@@ -104,7 +104,7 @@ const ProjectScreen: React.FC<Props> = (props) => {
   const galleryUrl = useMemo(() => {
     if (!item.imageFolders.length) return '';
 
-    return `${process.env.REACT_APP_SUBPAGE_URL}/gallery?theme=${
+    return `${import.meta.env.VITE_SUBPAGE_URL}/gallery?theme=${
       props.theme
     }&name=${item.title}${item.imageFolders
       .map((name: string) => `&folder=${name}`)
