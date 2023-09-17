@@ -21,17 +21,17 @@ jobs:
       - name: Build the application
         run: yarn build
         env:
-          REACT_APP_API_URL: ${{ vars.API_URL }}
-          REACT_APP_ENABLE_LIGHT_MODE: true
-          REACT_APP_GITHUB_URL: ${{ vars.AGITHUB_URL }}
-          REACT_APP_LOADING_TEXT: ${{ vars.LOADING_TEXT }}
-          REACT_APP_META_TITLE: ${{ vars.META_TITLE }}
-          REACT_APP_META_DESCRIPTION: ${{ vars.META_DESCRIPTION }}
-          REACT_APP_META_KEYWORDS: ${{ vars.META_KEYWORDS }}
-          REACT_APP_META_COPYRIGHT: ${{ vars.META_COPYRIGHT }}
-          REACT_APP_META_TYPE: ${{ vars.META_TYPE }}
-          REACT_APP_META_URL: ${{ vars.META_URL }}
-          REACT_APP_META_IMAGE: ${{ vars.META_IMAGE }}
-          REACT_APP_CHAT_URL: ${{ vars.CHAT_URL }}
-          REACT_APP_SUBPAGE_URL: ${{ vars.SUBPAGE_URL }}
+          VITE_API_URL: ${{ vars.API_URL }}
+          VITE_ENABLE_LIGHT_MODE: true
+          VITE_GITHUB_URL: ${{ vars.AGITHUB_URL }}
+          VITE_LOADING_TEXT: ${{ vars.LOADING_TEXT }}
+          VITE_META_TITLE: ${{ vars.META_TITLE }}
+          VITE_META_DESCRIPTION: ${{ vars.META_DESCRIPTION }}
+          VITE_META_KEYWORDS: ${{ vars.META_KEYWORDS }}
+          VITE_META_COPYRIGHT: ${{ vars.META_COPYRIGHT }}
+          VITE_META_TYPE: ${{ vars.META_TYPE }}
+          VITE_META_URL: ${{ vars.META_URL }}
+          VITE_META_IMAGE: ${{ vars.META_IMAGE }}
+          VITE_CHAT_URL: ${{ vars.CHAT_URL }}
+          VITE_SUBPAGE_URL: ${{ vars.SUBPAGE_URL }}
           DISABLE_ESLINT_PLUGIN: true

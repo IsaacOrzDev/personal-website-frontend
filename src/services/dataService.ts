@@ -7,9 +7,9 @@ const fetchAllData = (): ThunkAction<void, any, any, any> => {
   return async (dispatch) => {
     let data = null;
 
-    if (!!process.env.REACT_APP_API_URL) {
+    if (!!import.meta.env.VITE_API_URL) {
       try {
-        data = await (await fetch(process.env.REACT_APP_API_URL)).json();
+        data = await (await fetch(import.meta.env.VITE_API_URL)).json();
       } catch (err) {
         console.log('fetching data error', err);
       }
@@ -31,11 +31,9 @@ const fetchAllData = (): ThunkAction<void, any, any, any> => {
 const fetchTags = async () => {
   let data = [];
 
-  if (!!process.env.REACT_APP_API_URL) {
+  if (!!import.meta.env.VITE_API_URL) {
     try {
-      data = await (
-        await fetch(`${process.env.REACT_APP_API_URL}/tags`)
-      ).json();
+      data = await (await fetch(`${import.meta.env.VITE_API_URL}/tags`)).json();
     } catch (err) {
       console.log('fetching data error', err);
     }
@@ -48,7 +46,7 @@ const fetchTags = async () => {
 
 const wakeUpSubpages = (): ThunkAction<void, any, any, any> => {
   return () => {
-    fetch(`${process.env.REACT_APP_SUBPAGE_URL}/api/wake-up`);
+    fetch(`${import.meta.env.VITE_SUBPAGE_URL}/api/wake-up`);
   };
 };
 

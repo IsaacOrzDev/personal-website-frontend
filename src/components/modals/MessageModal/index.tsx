@@ -52,7 +52,7 @@ const MessageModal: React.FC<Props> = (props) => {
           <CloseIcon theme="dark" />
         </button>
         <iframe
-          src={process.env.REACT_APP_CHAT_URL}
+          src={import.meta.env.VITE_CHAT_URL}
           width="100%"
           height="500px"
           frameBorder="0"

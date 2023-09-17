@@ -41,30 +41,34 @@ const MenuModalContainer: React.FC<Props> = () => {
         })),
       ]);
     }
-    if (!!process.env.REACT_APP_SUBPAGE_URL) {
+    if (!!import.meta.env.VITE_SUBPAGE_URL) {
       items.push({
         title: 'Gallery',
         onClick: async () => {
           window.open(
-            `${process.env.REACT_APP_SUBPAGE_URL}/gallery?theme=${global.theme}&folder=home/&name=personal website`
+            `${import.meta.env.VITE_SUBPAGE_URL}/gallery?theme=${
+              global.theme
+            }&folder=home/&name=personal website`
           );
         },
       });
     }
-    if (!!process.env.REACT_APP_CHAT_URL) {
+    if (!!import.meta.env.VITE_CHAT_URL) {
       items.push({
         title: 'Chat',
         onClick: async () => {
-          window.open(process.env.REACT_APP_CHAT_URL);
+          window.open(import.meta.env.VITE_CHAT_URL);
         },
       });
     }
-    if (!!process.env.REACT_APP_SUBPAGE_URL) {
+    if (!!import.meta.env.VITE_SUBPAGE_URL) {
       items.push({
         title: 'CONTACT-ME',
         onClick: async () => {
           window.open(
-            `${process.env.REACT_APP_SUBPAGE_URL}/contact-me?theme=${global.theme}`
+            `${import.meta.env.VITE_SUBPAGE_URL}/contact-me?theme=${
+              global.theme
+            }`
           );
         },
       });
