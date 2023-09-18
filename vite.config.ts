@@ -9,13 +9,14 @@ const hash = Math.floor(Math.random() * 90000) + 10000;
 export default defineConfig(({ mode }) => {
   // process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
   return {
+    // server: {
+    //   headers: {
+    //     'Cache-Control': 'no-store',
+    //   },
+    // },
     build: {
       outDir: 'build',
       rollupOptions: {
-        // headers: {
-        //   'Cache-Control': 'no-store',
-        // },
-
         output: {
           entryFileNames: `[name]` + hash + `.js`,
           chunkFileNames: `[name]` + hash + `.js`,
@@ -65,6 +66,7 @@ export default defineConfig(({ mode }) => {
           theme_color: '#000000',
           background_color: '#000000',
         },
+        registerType: 'autoUpdate',
       }),
     ],
   };
