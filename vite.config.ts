@@ -4,11 +4,24 @@ import svgr from 'vite-plugin-svgr';
 import path from 'path';
 import { VitePWA } from 'vite-plugin-pwa';
 
+const hash = Math.floor(Math.random() * 90000) + 10000;
+
 export default defineConfig(({ mode }) => {
   // process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
   return {
     build: {
       outDir: 'build',
+      rollupOptions: {
+        // headers: {
+        //   'Cache-Control': 'no-store',
+        // },
+
+        output: {
+          entryFileNames: `[name]` + hash + `.js`,
+          chunkFileNames: `[name]` + hash + `.js`,
+          assetFileNames: `[name]` + hash + `.[ext]`,
+        },
+      },
     },
     resolve: {
       alias: {
