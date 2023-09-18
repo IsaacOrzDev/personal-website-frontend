@@ -67,6 +67,7 @@ export default defineConfig(({ mode }) => {
           background_color: '#000000',
         },
         registerType: 'autoUpdate',
+        disable: true,
       }),
     ],
   };
