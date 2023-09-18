@@ -2,10 +2,12 @@ import { ThunkAction } from '@reduxjs/toolkit';
 import { projectActions } from 'store/project';
 import { globalActions } from 'store/global';
 import TimeService from 'services/timeService';
+import { isDev } from './devService';
 
 const fetchAllData = (): ThunkAction<void, any, any, any> => {
   return async (dispatch) => {
     let data = null;
+    let projects = [];
 
     if (!!import.meta.env.VITE_API_URL) {
       try {
@@ -17,12 +19,18 @@ const fetchAllData = (): ThunkAction<void, any, any, any> => {
       await TimeService.timeout(1000);
     }
 
+    if (!isDev()) {
+      projects = data.projects.filter((item: any) => !item.draft);
+    } else {
+      projects = data.projects;
+    }
+
     dispatch(globalActions.setName(data.home.name));
     dispatch(globalActions.setTitle(data.home.title));
     dispatch(globalActions.setHomeImages(data.home.images));
     dispatch(globalActions.setMessageContent(data.home.message));
     dispatch(projectActions.setYears([]));
-    dispatch(projectActions.setList([...data.projects]));
+    dispatch(projectActions.setList(projects));
     await TimeService.timeout(1000);
     dispatch(globalActions.setDataLoaded(true));
   };
