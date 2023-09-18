@@ -22,7 +22,10 @@ const fetchAllData = (): ThunkAction<void, any, any, any> => {
     if (!isDev()) {
       projects = data.projects.filter((item: any) => !item.draft);
     } else {
-      projects = data.projects;
+      projects = data.projects.map((item: any) => ({
+        ...item,
+        tags: item.draft ? ['draft', ...item.tags] : item.tags,
+      }));
     }
 
     dispatch(globalActions.setName(data.home.name));
