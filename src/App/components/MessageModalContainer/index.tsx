@@ -66,45 +66,47 @@ const MessageModalContainer: React.FC<Props> = (props: Props) => {
         isResponsive={isResponsive}
         onClose={_closeMessageModal}
       />
-      {transitions(
-        ({ opacity }, item) =>
-          item && (
-            <>
-              <animated.div
-                className={styles.chat}
-                style={{ opacity, borderRadius: '4px' }}
-              >
-                <button
-                  className={`${buttonStyles.button} ${
-                    buttonStyles[global.theme]
-                  }`}
-                  onClick={_openMessageModal}
-                >
-                  <ChatIcon theme={global.theme} />
-                  <DescriptionText fontSize={10} theme={global.theme}>
-                    Chat/
-                  </DescriptionText>
-                </button>
-              </animated.div>
-              <animated.div
-                className={styles.circle}
-                style={{
-                  opacity,
-                }}
-              >
+      {import.meta.env.VITE_ENABLE_CHAT_BOT === 'true' &&
+        !!import.meta.env.VITE_CHAT_URL &&
+        transitions(
+          ({ opacity }, item) =>
+            item && (
+              <>
                 <animated.div
-                  className={styles.inner}
+                  className={styles.chat}
+                  style={{ opacity, borderRadius: '4px' }}
+                >
+                  <button
+                    className={`${buttonStyles.button} ${
+                      buttonStyles[global.theme]
+                    }`}
+                    onClick={_openMessageModal}
+                  >
+                    <ChatIcon theme={global.theme} />
+                    <DescriptionText fontSize={10} theme={global.theme}>
+                      Chat/
+                    </DescriptionText>
+                  </button>
+                </animated.div>
+                <animated.div
+                  className={styles.circle}
                   style={{
-                    backgroundColor: props.palette
-                      ? props.palette[global.theme]
-                      : '',
-                    opacity: opacityOfCircle,
+                    opacity,
                   }}
-                />
-              </animated.div>
-            </>
-          )
-      )}
+                >
+                  <animated.div
+                    className={styles.inner}
+                    style={{
+                      backgroundColor: props.palette
+                        ? props.palette[global.theme]
+                        : '',
+                      opacity: opacityOfCircle,
+                    }}
+                  />
+                </animated.div>
+              </>
+            )
+        )}
     </>
   );
 };

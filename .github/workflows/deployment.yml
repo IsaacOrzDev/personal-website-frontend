@@ -34,6 +34,7 @@ jobs:
           VITE_META_IMAGE: ${{ vars.META_IMAGE }}
           VITE_CHAT_URL: ${{ vars.CHAT_URL }}
           VITE_SUBPAGE_URL: ${{ vars.SUBPAGE_URL }}
+          VITE_ENABLE_CHAT_BOT: ${{ vars.ENABLE_CHAT_BOT }}
           DISABLE_ESLINT_PLUGIN: true
       - name: Delete items from S3
         run: aws s3 rm s3://$AWS_BUCKET_NAME --recursive

@@ -53,7 +53,10 @@ const MenuModalContainer: React.FC<Props> = () => {
         },
       });
     }
-    if (!!import.meta.env.VITE_CHAT_URL) {
+    if (
+      import.meta.env.VITE_ENABLE_CHAT_BOT === 'true' &&
+      !!import.meta.env.VITE_CHAT_URL
+    ) {
       items.push({
         title: 'Chat',
         onClick: async () => {
