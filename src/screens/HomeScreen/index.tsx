@@ -50,12 +50,17 @@ const HomeScreen: React.FC<Props> = (props) => {
 
     if (props.isResponsive) {
       items.push({ text: `> Projects/`, onClick: () => goToProjectSection(0) });
-      items.push({
-        text: '> Chat/',
-        onClick: async () => {
-          window.open(import.meta.env.VITE_CHAT_URL!);
-        },
-      });
+      if (
+        import.meta.env.VITE_ENABLE_CHAT_BOT === 'true' &&
+        !!import.meta.env.VITE_CHAT_URL
+      ) {
+        items.push({
+          text: '> Chat/',
+          onClick: async () => {
+            window.open(import.meta.env.VITE_CHAT_URL!);
+          },
+        });
+      }
     } else {
       items = items.concat(
         project.categories.map((item) => ({
