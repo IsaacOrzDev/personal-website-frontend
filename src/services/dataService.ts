@@ -58,7 +58,7 @@ const fetchTags = async () => {
 const wakeUpSubpages = (): ThunkAction<void, any, any, any> => {
   return () => {
     fetch(`${import.meta.env.VITE_SUBPAGE_URL}/api/wake-up`);
-    fetch('https://sketch-blend.isaacdev.net/api');
+    // fetch('https://sketch-blend.isaacdev.net/api');
   };
 };
 
