@@ -51,13 +51,17 @@ const MessageModal: React.FC<Props> = (props) => {
         >
           <CloseIcon theme="dark" />
         </button>
-        <iframe
-          src={import.meta.env.VITE_CHAT_URL}
-          width="100%"
-          height="500px"
-          frameBorder="0"
-          title="Chat"
-        />
+        {props.visible && (
+          <iframe
+            src={import.meta.env.VITE_CHAT_URL}
+            width="100%"
+            height="500px"
+            frameBorder="0"
+            title="Chat"
+            // loading={!props.visible}
+          />
+        )}
+        {!props.visible && <div style={{ height: '500px' }} />}
       </div>
     </animated.div>
   );
