@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './style.module.scss';
 import buttonStyles from 'styles/button.module.scss';
 import { ThemeProps } from 'types/Props';
@@ -17,6 +17,7 @@ interface Props extends ThemeProps {
 
 const MessageModal: React.FC<Props> = (props) => {
   const [textVisible, setTextVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const { visible } = useSpring({
     visible: props.visible ? 1 : 0,
@@ -32,6 +33,12 @@ const MessageModal: React.FC<Props> = (props) => {
   if (props.isResponsive) {
     containerClassName += ` ${styles.responsive}`;
   }
+
+  useEffect(() => {
+    if (props.visible) {
+      setIsVisible(true);
+    }
+  }, [props.visible]);
 
   return (
     <animated.div
@@ -49,19 +56,18 @@ const MessageModal: React.FC<Props> = (props) => {
           }`}
           onClick={props.onClose}
         >
-          <CloseIcon theme="dark" />
+          <CloseIcon theme={props.theme} />
         </button>
-        {props.visible && (
+        {isVisible && (
           <iframe
-            src={import.meta.env.VITE_CHAT_URL}
+            src={`${import.meta.env.VITE_CHAT_URL}?theme=${props.theme}`}
             width="100%"
             height="500px"
             frameBorder="0"
             title="Chat"
-            // loading={!props.visible}
           />
         )}
-        {!props.visible && <div style={{ height: '500px' }} />}
+        {!isVisible && <div style={{ height: '500px' }} />}
       </div>
     </animated.div>
   );
