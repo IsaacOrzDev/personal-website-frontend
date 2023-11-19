@@ -64,15 +64,11 @@ const MenuModalContainer: React.FC<Props> = () => {
         },
       });
     }
-    if (!!import.meta.env.VITE_SUBPAGE_URL) {
+    if (!!import.meta.env.VITE_DRAWINGS_URL) {
       items.push({
-        title: 'CONTACT-ME',
+        title: 'DRAWINGS',
         onClick: async () => {
-          window.open(
-            `${import.meta.env.VITE_SUBPAGE_URL}/contact-me?theme=${
-              global.theme
-            }`
-          );
+          window.open(`${import.meta.env.VITE_DRAWINGS_URL}`);
         },
       });
     }
