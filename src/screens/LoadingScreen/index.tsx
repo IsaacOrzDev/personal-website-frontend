@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './style.module.scss';
 import { ThemeProps } from 'types/Props';
 import useResize from 'hooks/useResize';
 import LoadingIcon from './components/LoadingIcon';
 import { PaletteModel } from 'models/ProjectModel';
+import { useDispatch } from 'react-redux';
+import { globalActions } from 'store/global';
+import pages from 'config/pages';
 
 interface Props extends ThemeProps {
   palette?: PaletteModel;
@@ -13,6 +16,14 @@ interface Props extends ThemeProps {
 
 const LoadingScreen: React.FC<Props> = (props) => {
   const [, isResponsive] = useResize();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(window.location.href);
+    if (!window.location.href.includes('projects')) {
+      dispatch(globalActions.setPage(pages.home));
+    }
+  }, []);
 
   return (
     <div className={`${styles.container} ${styles[props.theme]}`}>

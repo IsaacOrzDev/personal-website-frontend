@@ -21,7 +21,7 @@ export interface GlobalState {
 export const initialGlobalState: GlobalState = {
   theme: 'dark',
   visible: true,
-  page: pages.home,
+  page: '',
   name: '',
   title: '',
   homeImages: [],
