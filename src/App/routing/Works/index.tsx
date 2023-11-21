@@ -15,6 +15,7 @@ import GaService from 'services/gaService';
 import useHidden from 'hooks/useHidden';
 import { useQuery } from '@tanstack/react-query';
 import dataService from 'services/dataService';
+import { useSearchParams } from 'react-router-dom';
 
 const ProjectScreen = React.lazy(() => import('screens/ProjectScreen/index'));
 const ResponsiveProjectScreen = React.lazy(() =>
@@ -24,6 +25,9 @@ const ResponsiveProjectScreen = React.lazy(() =>
 const Works: React.FC = () => {
   // #region variables
   const dispatch = useDispatch();
+
+  const [params] = useSearchParams();
+  const queryProject = params.get('project');
 
   const global = {
     theme: useSelector(globalSelectors.theme),
@@ -149,9 +153,10 @@ const Works: React.FC = () => {
     window.scroll(0, 0);
     dispatch(globalActions.setShouldListenScrollingEvent(true));
     dispatch(globalActions.setPage(pages.projects));
-    dispatch(projectActions.setVisible(true));
+    dispatch(projectActions.setSelectedIndexByProject(queryProject));
+    // dispatch(projectActions.setVisible(true));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [queryProject]);
   // #endregion
 
   return (

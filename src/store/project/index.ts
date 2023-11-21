@@ -28,11 +28,26 @@ const slice = createSlice({
     setDropdownVisible: (state, action: PayloadAction<boolean>) => {
       state.dropdownVisible = action.payload;
     },
-    plus: state => {
+    plus: (state) => {
       state.selectedIndex += 1;
     },
-    minus: state => {
+    minus: (state) => {
       state.selectedIndex -= 1;
+    },
+    setSelectedIndexByProject: (
+      state,
+      action: PayloadAction<string | null>
+    ) => {
+      const index =
+        action.payload !== null
+          ? state.list.findIndex((item) => item.title.includes(action.payload!))
+          : -1;
+      if (index === -1) {
+        state.selectedIndex = 0;
+      } else {
+        state.selectedIndex = index;
+      }
+      state.visible = true;
     },
   },
 });
