@@ -87,12 +87,12 @@ const ResponsiveProjectScreen: React.FC<Props> = (props) => {
           />
         </div>
       )}
-      <ParallaxBar
+      {/* <ParallaxBar
         theme={props.theme}
         yBottom={props.windowOffsetBottom}
         visible={props.visible && !props.shouldShowMenu}
         // color={palette[props.theme]}
-      />
+      /> */}
     </div>
   );
 };
