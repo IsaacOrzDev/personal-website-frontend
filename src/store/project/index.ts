@@ -38,14 +38,18 @@ const slice = createSlice({
       state,
       action: PayloadAction<string | null>
     ) => {
-      const index =
-        action.payload !== null
-          ? state.list.findIndex((item) => item.title.includes(action.payload!))
-          : -1;
-      if (index === -1) {
-        state.selectedIndex = 0;
-      } else {
-        state.selectedIndex = index;
+      if (state.selectedIndex === 0) {
+        const index =
+          action.payload !== null
+            ? state.list.findIndex((item) =>
+                item.title.includes(action.payload!)
+              )
+            : -1;
+        if (index === -1) {
+          state.selectedIndex = 0;
+        } else {
+          state.selectedIndex = index;
+        }
       }
       state.visible = true;
     },

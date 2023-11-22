@@ -7,6 +7,7 @@ import { ThemeProps } from 'types/Props';
 import { useSpring, animated } from 'react-spring';
 import HeaderMenuButton from '../HeaderMenuButton';
 import GithubIcon from 'components/icons/GithubIcon';
+import StackblitzIcon from 'components/icons/StackblitzIcon';
 
 interface Props extends ThemeProps {
   title: string;
@@ -43,6 +44,10 @@ const Header: React.FC<Props> = (props) => {
     window.open(import.meta.env.VITE_GITHUB_URL, '_blank');
   };
 
+  const navigateToStackblitzPage = () => {
+    window.open(import.meta.env.VITE_STACKBLITZ_URL, '_blank');
+  };
+
   return (
     <animated.div className={headerClassName} style={{ opacity }}>
       <div className={styles.content}>
@@ -59,6 +64,16 @@ const Header: React.FC<Props> = (props) => {
               visible={props.isMenuOpened && !props.isResponsive}
               onClick={props.onToggleTheme}
             />
+          )}
+          {props.buttonVisible && !props.isResponsive && (
+            <button
+              className={`${buttonStyles.button} ${buttonStyles[props.theme]} ${
+                styles.github_button
+              }`}
+              onClick={navigateToStackblitzPage}
+            >
+              <StackblitzIcon theme={props.theme} />
+            </button>
           )}
           {props.buttonVisible && !props.isResponsive && (
             <button
